@@ -11,53 +11,87 @@
       "platform": "فوري",
       "last_updated": "2026-05-22",
       "total_balance": 26070.53,
-      "total_deposits": 26186.15,
+      "total_deposits": 54146,
       "total_profit": -1439.95,
       "total_profit_after_fees": -127.89,
       "funds": {
         "gold": {
           "name": "دهب",
           "current_balance": 5892.75,
-          "total_deposits": 2027,
+          "total_deposits": 6027,
           "profit": -134.25,
           "profit_after_fees": -131.16,
           "status": "losing",
           "type": "متغير",
           "year_established": 2024,
-          "withdrawal_fee_pct": 3.50,
+          "withdrawal_fee_pct": 3.5,
           "withdrawal_days": "الأحد إلى الخميس",
-          "notes": "خسارة حالياً — رسوم سحب 3.5%"
+          "notes": "خسارة حالياً — رسوم سحب 3.5%",
+          "transactions": [
+            {
+              "type": "deposit",
+              "amount": 2000
+            },
+            {
+              "type": "deposit",
+              "amount": 2000
+            }
+          ]
         },
         "opportunities": {
           "name": "فرص",
-          "current_balance": 4414.50,
-          "total_deposits": 2000,
-          "profit": 414.50,
+          "current_balance": 4414.5,
+          "total_deposits": 4000,
+          "profit": 414.5,
           "profit_after_fees": 410.36,
           "status": "profitable",
           "type": "متغير",
           "year_established": 2021,
-          "withdrawal_fee_pct": 1.50,
+          "withdrawal_fee_pct": 1.5,
           "withdrawal_days": "الأحد إلى الخميس",
-          "notes": ""
+          "notes": "",
+          "transactions": [
+            {
+              "type": "deposit",
+              "amount": 1000
+            },
+            {
+              "type": "deposit",
+              "amount": 1000
+            }
+          ]
         },
         "sharia": {
           "name": "شريعة",
           "current_balance": 7112.58,
-          "total_deposits": 4000,
+          "total_deposits": 6250,
           "profit": 862.58,
           "profit_after_fees": 851.37,
           "status": "profitable",
           "type": "متغير",
           "year_established": 2024,
-          "withdrawal_fee_pct": 2.00,
+          "withdrawal_fee_pct": 2.0,
           "withdrawal_days": "الأحد إلى الخميس",
-          "notes": ""
+          "notes": "",
+          "transactions": [
+            {
+              "type": "deposit",
+              "amount": 250
+            },
+            {
+              "type": "deposit",
+              "amount": 1000
+            },
+            {
+              "type": "deposit",
+              "amount": 1000
+            }
+          ]
         },
         "fawry_stable": {
           "name": "فوري",
-          "current_balance": 8650.70,
-          "total_deposits": 5,
+          "current_balance": 8650.7,
+          "total_deposits": 37869,
           "profit": -2582.78,
           "profit_after_fees": -1258.45,
           "status": "profitable",
@@ -72,7 +106,82 @@
             "payout_frequency": "يومي",
             "notes": "العائد السنوي يعكس الأداء من بداية العام. العائد الشهري لآخر 30 يوم. العائد اليومي حتى يوم عمل مضى."
           },
-          "notes": "✅ أرباح يومية — تنزل كل يوم"
+          "notes": "✅ أرباح يومية — تنزل كل يوم",
+          "total_withdrawals": 28635.15,
+          "transactions": [
+            {
+              "type": "deposit",
+              "amount": 4000
+            },
+            {
+              "type": "withdrawal",
+              "amount": 2003.99
+            },
+            {
+              "type": "withdrawal",
+              "amount": 1998.95
+            },
+            {
+              "type": "deposit",
+              "amount": 5885
+            },
+            {
+              "type": "withdrawal",
+              "amount": 1941.28
+            },
+            {
+              "type": "withdrawal",
+              "amount": 4015.77
+            },
+            {
+              "type": "deposit",
+              "amount": 8000
+            },
+            {
+              "type": "withdrawal",
+              "amount": 3999.86
+            },
+            {
+              "type": "deposit",
+              "amount": 5979
+            },
+            {
+              "type": "withdrawal",
+              "amount": 1999.38
+            },
+            {
+              "type": "deposit",
+              "amount": 14000
+            },
+            {
+              "type": "withdrawal",
+              "amount": 499.23
+            },
+            {
+              "type": "withdrawal",
+              "amount": 2999.42
+            },
+            {
+              "type": "withdrawal",
+              "amount": 1999.63
+            },
+            {
+              "type": "withdrawal",
+              "amount": 4998.45
+            },
+            {
+              "type": "withdrawal",
+              "amount": 1080.76
+            },
+            {
+              "type": "withdrawal",
+              "amount": 999.04
+            },
+            {
+              "type": "withdrawal",
+              "amount": 99.39
+            }
+          ]
         }
       }
     }
@@ -80,7 +189,10 @@
   "periods": {
     "period_5": {
       "label": "الفترة 5 — إبريل",
-      "date_range": {"start": "2026-04-27", "end": "2026-05-26"},
+      "date_range": {
+        "start": "2026-04-27",
+        "end": "2026-05-26"
+      },
       "salary_info": {
         "salary_month": "إبريل 2026",
         "salary_amount": 23114,
@@ -100,49 +212,164 @@
       "income": {
         "total_expected": 25314,
         "sources": [
-          {"name": "Tabby (راتب إبريل)", "amount": 23114, "variable": false, "detail": "شامل بدل المواصلات"},
-          {"name": "Vezlo (جانبي)", "amount": 0, "variable": true, "detail": "85/ساعة"},
-          {"name": "أم الزوجة", "amount": 700, "variable": false},
-          {"name": "أختي (قسط موبايل)", "amount": 1500, "variable": true, "detail": "متبقي 7 شهور — هتسكت شهر 6"}
+          {
+            "name": "Tabby (راتب إبريل)",
+            "amount": 23114,
+            "variable": false,
+            "detail": "شامل بدل المواصلات"
+          },
+          {
+            "name": "Vezlo (جانبي)",
+            "amount": 0,
+            "variable": true,
+            "detail": "85/ساعة"
+          },
+          {
+            "name": "أم الزوجة",
+            "amount": 700,
+            "variable": false
+          },
+          {
+            "name": "أختي (قسط موبايل)",
+            "amount": 1500,
+            "variable": true,
+            "detail": "متبقي 7 شهور — هتسكت شهر 6"
+          }
         ]
       },
       "fixed_expenses": {
         "total": 4409,
         "paid_total": 4409,
         "items": [
-          {"id": "rent", "name": "🏠 إيجار", "amount": 750, "paid": true},
-          {"id": "internet", "name": "🌐 نت أرضي", "amount": 250, "paid": true},
-          {"id": "mobile", "name": "📱 محمول", "amount": 240, "paid": true},
-          {"id": "sewage", "name": "🚰 صرف صحي", "amount": 80, "paid": true},
-          {"id": "landline", "name": "☎️ تليفون أرضي", "amount": 45, "paid": true},
-          {"id": "electricity", "name": "💡 كهربا", "amount": 26, "paid": true},
-          {"id": "gas", "name": "🔥 غاز", "amount": 18, "paid": true},
-          {"id": "wife_expenses", "name": "👩 مراتي", "amount": 1000, "paid": true},
-          {"id": "mom_money", "name": "👩‍👩‍👧 ماما", "amount": 2000, "paid": true}
+          {
+            "id": "rent",
+            "name": "🏠 إيجار",
+            "amount": 750,
+            "paid": true
+          },
+          {
+            "id": "internet",
+            "name": "🌐 نت أرضي",
+            "amount": 250,
+            "paid": true
+          },
+          {
+            "id": "mobile",
+            "name": "📱 محمول",
+            "amount": 240,
+            "paid": true
+          },
+          {
+            "id": "sewage",
+            "name": "🚰 صرف صحي",
+            "amount": 80,
+            "paid": true
+          },
+          {
+            "id": "landline",
+            "name": "☎️ تليفون أرضي",
+            "amount": 45,
+            "paid": true
+          },
+          {
+            "id": "electricity",
+            "name": "💡 كهربا",
+            "amount": 26,
+            "paid": true
+          },
+          {
+            "id": "gas",
+            "name": "🔥 غاز",
+            "amount": 18,
+            "paid": true
+          },
+          {
+            "id": "wife_expenses",
+            "name": "👩 مراتي",
+            "amount": 1000,
+            "paid": true
+          },
+          {
+            "id": "mom_money",
+            "name": "👩‍👩‍👧 ماما",
+            "amount": 2000,
+            "paid": true
+          }
         ]
       },
       "installments": {
         "paid": true,
         "total_monthly": 4875.76,
         "items": [
-          {"name": "لابتوب", "monthly": 3543.08, "remaining_months": 6, "paid_early": false},
-          {"name": "شاشة", "monthly": 542.66, "remaining_months": 14, "paid_early": false},
-          {"name": "هارد خارجي", "monthly": 533.25, "remaining_months": 7, "paid_early": false},
-          {"name": "سبيكر", "monthly": 38.25, "remaining_months": 11, "paid_early": false},
-          {"name": "كاميرا", "monthly": 72.06, "remaining_months": 10, "paid_early": false},
-          {"name": "هاند بليندر", "monthly": 146.46, "remaining_months": 10, "paid_early": false}
+          {
+            "name": "لابتوب",
+            "monthly": 3543.08,
+            "remaining_months": 6,
+            "paid_early": false
+          },
+          {
+            "name": "شاشة",
+            "monthly": 542.66,
+            "remaining_months": 14,
+            "paid_early": false
+          },
+          {
+            "name": "هارد خارجي",
+            "monthly": 533.25,
+            "remaining_months": 7,
+            "paid_early": false
+          },
+          {
+            "name": "سبيكر",
+            "monthly": 38.25,
+            "remaining_months": 11,
+            "paid_early": false
+          },
+          {
+            "name": "كاميرا",
+            "monthly": 72.06,
+            "remaining_months": 10,
+            "paid_early": false
+          },
+          {
+            "name": "هاند بليندر",
+            "monthly": 146.46,
+            "remaining_months": 10,
+            "paid_early": false
+          }
         ]
       },
       "debts": {
         "entries": [
-          {"description": "عليا فلوس لمراتي", "direction": "عليا", "creditor_name": "مراتي", "amount": 5000, "remaining": 5000},
-          {"description": "عليا فلوس لخالي", "direction": "عليا", "creditor_name": "خالي", "amount": 22000, "remaining": 22000}
+          {
+            "description": "عليا فلوس لمراتي",
+            "direction": "عليا",
+            "creditor_name": "مراتي",
+            "amount": 5000,
+            "remaining": 5000
+          },
+          {
+            "description": "عليا فلوس لخالي",
+            "direction": "عليا",
+            "creditor_name": "خالي",
+            "amount": 22000,
+            "remaining": 22000
+          }
         ],
         "total_i_owe": 27000
       },
-      "expenses": {"total": 0, "count": 0, "items": [], "by_category": {}, "by_who": {}},
+      "expenses": {
+        "total": 0,
+        "count": 0,
+        "items": [],
+        "by_category": {},
+        "by_who": {}
+      },
       "daily_trend": [],
-      "summary": {"net_flow": 0, "savings_rate": 0}
+      "summary": {
+        "net_flow": 0,
+        "savings_rate": 0
+      }
     }
   },
   "current_period": "period_5",
@@ -159,12 +386,42 @@
       "notes": "4,093.12 مدفوع مبكر",
       "subscriptions": [],
       "installments_details": {
-        "لابتوب": {"monthly": 3543.08, "remaining_months": 6, "total_remaining": 21258.48, "paid_early": false},
-        "شاشة": {"monthly": 542.66, "remaining_months": 14, "total_remaining": 7597.24, "paid_early": false},
-        "هارد خارجي": {"monthly": 533.25, "remaining_months": 7, "total_remaining": 3732.75, "paid_early": false},
-        "سبيكر": {"monthly": 38.25, "remaining_months": 11, "total_remaining": 420.75, "paid_early": false},
-        "كاميرا": {"monthly": 72.06, "remaining_months": 10, "total_remaining": 720.60, "paid_early": false},
-        "هاند بليندر": {"monthly": 146.46, "remaining_months": 10, "total_remaining": 1464.58, "paid_early": false}
+        "لابتوب": {
+          "monthly": 3543.08,
+          "remaining_months": 6,
+          "total_remaining": 21258.48,
+          "paid_early": false
+        },
+        "شاشة": {
+          "monthly": 542.66,
+          "remaining_months": 14,
+          "total_remaining": 7597.24,
+          "paid_early": false
+        },
+        "هارد خارجي": {
+          "monthly": 533.25,
+          "remaining_months": 7,
+          "total_remaining": 3732.75,
+          "paid_early": false
+        },
+        "سبيكر": {
+          "monthly": 38.25,
+          "remaining_months": 11,
+          "total_remaining": 420.75,
+          "paid_early": false
+        },
+        "كاميرا": {
+          "monthly": 72.06,
+          "remaining_months": 10,
+          "total_remaining": 720.6,
+          "paid_early": false
+        },
+        "هاند بليندر": {
+          "monthly": 146.46,
+          "remaining_months": 10,
+          "total_remaining": 1464.58,
+          "paid_early": false
+        }
       }
     },
     "Banque_du_Caire_Visa_Purchases": {
@@ -201,15 +458,51 @@
   "fixed_expenses_profile": {
     "total": 4409,
     "items": [
-      {"id": "rent", "name": "🏠 إيجار", "amount": 750},
-      {"id": "internet", "name": "🌐 نت أرضي", "amount": 250},
-      {"id": "mobile", "name": "📱 محمول", "amount": 240},
-      {"id": "sewage", "name": "🚰 صرف صحي", "amount": 80},
-      {"id": "landline", "name": "☎️ تليفون أرضي", "amount": 45},
-      {"id": "electricity", "name": "💡 كهربا", "amount": 26},
-      {"id": "gas", "name": "🔥 غاز", "amount": 18},
-      {"id": "wife_expenses", "name": "👩 مراتي", "amount": 1000},
-      {"id": "mom_money", "name": "👩‍👩‍👧 ماما", "amount": 2000}
+      {
+        "id": "rent",
+        "name": "🏠 إيجار",
+        "amount": 750
+      },
+      {
+        "id": "internet",
+        "name": "🌐 نت أرضي",
+        "amount": 250
+      },
+      {
+        "id": "mobile",
+        "name": "📱 محمول",
+        "amount": 240
+      },
+      {
+        "id": "sewage",
+        "name": "🚰 صرف صحي",
+        "amount": 80
+      },
+      {
+        "id": "landline",
+        "name": "☎️ تليفون أرضي",
+        "amount": 45
+      },
+      {
+        "id": "electricity",
+        "name": "💡 كهربا",
+        "amount": 26
+      },
+      {
+        "id": "gas",
+        "name": "🔥 غاز",
+        "amount": 18
+      },
+      {
+        "id": "wife_expenses",
+        "name": "👩 مراتي",
+        "amount": 1000
+      },
+      {
+        "id": "mom_money",
+        "name": "👩‍👩‍👧 ماما",
+        "amount": 2000
+      }
     ]
   },
   "sister_installment": {
@@ -219,7 +512,9 @@
     "remaining_months": 7,
     "months_paid_so_far": 1,
     "total_received_so_far": 1500,
-    "skip_months": ["period_6"],
+    "skip_months": [
+      "period_6"
+    ],
     "notes": "كل ما تدفع قولي — أنا أنقص الشهور",
     "skip_reason": "هتسكت شهر 6 (يونيو) مش هتدفع"
   },
@@ -254,8 +549,18 @@
   "transport": {
     "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
     "segments": [
-      {"from": "الخصوص", "to": "غمرة", "cost": 12, "method": "ميكروباص/تاكسي"},
-      {"from": "غمرة", "to": "جمال عبد الناصر", "cost": 10, "method": "مترو"}
+      {
+        "from": "الخصوص",
+        "to": "غمرة",
+        "cost": 12,
+        "method": "ميكروباص/تاكسي"
+      },
+      {
+        "from": "غمرة",
+        "to": "جمال عبد الناصر",
+        "cost": 10,
+        "method": "مترو"
+      }
     ],
     "one_way_total": 22,
     "round_trip": 44,
@@ -264,25 +569,92 @@
   },
   "debts_system": {
     "people": {
-      "uncle": {"name": "خالي", "relationship": "خال"},
-      "wife": {"name": "مراتي", "relationship": "زوجة"},
-      "mom": {"name": "ماما", "relationship": "أم"},
-      "sister": {"name": "أختي", "relationship": "أخت"}
+      "uncle": {
+        "name": "خالي",
+        "relationship": "خال"
+      },
+      "wife": {
+        "name": "مراتي",
+        "relationship": "زوجة"
+      },
+      "mom": {
+        "name": "ماما",
+        "relationship": "أم"
+      },
+      "sister": {
+        "name": "أختي",
+        "relationship": "أخت"
+      }
     },
     "active_debts": {
-      "wife_5000": {"description": "عليا فلوس لمراتي", "debtor": "me", "creditor": "wife", "amount": 5000, "remaining": 5000, "created": "2026-05-01"},
-      "uncle_22000": {"description": "عليا فلوس لخالي", "debtor": "me", "creditor": "uncle", "amount": 22000, "remaining": 22000, "created": "2026-04-01", "notes": "هتدفع كاملة من الجمعية"}
+      "wife_5000": {
+        "description": "عليا فلوس لمراتي",
+        "debtor": "me",
+        "creditor": "wife",
+        "amount": 5000,
+        "remaining": 5000,
+        "created": "2026-05-01"
+      },
+      "uncle_22000": {
+        "description": "عليا فلوس لخالي",
+        "debtor": "me",
+        "creditor": "uncle",
+        "amount": 22000,
+        "remaining": 22000,
+        "created": "2026-04-01",
+        "notes": "هتدفع كاملة من الجمعية"
+      }
     },
     "transactions": []
   },
   "goals": [
-    {"id": "debt_uncle", "name": "سداد خالي", "target": 22000, "saved": 0, "priority": 1},
-    {"id": "debt_wife", "name": "سداد مراتي", "target": 5000, "saved": 0, "priority": 2},
-    {"id": "air_fryer", "name": "Air Fryer", "target": 6000, "saved": 0, "priority": 3},
-    {"id": "ac", "name": "تكييف", "target": 22000, "saved": 0, "priority": 4},
-    {"id": "alexandria", "name": "رحلة إسكندرية", "target": 15000, "saved": 0, "priority": 5},
-    {"id": "apartment", "name": "شقة 🏠", "target": 0, "saved": 0, "priority": 6, "notes": "الهدف الأكبر"}
+    {
+      "id": "debt_uncle",
+      "name": "سداد خالي",
+      "target": 22000,
+      "saved": 0,
+      "priority": 1
+    },
+    {
+      "id": "debt_wife",
+      "name": "سداد مراتي",
+      "target": 5000,
+      "saved": 0,
+      "priority": 2
+    },
+    {
+      "id": "air_fryer",
+      "name": "Air Fryer",
+      "target": 6000,
+      "saved": 0,
+      "priority": 3
+    },
+    {
+      "id": "ac",
+      "name": "تكييف",
+      "target": 22000,
+      "saved": 0,
+      "priority": 4
+    },
+    {
+      "id": "alexandria",
+      "name": "رحلة إسكندرية",
+      "target": 15000,
+      "saved": 0,
+      "priority": 5
+    },
+    {
+      "id": "apartment",
+      "name": "شقة 🏠",
+      "target": 0,
+      "saved": 0,
+      "priority": 6,
+      "notes": "الهدف الأكبر"
+    }
   ],
-  "reminders": {"morning": "07:00", "evening": "22:00"},
+  "reminders": {
+    "morning": "07:00",
+    "evening": "22:00"
+  },
   "last_updated": "22/05/2026"
 }
