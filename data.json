@@ -200,10 +200,10 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 442.65,
+      "current_balance_total": 422.65,
       "current_balance": {
         "CIB Account": 316.09,
-        "Cash": 71,
+        "Cash": 51,
         "Banque du Caire": 19.14,
         "Fawry Account": 35.14,
         "Vodafone Cash": 0.52,
@@ -359,12 +359,12 @@
         "total_i_owe": 27000
       },
       "expenses": {
-        "total": 134,
-        "count": 6,
+        "total": 164,
+        "count": 7,
         "items": [
           {
             "date": "2026-05-22",
-            "item": "مواصلات غمرة ذهاب وعودة",
+            "item": "مواصلات غمرة",
             "amount": 24,
             "category": "Transport",
             "who": "Ahmed",
@@ -372,16 +372,24 @@
           },
           {
             "date": "2026-05-22",
-            "item": "سجاير",
+            "item": "استخدام مترو",
             "amount": 10,
-            "category": "Coffee",
+            "category": "Transport",
             "who": "Ahmed",
+            "payment_method": "Metro Card"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "بلونة",
+            "amount": 10,
+            "category": "Shopping",
+            "who": "Wife",
             "payment_method": "Cash"
           },
           {
             "date": "2026-05-22",
             "item": "سجاير",
-            "amount": 10,
+            "amount": 20,
             "category": "Coffee",
             "who": "Ahmed",
             "payment_method": "Cash"
@@ -396,15 +404,15 @@
           },
           {
             "date": "2026-05-22",
-            "item": "بلونة لمراتي",
-            "amount": 10,
-            "category": "Shopping",
-            "who": "Wife",
+            "item": "كانز",
+            "amount": 20,
+            "category": "Food",
+            "who": "Ahmed",
             "payment_method": "Cash"
           },
           {
             "date": "2026-05-22",
-            "item": "كشري ليا ولمراتي",
+            "item": "كشري علبتين",
             "amount": 60,
             "category": "Food",
             "who": "Ahmed",
@@ -412,20 +420,20 @@
           }
         ],
         "by_category": {
-          "Transport": 24,
+          "Transport": 34,
+          "Shopping": 10,
           "Coffee": 20,
-          "Food": 80,
-          "Shopping": 10
+          "Food": 100
         },
         "by_who": {
-          "Ahmed": 124,
+          "Ahmed": 144,
           "Wife": 10
         }
       },
       "daily_trend": [
         {
           "date": "2026-05-22",
-          "total": 134
+          "total": 164
         }
       ],
       "home_budget": {
@@ -434,8 +442,8 @@
         "remaining": 6000
       },
       "summary": {
-        "net_flow": 15895.24,
-        "savings_rate": 62.8
+        "net_flow": 15865.24,
+        "savings_rate": 62.7
       },
       "vezlo_tracking": {
         "hours": 0,
