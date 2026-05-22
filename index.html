@@ -7,369 +7,339 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Segoe UI',sans-serif;background:#0f1923;color:#e0e0e0;padding:14px;min-height:100vh}
-    .container{max-width:1100px;margin:0 auto}
-    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px;flex-wrap:wrap}
-    .header h1{font-size:18px;color:#00d4aa}
-    .header h1 span{color:#e0e0e0;font-size:13px}
-    .last-update{font-size:10px;color:#666}
-    
+    body{font-family:'Segoe UI',sans-serif;background:#0f1923;color:#e0e0e0;padding:12px;min-height:100vh;font-size:13px}
+    .container{max-width:1000px;margin:0 auto}
+    .hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:6px;flex-wrap:wrap}
+    .hdr h1{font-size:17px;color:#00d4aa}
+    .hdr h1 span{color:#e0e0e0;font-size:12px}
+    .lu{font-size:10px;color:#555}
+
     /* Month selector */
-    .month-bar{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
-    .month-bar::-webkit-scrollbar{display:none}
-    .month-btn{background:#1a2634;border:1px solid #2a3a4a;color:#aaa;padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
-    .month-btn.active{background:#00d4aa33;border-color:#00d4aa;color:#00d4aa;font-weight:bold}
-    .month-btn:hover{background:#2a3a4a}
-    
-    /* Cards */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
-    .card{background:#1a2634;border-radius:10px;padding:14px;border:1px solid #2a3a4a}
-    .card .lbl{font-size:10px;color:#888;margin-bottom:4px}
-    .card .val{font-size:18px;font-weight:bold;color:#fff}
-    .card .val.green{color:#00d4aa}.card .val.red{color:#ff4757}.card .val.blue{color:#54a0ff}.card .val.yellow{color:#ffc312}
-    .card .sub{font-size:10px;color:#555;margin-top:2px}
-    .status-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;margin-top:4px}
-    .status-badge.paid{background:#00d4aa22;color:#00d4aa}
-    .status-badge.unpaid{background:#ff475722;color:#ff4757}
-    
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-    @media(max-width:700px){.row{grid-template-columns:1fr}}
-    
-    .panel{background:#1a2634;border-radius:10px;padding:14px;border:1px solid #2a3a4a;overflow:hidden}
-    .panel h2{font-size:13px;color:#00d4aa;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-    .panel h2 .ct{background:#2a3a4a;color:#888;font-size:10px;padding:2px 8px;border-radius:10px}
-    
-    canvas{max-height:200px;max-width:100%}
-    
-    /* Balance list */
-    .bal-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #2a3a4a;font-size:13px}
-    .bal-item:last-child{border-bottom:none}
-    .bal-item .amt{font-weight:bold}
-    
+    .mb{display:flex;gap:5px;margin-bottom:12px;overflow-x:auto;padding:3px 0;scrollbar-width:none}
+    .mb::-webkit-scrollbar{display:none}
+    .mb-btn{background:#1a2634;border:1px solid #2a3a4a;color:#aaa;padding:5px 12px;border-radius:16px;font-size:11px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.2s}
+    .mb-btn.act{background:#00d4aa33;border-color:#00d4aa;color:#00d4aa;font-weight:bold}
+    .mb-btn:hover{background:#2a3a4a}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:10px}
+    .cd{background:#1a2634;border-radius:8px;padding:12px;border:1px solid #2a3a4a}
+    .cd .l{font-size:10px;color:#888;margin-bottom:3px}
+    .cd .v{font-size:16px;font-weight:bold;color:#fff}
+    .cd .v.g{color:#00d4aa}.cd .v.r{color:#ff4757}.cd .v.b{color:#54a0ff}.cd .v.y{color:#ffc312}
+    .cd .s{font-size:9px;color:#555;margin-top:2px}
+    .badge{display:inline-block;padding:2px 7px;border-radius:8px;font-size:9px;margin-top:3px}
+    .badge.g{background:#00d4aa22;color:#00d4aa}
+    .badge.r{background:#ff475722;color:#ff4757}
+    .badge.y{background:#ffc31222;color:#ffc312}
+
+    .rw{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+    @media(max-width:680px){.rw{grid-template-columns:1fr}}
+
+    .pn{background:#1a2634;border-radius:8px;padding:12px;border:1px solid #2a3a4a;overflow:hidden}
+    .pn h2{font-size:12px;color:#00d4aa;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+    .pn h2 .c{background:#2a3a4a;color:#888;font-size:9px;padding:2px 7px;border-radius:8px}
+    canvas{max-height:180px;max-width:100%}
+
+    /* Balances */
+    .bi{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #2a3a4a;font-size:12px}
+    .bi:last-child{border-bottom:none}
+    .bi .a{font-weight:bold}
+
+    /* Fixed expenses */
+    .fe-item{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;margin-bottom:3px;border-radius:6px;font-size:11px}
+    .fe-item .chk{font-size:14px;margin-left:6px}
+    .fe-item.pd{background:#0f1923;opacity:.85}
+    .fe-item.unpd{background:#1a2634;border:1px solid #ff475722}
+
+    /* Debts */
+    .d-item{background:#0f1923;border-radius:6px;padding:8px 10px;margin-bottom:5px;font-size:12px}
+    .d-item .row2{display:flex;justify-content:space-between;margin-top:4px}
+    .d-item .pbar{height:4px;border-radius:2px;margin-top:5px;background:#2a3a4a}
+    .d-item .pbar .fill{height:100%;border-radius:2px;transition:width .5s}
+
+    /* Income sources */
+    .is-item{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #2a3a4a;font-size:12px}
+    .is-item:last-child{border-bottom:none}
+    .is-item .detail{font-size:10px;color:#666}
+
     /* Who spending */
-    .who-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-    .who-card{background:#0f1923;border-radius:8px;padding:10px;text-align:center}
-    .who-card .emoji{font-size:22px;margin-bottom:2px}
-    .who-card .nm{font-size:11px;color:#888}
-    .who-card .amt{font-size:14px;font-weight:bold;margin-top:2px}
-    
-    /* Categories */
-    .cat-list{margin-top:4px}
-    .cat-row{display:flex;justify-content:space-between;padding:5px 8px;border-radius:6px;margin-bottom:3px;background:#0f1923;font-size:12px}
-    
-    /* Trend */
-    .trend{display:flex;justify-content:space-between;align-items:flex-end;height:70px;gap:2px;margin-top:6px}
-    .tcol{display:flex;flex-direction:column;align-items:center;flex:1}
-    .tbar{width:60%;background:linear-gradient(to top,#00d4aa,#54a0ff);border-radius:2px 2px 0 0;transition:height .3s}
-    .tval{font-size:8px;color:#888;margin-bottom:2px}
-    .tlabel{font-size:8px;color:#555;margin-top:2px}
-    
+    .wg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+    .wc{background:#0f1923;border-radius:6px;padding:8px;text-align:center}
+    .wc .e{font-size:20px;margin-bottom:2px}
+    .wc .nm{font-size:10px;color:#888}
+    .wc .amt{font-size:13px;font-weight:bold;margin-top:2px}
+
+    /* Daily trend */
+    .tr{display:flex;justify-content:space-between;align-items:flex-end;height:60px;gap:2px;margin-top:4px}
+    .tc{display:flex;flex-direction:column;align-items:center;flex:1}
+    .tb{width:60%;background:linear-gradient(to top,#00d4aa,#54a0ff);border-radius:2px 2px 0 0;min-height:2px}
+    .tv{font-size:7px;color:#888;margin-bottom:1px}
+    .tl{font-size:7px;color:#555;margin-top:2px}
+
     /* Table */
-    .table-wrap{overflow-x:auto}
-    table{width:100%;border-collapse:collapse;font-size:11px}
-    th{text-align:right;padding:6px 4px;color:#666;font-size:9px;border-bottom:1px solid #2a3a4a}
-    td{padding:5px 4px;border-bottom:1px solid #1e2a36}
-    .b{background:#2a3a4a;padding:1px 6px;border-radius:8px;font-size:9px}
-    
-    /* Opening balance section */
-    .opening-box{background:#0f1923;border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px}
-    .opening-box .lbl{color:#888;font-size:10px}
-    .opening-box .val{font-size:16px;font-weight:bold}
-    
-    #loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:250px;gap:12px;color:#00d4aa}
-    .spinner{width:30px;height:30px;border:3px solid #2a3a4a;border-top:3px solid #00d4aa;border-radius:50%;animation:s 1s linear infinite}
+    .tw{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:10px}
+    th{text-align:right;padding:5px 4px;color:#666;font-size:9px;border-bottom:1px solid #2a3a4a}
+    td{padding:4px;border-bottom:1px solid #1e2a36}
+    .tg{background:#2a3a4a;padding:1px 5px;border-radius:6px;font-size:8px}
+
+    /* Installments */
+    .inst-item{display:flex;justify-content:space-between;padding:5px 8px;background:#0f1923;border-radius:5px;margin-bottom:3px;font-size:11px}
+    .inst-item .mon{color:#54a0ff;font-weight:bold}
+
+    .ld{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;gap:10px;color:#00d4aa}
+    .sp{width:26px;height:26px;border:3px solid #2a3a4a;border-top:3px solid #00d4aa;border-radius:50%;animation:s 1s linear infinite}
     @keyframes s{to{transform:rotate(360deg)}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🐋 Blue <span>Finance</span></h1>
-      <div><span class="last-update" id="updateTime"></span></div>
+<div class="container">
+  <div class="hdr">
+    <h1>🐋 Blue <span>Finance</span></h1>
+    <div><span class="lu" id="lu"></span></div>
+  </div>
+  <div class="ld" id="ld"><div class="sp"></div><span>جاري تحميل...</span></div>
+  <div id="ct" style="display:none">
+
+    <!-- Month bar -->
+    <div class="mb" id="mb"></div>
+
+    <!-- Summary cards -->
+    <div class="cards" id="sc"></div>
+
+    <!-- Income sources -->
+    <div class="rw">
+      <div class="pn"><h2>💰 الدخل</h2><div id="incList"></div></div>
+      <div class="pn"><h2>🏠 المصاريف الثابتة <span class="c" id="feCount"></span></h2><div id="feList"></div></div>
     </div>
-    
-    <div id="loading"><div class="spinner"></div><span>جاري تحميل البيانات...</span></div>
-    
-    <div id="content" style="display:none">
-      <!-- Month selector -->
-      <div class="month-bar" id="monthBar"></div>
-      
-      <!-- Summary cards -->
-      <div class="cards" id="summaryCards"></div>
-      
-      <!-- Opening Balance -->
-      <div class="opening-box" id="openingBox"></div>
-      
-      <!-- Balances + Category Chart -->
-      <div class="row">
-        <div class="panel"><h2>💰 الأرصدة</h2><div id="balancesList"></div></div>
-        <div class="panel"><h2>📈 صرفت على إيه؟</h2><canvas id="catChart"></canvas></div>
-      </div>
-      
-      <!-- Who + Trend -->
-      <div class="row">
-        <div class="panel"><h2>👤 مين صرف؟</h2><div id="whoList"></div></div>
-        <div class="panel"><h2>📅 المصروفات اليومية</h2><div id="trendChart"></div></div>
-      </div>
-      
-      <!-- Fixed expenses status -->
-      <div class="cards" id="fixedCards"></div>
-      
-      <!-- Transactions table -->
-      <div class="panel">
-        <h2>📋 كل المعاملات <span class="ct" id="txnCount"></span></h2>
-        <div class="table-wrap">
-          <table><thead><tr>
-            <th>التاريخ</th><th>البيان</th><th>المبلغ</th><th>التصنيف</th><th>مين</th><th>الدفع</th>
-          </tr></thead><tbody id="txnTable"></tbody></table>
-        </div>
+
+    <!-- Fixed expenses + Installments + Debts -->
+    <div class="rw">
+      <div class="pn"><h2>💳 الأقساط <span class="c" id="instCount"></span></h2><div id="instList"></div></div>
+      <div class="pn"><h2>💸 ديوني <span class="c" id="debtCount"></span></h2><div id="debtList"></div></div>
+    </div>
+
+    <!-- Balances + Categories -->
+    <div class="rw">
+      <div class="pn"><h2>💰 أرصدتي</h2><div id="balList"></div></div>
+      <div class="pn"><h2>📈 صرفت على إيه؟</h2><canvas id="catChart"></canvas></div>
+    </div>
+
+    <!-- Who + Daily -->
+    <div class="rw">
+      <div class="pn"><h2>👤 مين صرف؟</h2><div id="whoList"></div></div>
+      <div class="pn"><h2>📅 مصروفات يومية</h2><div id="trendChart"></div></div>
+    </div>
+
+    <!-- Transactions -->
+    <div class="pn"><h2>📋 كل المعاملات <span class="c" id="txnC"></span></h2>
+      <div class="tw">
+        <table><thead><tr><th>التاريخ</th><th>البيان</th><th>المبلغ</th><th>التصنيف</th><th>مين</th><th>الدفع</th></tr></thead>
+        <tbody id="txnT"></tbody></table>
       </div>
     </div>
   </div>
-  
+</div>
+
 <script>
-const M=['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-const C={'Food':'#ff6b6b','Transport':'#54a0ff','Coffee':'#ff9f43','Bills':'#ee5a24','Shopping':'#a29bfe','Entertainment':'#fd79a8','Healthcare':'#00cec9','Clothes':'#6c5ce7','Electronics':'#00b894','Home':'#e17055','Debt':'#d63031','Installment':'#e17055','Income':'#00d4aa','Other':'#636e72'};
-const W={'Ahmed':'🧑','Wife':'👩','House':'🏠','Other':'❓'};
+const MTHS=['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const CC={'Food':'#ff6b6b','Transport':'#54a0ff','Coffee':'#ff9f43','Bills':'#ee5a24','Shopping':'#a29bfe','Entertainment':'#fd79a8','Healthcare':'#00cec9','Clothes':'#6c5ce7','Electronics':'#00b894','Home':'#e17055','Debt':'#d63031','Installment':'#e17055','Income':'#00d4aa','Other':'#636e72','Housing':'#2ecc71','Utilities':'#f39c12','Family':'#e74c3c'};
+const WE={'Ahmed':'🧑','Wife':'👩','House':'🏠','Other':'❓'};
 const WC={'Ahmed':'#54a0ff','Wife':'#ff6b6b','House':'#00d4aa','Other':'#636e72'};
-const BN={'CIB Account':'🏦 CIB','Cash':'💵 كاش','Banque du Caire':'💳 بنك القاهرة','Fawry Account':'📱 فوري','Vodafone Cash':'📱 فودافون كاش'};
+const BN={'CIB Account':'🏦 CIB','Cash':'💵 كاش','Banque du Caire':'💳 بنك القاهرة','Fawry Account':'📱 فوري حساب','Vodafone Cash':'📱 فودافون كاش'};
 
-let allData = null, currentMonth = null, chartInstance = null;
+let AD=null, curM=null, ci=null;
 
-function fm(n,s=true){if(n===undefined||n===null)return'-';return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+(s?' EGP':'')}
-function fd(d){if(!d)return'';if(d.length<10)return d;return d.slice(8,10)+'/'+d.slice(5,7)}
-function sd(d){if(!d)return'';let p=d.split('-');return parseInt(p[2])+' '+M[parseInt(p[1])-1]}
+function fm(n,s){if(n===undefined||n===null)return'-';return Number(n).toLocaleString('en-US',{minFrac:2,maxFrac:2})+(s!==false?' EGP':'')}
+function fd(d){if(!d||d.length<10)return d;return d.slice(8,10)+'/'+d.slice(5,7)}
+function sd(d){if(!d)return'';let p=d.split('-');return parseInt(p[2])+' '+MTHS[parseInt(p[1])-1]}
 
-async function loadData(){
-  document.getElementById('loading').style.display='flex';
-  document.getElementById('content').style.display='none';
+async function load(){
+  document.getElementById('ld').style.display='flex';
+  document.getElementById('ct').style.display='none';
   try{
     let r=await fetch('./data.json');
     if(!r.ok)throw new Error('HTTP '+r.status);
-    allData=await r.json();
-    
-    let months=allData.all_data.available_months||[];
-    if(!months.length){throw new Error('مفيش شهور متاحة')}
-    
-    // Set current month to latest
-    currentMonth=months[months.length-1];
-    
-    renderMonthBar(months);
-    renderMonth(currentMonth);
-    
-    document.getElementById('loading').style.display='none';
-    document.getElementById('content').style.display='block';
-    document.getElementById('updateTime').textContent='آخر تحديث: '+new Date().toLocaleString('ar-EG');
+    AD=await r.json();
+    let ms=AD.all_data.available_months||[];
+    if(!ms.length)throw new Error('مفيش شهور');
+    curM=ms[ms.length-1];
+    renderMB(ms);
+    renderM(curM);
+    document.getElementById('ld').style.display='none';
+    document.getElementById('ct').style.display='block';
+    document.getElementById('lu').textContent='آخر تحديث: '+new Date().toLocaleString('ar-EG');
   }catch(e){
-    document.getElementById('loading').innerHTML='❌ خطأ: '+e.message+'<br><br><small>تأكد من وجود ملف data.json</small>';
+    document.getElementById('ld').innerHTML='❌ خطأ: '+e.message;
   }
 }
 
-function renderMonthBar(months){
+function renderMB(ms){
   let h='';
-  for(let mk of months){
+  for(let mk of ms){
     let p=mk.split('-'),y=p[0],m=parseInt(p[1]);
-    let label=M[m-1]+' '+y;
-    let active=mk===currentMonth?'active':'';
-    h+=`<button class="month-btn ${active}" data-month="${mk}">${label}</button>`;
+    let lbl=MTHS[m-1]+' '+y;
+    let act=mk===curM?'act':'';
+    h+=`<button class="mb-btn ${act}" data-mk="${mk}">${lbl}</button>`;
   }
-  document.getElementById('monthBar').innerHTML=h;
-  
-  // Click handler
-  document.querySelectorAll('.month-btn').forEach(btn=>{
-    btn.onclick=()=>{
-      document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      currentMonth=btn.dataset.month;
-      renderMonth(currentMonth);
+  document.getElementById('mb').innerHTML=h;
+  document.querySelectorAll('.mb-btn').forEach(b=>{
+    b.onclick=()=>{
+      document.querySelectorAll('.mb-btn').forEach(x=>x.classList.remove('act'));
+      b.classList.add('act');curM=b.dataset.mk;renderM(curM);
     };
   });
 }
 
-function renderMonth(mk){
-  if(!allData||!allData.all_data||!allData.all_data.months[mk])return;
-  
-  const mo=allData.all_data.months[mk];
-  const ip=allData.income_profile||{};
-  
-  // Expected income for this month
-  const expIncome=(ip.salary_net||0)+(ip.mother_in_law||0)+(ip.sister||0);
-  const inc=mo.income||{};
+function renderM(mk){
+  if(!AD||!AD.all_data||!AD.all_data.months[mk])return;
+  const mo=AD.all_data.months[mk];
+  const IP=AD.income_profile||{};
+  const FE=AD.fixed_expenses_profile||{};
   const exp=mo.expenses||{};
   const fix=mo.fixed_expenses||{};
   const inst=mo.installments||{};
+  const debts=mo.debts||{};
   const sm=mo.summary||{};
-  const ob=mo.opening_balance||{};
+  const inc=mo.income||{};
   const cb=mo.current_balance||{};
-  
-  // ===== SUMMARY CARDS =====
-  let cardsHTML=`
-    <div class="card">
-      <div class="lbl">💵 معاك أول الشهر</div>
-      <div class="val green">${fm(mo.opening_balance_total)}</div>
-      <div class="sub">كل الأرصدة</div>
-    </div>
-    <div class="card">
-      <div class="lbl">💰 الدخل المتوقع</div>
-      <div class="val green">${fm(expIncome)}</div>
-      <div class="sub">المرتب + أم الزوجة + أختك</div>
-    </div>
-    <div class="card">
-      <div class="lbl">💸 المصروفات</div>
-      <div class="val red">${fm(exp.total)}</div>
-      <div class="sub">${exp.count} معاملة</div>
-    </div>
-    <div class="card">
-      <div class="lbl">📊 صافي التدفق</div>
-      <div class="val ${sm.net_flow>=0?'green':'red'}">${fm(sm.net_flow)}</div>
-      <div class="sub">دخل - مصروفات - أقساط</div>
-    </div>
-    <div class="card">
-      <div class="lbl">🏦 دلوقتي معاك</div>
-      <div class="val ${mo.current_balance_total>0?'green':'red'}">${fm(mo.current_balance_total)}</div>
-      <div class="sub">الرصيد الحالي</div>
-    </div>
+
+  const expInc=inc.total_expected||0;
+
+  // === SUMMARY CARDS ===
+  document.getElementById('sc').innerHTML=`
+    <div class="cd"><div class="l">💵 أول الشهر</div><div class="v g">${fm(mo.opening_balance_total)}</div></div>
+    <div class="cd"><div class="l">💰 الدخل المتوقع</div><div class="v g">${fm(expInc)}</div></div>
+    <div class="cd"><div class="l">💸 المصروفات</div><div class="v r">${fm(exp.total)}</div><div class="s">${exp.count} معاملة</div></div>
+    <div class="cd"><div class="l">📊 صافي التدفق</div><div class="v ${sm.net_flow>=0?'g':'r'}">${fm(sm.net_flow)}</div></div>
+    <div class="cd"><div class="l">🏦 دلوقتي معاك</div><div class="v ${mo.current_balance_total>0?'g':'r'}">${fm(mo.current_balance_total)}</div></div>
   `;
-  document.getElementById('summaryCards').innerHTML=cardsHTML;
-  
-  // ===== OPENING BALANCE DETAIL =====
-  let obHTML='<div class="lbl">💵 رصيد أول الشهر:</div><div>';
-  let obTotal=0;
-  for(let[k,v]of Object.entries(ob)){
-    obTotal+=v;
-    obHTML+=`${BN[k]||k}: <strong>${fm(v)}</strong> &nbsp;&nbsp;`;
+
+  // === INCOME ===
+  let incH='';
+  let sources=inc.sources||[];
+  for(let s of sources){
+    let chk=s.amount>0||s.variable?'✓':'';
+    let clr=s.amount>0?'g':'';
+    let detail=s.detail?'<span class="detail">'+s.detail+'</span>':'';
+    incH+=`<div class="is-item"><span>${s.name} ${detail}</span><span class="${clr}">${fm(s.amount)}</span></div>`;
   }
-  obHTML+=`<br><span style="font-size:14px"><strong>الإجمالي: ${fm(obTotal)}</strong></span></div>`;
-  document.getElementById('openingBox').innerHTML=obHTML;
-  
-  // ===== BALANCES =====
-  let balHTML='';
-  let balTotal=0;
-  for(let[k,v]of Object.entries(cb)){
-    balTotal+=v;
-    let name=BN[k]||k.replace(/_/g,' ');
-    balHTML+=`<div class="bal-item"><span>${name}</span><span class="amt ${v>0?'green':''}" style="color:${v>0?'#00d4aa':'#666'}">${fm(v)}</span></div>`;
+  incH+=`<div class="is-item" style="border-top:2px solid #00d4aa;padding-top:6px;margin-top:4px"><strong>المجموع</strong><strong style="color:#00d4aa">${fm(expInc)}</strong></div>`;
+  document.getElementById('incList').innerHTML=incH;
+
+  // === FIXED EXPENSES ===
+  let feItems=fix.items||[];
+  document.getElementById('feCount').textContent=feItems.length+' بند';
+  let feH='';
+  for(let f of feItems){
+    let pdStatus=f.paid?'✅ مدفوع':'⏳ لسه';
+    let cls=f.paid?'pd':'unpd';
+    let clr=f.paid?'#00d4aa':'#ffc312';
+    feH+=`<div class="fe-item ${cls}">
+      <span><span class="chk" style="color:${clr}">${f.paid?'✅':'◻️'}</span> ${f.name}</span>
+      <span style="font-weight:bold;color:${clr}">${fm(f.amount)}</span>
+    </div>`;
   }
-  balHTML+=`<div class="bal-item" style="border-top:2px solid #00d4aa;margin-top:6px;padding-top:8px">
-    <span style="font-weight:bold">الإجمالي</span>
-    <span class="amt green" style="font-size:16px;color:#00d4aa">${fm(balTotal)}</span></div>`;
-  document.getElementById('balancesList').innerHTML=balHTML;
-  
-  // ===== CATEGORY CHART =====
+  let feTotalFix=FE.total||0;
+  let feTotalPaid=fix.paid_total||0;
+  let allPd=feTotalPaid>=feTotalFix;
+  feH+=`<div class="fe-item" style="border-top:1px solid #2a3a4a;margin-top:4px;padding-top:6px">
+    <span>الإجمالي</span>
+    <span style="font-weight:bold;color:${allPd?'#00d4aa':'#ffc312'}">${fm(feTotalPaid)} / ${fm(feTotalFix)} ${allPd?'✅':''}</span>
+  </div>`;
+  document.getElementById('feList').innerHTML=feH;
+
+  // === INSTALLMENTS ===
+  let instItems=inst.items||[];
+  document.getElementById('instCount').textContent=instItems.length+' قسط';
+  let instH='';
+  for(let i of instItems){
+    instH+=`<div class="inst-item"><span>${i.name}</span><span class="mon">${fm(i.monthly)} <span style="color:#888;font-weight:normal;font-size:10px">متبقي ${i.remaining_months} ش</span></span></div>`;
+  }
+  let instPaid=inst.paid||false;
+  instH+=`<div class="inst-item" style="border-top:1px solid #2a3a4a;margin-top:4px;padding-top:6px">
+    <span style="font-weight:bold">الإجمالي <span class="badge ${instPaid?'g':'r'}">${instPaid?'مدفوع ✅':'لسه'}</span></span>
+    <span style="font-weight:bold;color:#54a0ff">${fm(inst.total_monthly)}</span>
+  </div>`;
+  document.getElementById('instList').innerHTML=instH;
+
+  // === DEBTS ===
+  let debtEntries=debts.entries||[];
+  document.getElementById('debtCount').textContent=debtEntries.length+' دين';
+  let debtH='';
+  for(let d of debtEntries){
+    let pct=d.amount>0?((d.amount-d.remaining)/d.amount*100).toFixed(0):0;
+    let dirClr=d.direction==='عليا'?'#ff4757':'#00d4aa';
+    debtH+=`<div class="d-item">
+      <div style="display:flex;justify-content:space-between">
+        <span>${d.description}</span>
+        <span style="color:${dirClr};font-weight:bold">${d.direction}</span>
+      </div>
+      <div class="row2">
+        <span style="color:#888;font-size:10px">${d.creditor_name||d.creditor}</span>
+        <span><strong>${fm(d.remaining)}</strong> <span style="color:#666;font-size:10px">/ ${fm(d.amount)}</span></span>
+      </div>
+      <div class="pbar"><div class="fill" style="width:${pct}%;background:${dirClr}"></div></div>
+    </div>`;
+  }
+  if(!debtEntries.length)debtH='<div style="text-align:center;color:#888;padding:10px">✅ مفيش ديون نشطة</div>';
+  else{
+    debtH+=`<div class="d-item" style="border:1px solid #ff475722">
+      <div style="display:flex;justify-content:space-between">
+        <span style="font-weight:bold">عليا فلوس</span>
+        <span style="color:#ff4757;font-weight:bold">${fm(debts.total_i_owe)}</span>
+      </div>
+    </div>`;
+  }
+  document.getElementById('debtList').innerHTML=debtH;
+
+  // === BALANCES ===
+  let balH='';let balT=0;
+  for(let[k,v]of Object.entries(cb)){balT+=v;let nm=BN[k]||k.replace(/_/g,' ');balH+=`<div class="bi"><span>${nm}</span><span class="a" style="color:${v>0?'#00d4aa':'#666'}">${fm(v)}</span></div>`;}
+  balH+=`<div class="bi" style="border-top:2px solid #00d4aa;margin-top:4px;padding-top:6px"><span style="font-weight:bold">الإجمالي</span><span class="a" style="font-size:14px;color:#00d4aa">${fm(balT)}</span></div>`;
+  document.getElementById('balList').innerHTML=balH;
+
+  // === CATEGORY CHART ===
   const cats=exp.by_category||{};
-  const catLabels=Object.keys(cats);
-  const catValues=Object.values(cats);
+  const cl=Object.keys(cats);const cv=Object.values(cats);
   const ctx=document.getElementById('catChart').getContext('2d');
-  if(chartInstance)chartInstance.destroy();
-  if(catLabels.length){
-    chartInstance=new Chart(ctx,{
-      type:'doughnut',
-      data:{
-        labels:catLabels,
-        datasets:[{
-          data:catValues,
-          backgroundColor:catLabels.map(l=>C[l]||'#636e72'),
-          borderColor:'#1a2634',borderWidth:2
-        }]
-      },
-      options:{
-        responsive:true,
-        plugins:{
-          legend:{position:'bottom',labels:{color:'#e0e0e0',font:{size:9},boxWidth:10,boxHeight:10}}
-        }
-      }
-    });
-  }else{
-    chartInstance=new Chart(ctx,{
-      type:'doughnut',
-      data:{labels:['لا توجد مصروفات'],datasets:[{data:[1],backgroundColor:['#2a3a4a'],borderColor:'#1a2634',borderWidth:2}]},
-      options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#888',font:{size:9}}}}}
-    });
-  }
-  
-  // ===== WHO SPENDING =====
-  const who=exp.by_who||{};
-  const whoKeys=Object.keys(who);
-  let whoHTML='<div class="who-grid">';
-  if(!whoKeys.length){
-    whoHTML+='<div style="grid-column:span 3;text-align:center;color:#888;padding:16px;font-size:12px">📝 مفيش مصروفات</div>';
-  }else{
-    for(let[k,v]of Object.entries(who)){
-      let pct=exp.total?((v/exp.total)*100).toFixed(1):'0';
-      whoHTML+=`<div class="who-card" style="border:1px solid ${WC[k]||'#2a3a4a'}">
-        <div class="emoji">${W[k]||'❓'}</div>
-        <div class="nm">${k==='Ahmed'?'أحمد':k==='Wife'?'مراتي':k==='House'?'البيت':k}</div>
-        <div class="amt" style="color:${WC[k]||'#e0e0e0'}">${fm(v)}</div>
-        <div style="font-size:9px;color:#666">${pct}%</div>
-      </div>`;
-    }
-  }
-  whoHTML+='</div>';
-  document.getElementById('whoList').innerHTML=whoHTML;
-  
-  // ===== DAILY TREND =====
+  if(ci)ci.destroy();
+  ci=new Chart(ctx,{
+    type:'doughnut',
+    data:{labels:cl.length?cl:['مفيش'],datasets:[{data:cl.length?cv:[1],backgroundColor:cl.length?cl.map(l=>CC[l]||'#636e72'):['#2a3a4a'],borderColor:'#1a2634',borderWidth:2}]},
+    options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#e0e0e0',font:{size:9},boxWidth:10}}}}}
+  );
+
+  // === WHO SPENDING ===
+  const who=exp.by_who||{};const wk=Object.keys(who);
+  let whoH='<div class="wg">';
+  if(!wk.length){whoH+='<div style="grid-column:span 3;text-align:center;color:#888;padding:12px;font-size:11px">📝 مفيش</div>';}
+  else{for(let[k,v]of Object.entries(who)){let p=exp.total?(v/exp.total*100).toFixed(1):0;whoH+=`<div class="wc" style="border:1px solid ${WC[k]||'#2a3a4a'}"><div class="e">${WE[k]||'❓'}</div><div class="nm">${k==='Ahmed'?'أحمد':k==='Wife'?'مراتي':k==='House'?'البيت':k}</div><div class="amt" style="color:${WC[k]}">${fm(v)}</div><div style="font-size:8px;color:#666">${p}%</div></div>`;}}
+  whoH+='</div>';
+  document.getElementById('whoList').innerHTML=whoH;
+
+  // === DAILY TREND ===
   const trend=mo.daily_trend||[];
-  let trendHTML='<div class="trend">';
+  let trendH='<div class="tr">';
   const maxT=Math.max(...trend.map(d=>d.total),1);
-  if(trend.length){
-    for(let d of trend){
-      let h=Math.max((d.total/maxT)*100,3);
-      trendHTML+=`<div class="tcol">
-        <div class="tval">${d.total>0?fm(d.total,false):''}</div>
-        <div class="tbar" style="height:${h}%"></div>
-        <div class="tlabel">${fd(d.date)}</div>
-      </div>`;
-    }
-  }else{
-    trendHTML+='<div style="text-align:center;color:#888;font-size:11px;width:100%;padding-top:20px">📝 مفيش مصروفات</div>';
-  }
-  trendHTML+='</div>';
-  document.getElementById('trendChart').innerHTML=trendHTML;
-  
-  // ===== FIXED EXPENSES STATUS =====
-  const fixedCardsHTML=`
-    <div class="card">
-      <div class="lbl">🏠 المصاريف الثابتة</div>
-      <div class="val yellow">${fm(fix.budget)}</div>
-      <div class="status-badge ${fix.paid>=fix.budget?'paid':'unpaid'}">${fix.paid>=fix.budget?'✅ مدفوعة':'⏳ لسه متدفعتش'}</div>
-      <div class="sub">${fix.paid>=fix.budget?'كله تمام':'متبقي: '+fm(fix.remaining)}</div>
-    </div>
-    <div class="card">
-      <div class="lbl">💳 الأقساط (CIB Visa)</div>
-      <div class="val blue">${fm(inst.budget)}</div>
-      <div class="status-badge ${inst.paid>=inst.budget?'paid':'unpaid'}">${inst.paid>=inst.budget?'✅ مدفوعة':'⏳ لسه متدفعتش'}</div>
-      <div class="sub">${inst.paid>=inst.budget?'خلصت': 'متبقي: '+fm(inst.remaining)}</div>
-    </div>
-    <div class="card">
-      <div class="lbl">💵 المتبقي للصرف</div>
-      <div class="val ${sm.remaining_budget>=0?'green':'red'}">${fm(sm.remaining_budget)}</div>
-      <div class="sub">بعد المصاريف الثابتة + الأقساط</div>
-    </div>
-  `;
-  document.getElementById('fixedCards').innerHTML=fixedCardsHTML;
-  
-  // ===== TRANSACTIONS TABLE =====
+  if(trend.length){for(let d of trend){let h=Math.max((d.total/maxT)*100,3);trendH+=`<div class="tc"><div class="tv">${d.total>0?fm(d.total,false):''}</div><div class="tb" style="height:${h}%"></div><div class="tl">${fd(d.date)}</div></div>`;}}
+  else{trendH+='<div style="text-align:center;color:#888;font-size:10px;width:100%;padding-top:14px">📝 مفيش مصروفات</div>';}
+  trendH+='</div>';
+  document.getElementById('trendChart').innerHTML=trendH;
+
+  // === TRANSACTIONS ===
   const items=exp.items||[];
-  document.getElementById('txnCount').textContent=items.length+' معاملة';
-  let tbody='';
+  document.getElementById('txnC').textContent=items.length+' معاملة';
+  let tb='';
   for(let t of items){
-    let whoEmoji=W[t.who]||'';
-    let cls=t.amount>0?'red':'green';
-    let sign=t.amount>0?'':'+';
-    tbody+=`<tr>
-      <td>${fd(t.date)}</td>
-      <td>${t.item||'-'}</td>
-      <td style="color:${t.amount>0?'#ff4757':'#00d4aa'}">${sign}${t.amount?fm(t.amount):'-'}</td>
-      <td><span class="b" style="background:${C[t.category]||'#2a3a4a'}30;color:${C[t.category]||'#888'}">${t.category||'-'}</span></td>
-      <td>${whoEmoji} ${t.who||'-'}</td>
-      <td>${t.payment_method||'-'}</td>
-    </tr>`;
+    let we=WE[t.who]||'',cls=t.amount>0?'r':'g',sign=t.amount>0?'':'';
+    tb+=`<tr><td>${fd(t.date)}</td><td>${t.item||'-'}</td><td style="color:${t.amount>0?'#ff4757':'#00d4aa'}">${sign}${t.amount?fm(t.amount):'-'}</td><td><span class="tg" style="background:${CC[t.category]||'#2a3a4a'}30;color:${CC[t.category]||'#888'}">${t.category||'-'}</span></td><td>${we} ${t.who||'-'}</td><td>${t.payment_method||'-'}</td></tr>`;
   }
-  if(!tbody)tbody='<tr><td colspan="6" style="text-align:center;color:#888;padding:24px">📝 مفيش معاملات. ابعتلي مصروفاتك!</td></tr>';
-  document.getElementById('txnTable').innerHTML=tbody;
+  if(!tb)tb='<tr><td colspan="6" style="text-align:center;color:#888;padding:20px">📝 ابعتلي مصروفاتك عشان تظهر</td></tr>';
+  document.getElementById('txnT').innerHTML=tb;
 }
 
-loadData();
+load();
 </script>
 </body>
 </html>
