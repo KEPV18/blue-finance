@@ -28,19 +28,14 @@
   "next_payday": "25 مايو 2026",
   "payday_countdown": 3,
   "goals": [],
-  "last_updated": "22/05/2026 06:46",
+  "last_updated": "22/05/2026 06:48",
   "month": {
     "name": "مايو",
     "total_income": 26248,
-    "total_expenses": 80,
-    "transactions_count": 4,
-    "who_spending": {
-      "Ahmed": 50,
-      "Other": 30
-    },
-    "by_category": {
-      "Coffee": 80
-    },
+    "total_expenses": 0,
+    "transactions_count": 0,
+    "who_spending": {},
+    "by_category": {},
     "daily_trend": [
       {
         "date": "2026-05-16",
@@ -69,67 +64,22 @@
       },
       {
         "date": "2026-05-21",
-        "total": 50,
-        "count": 1
+        "total": 0,
+        "count": 0
       },
       {
         "date": "2026-05-22",
-        "total": 30,
-        "count": 1
+        "total": 0,
+        "count": 0
       }
     ],
-    "top_categories": [
-      [
-        "Coffee",
-        80
-      ]
-    ],
+    "top_categories": [],
     "paid_fixed": 0,
     "unpaid_fixed": 4409,
-    "remaining": 21292.239999999998,
+    "remaining": 21372.239999999998,
     "total_balance": 556.2299999999999
   },
-  "recent_transactions": [
-    {
-      "date": "2026-05-22",
-      "item": "إيداع في CIB_Account",
-      "amount": 0,
-      "category": "Income",
-      "payment_method": "CIB_Account",
-      "who": "Ahmed",
-      "notes": "إضافة إلى CIB_Account",
-      "timestamp": "2026-05-22T06:46:20.302134"
-    },
-    {
-      "date": "2026-05-22",
-      "item": "قهوة",
-      "amount": 30,
-      "category": "Coffee",
-      "payment_method": "Cash",
-      "notes": "صباح الخير يا مدير - أول مصروف",
-      "timestamp": "2026-05-22T06:40:18.004622"
-    },
-    {
-      "date": "2026-05-21",
-      "item": "صرف فكة",
-      "amount": -500,
-      "category": "Income",
-      "payment_method": "Cash",
-      "who": "Ahmed",
-      "notes": "إضافة إلى Cash",
-      "timestamp": "2026-05-21T23:18:00.042816"
-    },
-    {
-      "date": "2026-05-21",
-      "item": "قهوة",
-      "amount": 50,
-      "category": "Coffee",
-      "payment_method": "CIB_Account",
-      "who": "Ahmed",
-      "notes": "خصم من CIB_Account",
-      "timestamp": "2026-05-21T23:18:00.042556"
-    }
-  ],
+  "recent_transactions": [],
   "debts_detail": {
     "uncle": {
       "amount": 22000,
