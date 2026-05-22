@@ -128,6 +128,7 @@ function toggleLang() {
   document.getElementById('trTitle1').textContent = '🚌 ' + (LANG === 'ar' ? 'المواصلات' : 'Transport');
   document.getElementById('trTitle2').textContent = '🚇 ' + (LANG === 'ar' ? 'كارت المترو' : 'Metro Card');
   document.getElementById('invTitle').textContent = '📈 ' + (LANG === 'ar' ? 'استثماراتي' : 'My Investments');
+  document.getElementById('recTitle').textContent = '👩 ' + (LANG === 'ar' ? 'مستحقاتي' : 'Receivables');
   if (AD && curP) renderPeriod(curP);
 }
 
