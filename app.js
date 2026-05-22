@@ -305,7 +305,42 @@ function renderPeriod(pk) {
   else dh += `<div class="list-row-total"><span>${tr('iOwe')}</span><span class="amt" style="color:var(--red)">${fmt(debts.total_i_owe)}</span></div>`;
   document.getElementById('overviewDebts').innerHTML = dh;
 
-  // Balances (6 wallets)
+  // Sister installment tracker
+  const sisInst = AD.sister_installment || {};
+  if (sisInst.remaining_months !== undefined) {
+    let skipNote = '';
+    let isSkip = (sisInst.skip_months || []).includes(curP);
+    if (isSkip) {
+      skipNote = `<div style="font-size:11px;color:var(--amber);margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.1);border-radius:6px">⏸️ ${LANG === 'ar' ? 'هتسكت شهر 6 — مش هتدفع' : 'Skipping month 6 — no payment'}</div>`;
+    }
+    let pctPaid = sisInst.original_total_months ? ((sisInst.months_paid_so_far || 0) / sisInst.original_total_months * 100).toFixed(0) : 0;
+    let paidTotal = (sisInst.months_paid_so_far || 0) * (sisInst.monthly_amount || 0);
+    let remainingTotal = (sisInst.remaining_months || 0) * (sisInst.monthly_amount || 0);
+    let sisLabel = LANG === 'ar' ? 'قسط موبايل أختي' : "Sister's Phone Installment";
+    let monthsLabel = LANG === 'ar' ? 'شهر' : 'mo';
+    let paidLabel = LANG === 'ar' ? 'مدفوع' : 'Paid';
+    let leftLabel = LANG === 'ar' ? 'متبقي' : 'Left';
+    let savedLabel = LANG === 'ar' ? 'وفرت' : 'Collected';
+    
+    // Add sister section after debts panel
+    let sisSection = document.getElementById('overviewSister');
+    if (sisSection) {
+      sisSection.innerHTML = `
+        <div style="font-size:12px;font-weight:700;margin-bottom:6px">👩 ${sisLabel}</div>
+        <div class="debt-item" style="border:1px solid var(--accent2)">
+          <div class="row2"><span>💰 ${fmt(sisInst.monthly_amount)}/${monthsLabel}</span><span>${savedLabel}: <strong style="color:var(--accent)">${paidTotal > 0 ? fmt(paidTotal) : '0'}</strong> / ${fmt(remainingTotal + paidTotal)}</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:4px">
+            <span>${paidLabel}: ${sisInst.months_paid_so_far || 0}/${sisInst.original_total_months} ${monthsLabel}</span>
+            <span>${leftLabel}: <strong style="color:${sisInst.remaining_months <= 3 ? 'var(--amber)' : 'var(--accent)'}">${sisInst.remaining_months}</strong> ${monthsLabel}</span>
+          </div>
+          <div class="progress-bar"><div class="fill" style="width:${pctPaid}%;background:var(--accent2)"></div></div>
+          ${skipNote}
+          <div style="font-size:9px;color:var(--text3);margin-top:3px">${sisInst.notes || ''}</div>
+        </div>`;
+    }
+  }
+
+  // Balances (6 wallets + Fawry investment)
   let bh = ''; let balT = 0;
   const cb = po.current_balance || {};
   let bnk = LANG === 'ar' ? BN_ar : BN;
@@ -314,6 +349,12 @@ function renderPeriod(pk) {
     let nm = bnk[k] || k.replace(/_/g, ' ');
     bh += `<div class="list-row"><span>${nm}</span><span class="amt green">${fmt(v)}</span></div>`;
   });
+  // Fawry investment
+  const fawryInv = AD.investments?.fawry || {};
+  if (fawryInv.current_balance) {
+    let invLabel = LANG === 'ar' ? '📈 فوري استثمار' : '📈 Fawry Investment';
+    bh += `<div class="list-row" style="border-top:1px solid var(--accent2)"><span>${invLabel} <span style="font-size:9px;color:var(--text3)">(+${fmt(fawryInv.profit, false)} ${LANG === 'ar' ? 'أرباح' : 'profit'})</span></span><span class="amt" style="color:var(--accent2);font-weight:700">${fmt(fawryInv.current_balance)}</span></div>`;
+  }
   bh += `<div class="list-row-total"><span>${tr('total')}</span><span class="amt">${fmt(balT)}</span></div>`;
   document.getElementById('overviewBalances').innerHTML = bh;
 

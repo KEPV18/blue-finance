@@ -10,16 +10,17 @@
     "fawry": {
       "current_balance": 26070.82,
       "profit": 1681.43,
-      "status": "profitable"
+      "status": "profitable",
+      "type": "فوري استثمار",
+      "monthly_profit": null,
+      "last_profit_date": null,
+      "notes": "استثمار في فوري — مكسب مستمر"
     }
   },
   "periods": {
     "period_5": {
       "label": "الفترة 5 — إبريل",
-      "date_range": {
-        "start": "2026-04-27",
-        "end": "2026-05-26"
-      },
+      "date_range": {"start": "2026-04-27", "end": "2026-05-26"},
       "salary_info": {
         "salary_month": "إبريل 2026",
         "salary_amount": 23114,
@@ -42,7 +43,7 @@
           {"name": "Tabby (راتب إبريل)", "amount": 23114, "variable": false, "detail": "شامل بدل المواصلات"},
           {"name": "Vezlo (جانبي)", "amount": 0, "variable": true, "detail": "85/ساعة"},
           {"name": "أم الزوجة", "amount": 700, "variable": false},
-          {"name": "أختي", "amount": 1500, "variable": false}
+          {"name": "أختي (قسط موبايل)", "amount": 1500, "variable": true, "detail": "متبقي 7 شهور — هتسكت شهر 6"}
         ]
       },
       "fixed_expenses": {
@@ -74,35 +75,14 @@
       },
       "debts": {
         "entries": [
-          {
-            "description": "عليا فلوس لمراتي",
-            "direction": "عليا",
-            "creditor_name": "مراتي",
-            "amount": 5000,
-            "remaining": 5000
-          },
-          {
-            "description": "عليا فلوس لخالي",
-            "direction": "عليا",
-            "creditor_name": "خالي",
-            "amount": 22000,
-            "remaining": 22000
-          }
+          {"description": "عليا فلوس لمراتي", "direction": "عليا", "creditor_name": "مراتي", "amount": 5000, "remaining": 5000},
+          {"description": "عليا فلوس لخالي", "direction": "عليا", "creditor_name": "خالي", "amount": 22000, "remaining": 22000}
         ],
         "total_i_owe": 27000
       },
-      "expenses": {
-        "total": 0,
-        "count": 0,
-        "items": [],
-        "by_category": {},
-        "by_who": {}
-      },
+      "expenses": {"total": 0, "count": 0, "items": [], "by_category": {}, "by_who": {}},
       "daily_trend": [],
-      "summary": {
-        "net_flow": 0,
-        "savings_rate": 0
-      }
+      "summary": {"net_flow": 0, "savings_rate": 0}
     }
   },
   "current_period": "period_5",
@@ -135,7 +115,7 @@
       "used": null,
       "paid_early_total": 0,
       "total_monthly_installments": 0,
-      "notes": "فيه اشتراك Olama $20/شهر - يتجدد 18 كل شهر",
+      "notes": "فيه اشتراك Olama $20/شهر",
       "subscriptions": [
         {
           "name": "Olama AI",
@@ -143,7 +123,7 @@
           "amount_egp": 1059,
           "billing_day": 18,
           "currency": "USD",
-          "notes": "بيتحول لـ Vezlo كل شهر - قول لـ Vezlo يحطوا الـ $20+ساعاتي"
+          "notes": "يتحط على Vezlo — ساعات × 85 + 1,059"
         }
       ],
       "installments_details": {}
@@ -163,42 +143,16 @@
       {"id": "mom_money", "name": "👩‍👩‍👧 ماما", "amount": 2000}
     ]
   },
-  "debts_system": {
-    "people": {
-      "uncle": {"name": "خالي", "relationship": "خال", "phone": null},
-      "wife": {"name": "مراتي", "relationship": "زوجة"},
-      "mom": {"name": "ماما", "relationship": "أم"},
-      "sister": {"name": "أختي", "relationship": "أخت"}
-    },
-    "active_debts": {
-      "wife_5000": {
-        "description": "عليا فلوس لمراتي",
-        "debtor": "me", "creditor": "wife",
-        "amount": 5000, "remaining": 5000,
-        "created": "2026-05-01",
-        "notes": "فلوس لمراتي"
-      },
-      "uncle_22000": {
-        "description": "عليا فلوس لخالي",
-        "debtor": "me", "creditor": "uncle",
-        "amount": 22000, "remaining": 22000,
-        "created": "2026-04-01",
-        "notes": "هتدفع كاملة من الجمعية"
-      }
-    },
-    "transactions": []
-  },
-  "goals": [
-    {"id": "debt_uncle", "name": "سداد خالي", "target": 22000, "saved": 0, "priority": 1},
-    {"id": "debt_wife", "name": "سداد مراتي", "target": 5000, "saved": 0, "priority": 2},
-    {"id": "air_fryer", "name": "Air Fryer", "target": 6000, "saved": 0, "priority": 3},
-    {"id": "ac", "name": "تكييف", "target": 22000, "saved": 0, "priority": 4},
-    {"id": "alexandria", "name": "رحلة إسكندرية", "target": 15000, "saved": 0, "priority": 5},
-    {"id": "apartment", "name": "شقة 🏠", "target": 0, "saved": 0, "priority": 6, "notes": "الهدف الأكبر — لسة ما حددناش السعر"}
-  ],
-  "reminders": {
-    "morning": "07:00",
-    "evening": "22:00"
+  "sister_installment": {
+    "description": "قسط موبايل أختي — أنا اشتريته كاش وبتدفعلي قسط",
+    "monthly_amount": 1500,
+    "original_total_months": 14,
+    "remaining_months": 7,
+    "months_paid_so_far": 1,
+    "total_received_so_far": 1500,
+    "skip_months": ["period_6"],
+    "notes": "كل ما تدفع قولي — أنا أنقص الشهور",
+    "skip_reason": "هتسكت شهر 6 (يونيو) مش هتدفع"
   },
   "olama_vezlo": {
     "subscription_name": "Olama AI",
@@ -207,12 +161,12 @@
     "billing_day": 18,
     "card": "Banque du Caire Visa مشتريات",
     "vezlo_hourly_rate": 85,
-    "notes": "لما تقولي ساعات Vezlo, أنا أحسب: الساعات × 85 + 1,059 (Olama) = المبلغ اللي تقولهوم"
+    "notes": "لما تقولي ساعات Vezlo — أنا أحسب: ساعات × 85 + 1,059"
   },
   "vezlo": {
     "hourly_rate": 85,
     "can_choose_when": true,
-    "notes": "لما تقولي ساعات Vezlo — بحسبلك كام ساعة تقولهم عشان يغطي شغلك + Olama 🐋"
+    "notes": "قولي كام ساعة وأنا أحسبلك + Olama 🐋"
   },
   "metro_card": {
     "name": "كارت مترو",
@@ -238,5 +192,28 @@
     "round_trip": 44,
     "working_days_month": 22,
     "monthly_total": 968
-  }
+  },
+  "debts_system": {
+    "people": {
+      "uncle": {"name": "خالي", "relationship": "خال"},
+      "wife": {"name": "مراتي", "relationship": "زوجة"},
+      "mom": {"name": "ماما", "relationship": "أم"},
+      "sister": {"name": "أختي", "relationship": "أخت"}
+    },
+    "active_debts": {
+      "wife_5000": {"description": "عليا فلوس لمراتي", "debtor": "me", "creditor": "wife", "amount": 5000, "remaining": 5000, "created": "2026-05-01"},
+      "uncle_22000": {"description": "عليا فلوس لخالي", "debtor": "me", "creditor": "uncle", "amount": 22000, "remaining": 22000, "created": "2026-04-01", "notes": "هتدفع كاملة من الجمعية"}
+    },
+    "transactions": []
+  },
+  "goals": [
+    {"id": "debt_uncle", "name": "سداد خالي", "target": 22000, "saved": 0, "priority": 1},
+    {"id": "debt_wife", "name": "سداد مراتي", "target": 5000, "saved": 0, "priority": 2},
+    {"id": "air_fryer", "name": "Air Fryer", "target": 6000, "saved": 0, "priority": 3},
+    {"id": "ac", "name": "تكييف", "target": 22000, "saved": 0, "priority": 4},
+    {"id": "alexandria", "name": "رحلة إسكندرية", "target": 15000, "saved": 0, "priority": 5},
+    {"id": "apartment", "name": "شقة 🏠", "target": 0, "saved": 0, "priority": 6, "notes": "الهدف الأكبر"}
+  ],
+  "reminders": {"morning": "07:00", "evening": "22:00"},
+  "last_updated": "22/05/2026"
 }
