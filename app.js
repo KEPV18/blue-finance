@@ -390,9 +390,36 @@ function renderPeriod(pk) {
       let statusIcon = isProfitable ? '✅' : '⚠️';
       let profitClr = fund.profit_after_fees >= 0 ? 'var(--accent)' : 'var(--red)';
       
+      // Fund details
+      let extraInfo = '';
+      if (fund.year_established) {
+        extraInfo += `<span style="color:var(--text3)">📅 ${LANG === 'ar' ? 'تأسس' : 'Est.'} ${fund.year_established}</span>`;
+      }
+      if (fund.withdrawal_fee_pct !== null && fund.withdrawal_fee_pct !== undefined) {
+        extraInfo += ` <span style="color:var(--amber)">💸 ${fund.withdrawal_fee_pct}% ${LANG === 'ar' ? 'رسوم سحب' : 'withdrawal fee'}</span>`;
+      }
+      if (fund.withdrawal_days) {
+        extraInfo += ` <span style="color:var(--text3)">📆 ${fund.withdrawal_days}</span>`;
+      }
+      
+      // Daily return for Fawry stable
+      let dailyInfo = '';
+      if (key === 'fawry_stable' && fund.daily_return) {
+        let dr = fund.daily_return;
+        let annLabel = LANG === 'ar' ? 'سنوي' : 'Annual';
+        let monLabel = LANG === 'ar' ? 'شهري' : 'Monthly';
+        let dayLabel = LANG === 'ar' ? 'يومي' : 'Daily';
+        dailyInfo = `<div style="margin-top:4px;background:var(--bg4);border-radius:6px;padding:6px;font-size:9px;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center">
+          <span>📈 ${annLabel}<br><strong style="color:var(--accent);font-size:11px">${dr.annual_rate}%</strong></span>
+          <span>📆 ${monLabel}<br><strong style="color:var(--blue);font-size:11px">${dr.monthly_rate}%</strong></span>
+          <span>⚡ ${dayLabel}<br><strong style="color:var(--amber);font-size:11px">${dr.daily_rate}%</strong></span>
+        </div>
+        <div style="font-size:8px;color:var(--text3);margin-top:3px">${dr.notes || ''} · ${LANG === 'ar' ? 'أرباح يومية' : 'Daily payout'}</div>`;
+      }
+      
       fundCards += `<div style="background:var(--bg3);border-radius:8px;padding:10px;margin-bottom:6px;border-left:3px solid ${clr}">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-          <span style="font-weight:700;font-size:12px">${emj} ${fund.name}</span>
+          <span style="font-weight:700;font-size:12px">${emj} ${fund.name} ${statusIcon}</span>
           <span style="font-size:10px;color:var(--text3)">${typeLabel}</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;font-size:10px">
@@ -401,6 +428,8 @@ function renderPeriod(pk) {
           <span style="color:${profitClr}">📈 ${profitLabel}: ${fund.profit_after_fees >= 0 ? '+' : ''}${fmt(fund.profit_after_fees)}</span>
           <span>${pct >= 0 ? '📊 +' : '📊 '}${pct}%</span>
         </div>
+        ${extraInfo ? `<div style="font-size:9px;margin-top:3px;display:flex;gap:8px">${extraInfo}</div>` : ''}
+        ${dailyInfo}
       </div>`;
     });
 

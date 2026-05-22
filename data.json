@@ -15,15 +15,18 @@
       "total_profit": -1439.95,
       "total_profit_after_fees": -127.89,
       "funds": {
-        "sharia": {
-          "name": "شريعة",
-          "current_balance": 7112.58,
-          "total_deposits": 4000,
-          "profit": 862.58,
-          "profit_after_fees": 851.37,
-          "status": "profitable",
+        "gold": {
+          "name": "دهب",
+          "current_balance": 5892.75,
+          "total_deposits": 2027,
+          "profit": -134.25,
+          "profit_after_fees": -131.16,
+          "status": "losing",
           "type": "متغير",
-          "notes": ""
+          "year_established": 2024,
+          "withdrawal_fee_pct": 3.50,
+          "withdrawal_days": "الأحد إلى الخميس",
+          "notes": "خسارة حالياً — رسوم سحب 3.5%"
         },
         "opportunities": {
           "name": "فرص",
@@ -33,17 +36,23 @@
           "profit_after_fees": 410.36,
           "status": "profitable",
           "type": "متغير",
+          "year_established": 2021,
+          "withdrawal_fee_pct": 1.50,
+          "withdrawal_days": "الأحد إلى الخميس",
           "notes": ""
         },
-        "gold": {
-          "name": "دهب",
-          "current_balance": 5892.75,
-          "total_deposits": 2027,
-          "profit": -134.25,
-          "profit_after_fees": -131.16,
-          "status": "losing",
+        "sharia": {
+          "name": "شريعة",
+          "current_balance": 7112.58,
+          "total_deposits": 4000,
+          "profit": 862.58,
+          "profit_after_fees": 851.37,
+          "status": "profitable",
           "type": "متغير",
-          "notes": "خسارة حالياً"
+          "year_established": 2024,
+          "withdrawal_fee_pct": 2.00,
+          "withdrawal_days": "الأحد إلى الخميس",
+          "notes": ""
         },
         "fawry_stable": {
           "name": "فوري",
@@ -53,7 +62,17 @@
           "profit_after_fees": -1258.45,
           "status": "profitable",
           "type": "ثابت",
-          "notes": "الثابت اللي بيدي أرباح ثابتة — انت هتحدد النسبة"
+          "year_established": null,
+          "withdrawal_fee_pct": null,
+          "withdrawal_days": "يومي",
+          "daily_return": {
+            "annual_rate": 18.79,
+            "monthly_rate": 1.56,
+            "daily_rate": 0.05,
+            "payout_frequency": "يومي",
+            "notes": "العائد السنوي يعكس الأداء من بداية العام. العائد الشهري لآخر 30 يوم. العائد اليومي حتى يوم عمل مضى."
+          },
+          "notes": "✅ أرباح يومية — تنزل كل يوم"
         }
       }
     }
