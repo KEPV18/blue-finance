@@ -374,6 +374,11 @@
       "summary": {
         "net_flow": 0,
         "savings_rate": 0
+      },
+      "vezlo_tracking": {
+        "hours": 0,
+        "earned": 0,
+        "entries": []
       }
     }
   },
@@ -618,35 +623,45 @@
       "name": "سداد خالي",
       "target": 22000,
       "saved": 0,
-      "priority": 1
+      "priority": 1,
+      "monthly_saving": 0,
+      "projected_completion": null
     },
     {
       "id": "debt_wife",
       "name": "سداد مراتي",
       "target": 5000,
       "saved": 0,
-      "priority": 2
+      "priority": 2,
+      "monthly_saving": 0,
+      "projected_completion": null
     },
     {
       "id": "air_fryer",
       "name": "Air Fryer",
       "target": 6000,
       "saved": 0,
-      "priority": 3
+      "priority": 3,
+      "monthly_saving": 0,
+      "projected_completion": null
     },
     {
       "id": "ac",
       "name": "تكييف",
       "target": 22000,
       "saved": 0,
-      "priority": 4
+      "priority": 4,
+      "monthly_saving": 0,
+      "projected_completion": null
     },
     {
       "id": "alexandria",
       "name": "رحلة إسكندرية",
       "target": 15000,
       "saved": 0,
-      "priority": 5
+      "priority": 5,
+      "monthly_saving": 0,
+      "projected_completion": null
     },
     {
       "id": "apartment",
@@ -654,12 +669,34 @@
       "target": 0,
       "saved": 0,
       "priority": 6,
-      "notes": "الهدف الأكبر"
+      "notes": "الهدف الأكبر",
+      "monthly_saving": 0,
+      "projected_completion": null
     }
   ],
   "reminders": {
     "morning": "07:00",
     "evening": "22:00"
   },
-  "last_updated": "22/05/2026"
+  "last_updated": "22/05/2026",
+  "vezlo_tracking": {
+    "total_hours": 0,
+    "total_earned": 0,
+    "periods": {}
+  },
+  "debt_repayment_plan": {
+    "monthly_payment": 0,
+    "start_period": "period_5",
+    "auto_calculate": true,
+    "target_debts": [
+      "wife_5000",
+      "uncle_22000"
+    ]
+  },
+  "alerts_config": {
+    "home_budget_threshold_pct": 80,
+    "home_budget_danger_pct": 100,
+    "metro_warning_balance": 30,
+    "olama_reminder_days_before": 5
+  }
 }

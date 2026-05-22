@@ -7,7 +7,7 @@ const TX = {
     loginErr: '✕ Invalid username or password',
     loading: 'Loading...', noPeriods: 'No periods found',
     finance: 'Finance', langBtn: '🇪🇬 العربية',
-    tabs: ['Overview', 'Cards & Debt', 'Goals 🎯', 'Vezlo ⚡', 'Transport', 'Transactions'],
+    tabs: ['Overview', 'Cards & Debt', 'Goals 🎯', 'Vezlo ⚡', 'Transport', 'Transactions', 'Compare 📊', 'Expense ➕'],
     summary: { opening: 'Opening', income: 'Income', expenses: 'Expenses', balance: 'Balance' },
     netCard: 'Net After Obligations',
     netCalc: 'Salary - Fixed - Installments',
@@ -30,6 +30,21 @@ const TX = {
     periodSummary: 'Period Summary',
     netFlow: 'Net Flow', savings: 'Savings', daysToPay: 'Days to Payday',
     subscriptions: 'Subscriptions',
+    compare: 'Compare Periods', compTitle: 'Period Comparison',
+    compIncome: 'Income', compExpenses: 'Expenses', compFixed: 'Fixed', compInst: 'Install.', compNet: 'Net Flow',
+    compBudget: 'Home Budget', compSpent: 'Spent', compRemain: 'Remaining',
+    debtCalc: 'Debt Repayment Calculator', debtMonth: 'Monthly Payment',
+    debtMonthLabel: 'How much per month?', debtCalcBtn: 'Calculate',
+    debtSummary: 'Repayment Plan', debtFree: 'Debt-Free by', debtTotal: 'Total needed',
+    debtNoPayment: 'Set a monthly amount to calculate',
+    quickExpense: 'Quick Add Expense', qeItem: 'Item', qeAmount: 'Amount',
+    qeCategory: 'Category', qeWho: 'Who', qeMethod: 'Payment',
+    qeAdd: 'Add Expense', qeAdded: '✅ Added! Refresh to see it.',
+    qeNote: 'Saves locally — tell me in chat for permanent record',
+    vezloTrack: 'Vezlo Tracker', vezloHoursTotal: 'Total Hours',
+    vezloEarned: 'Total Earned', vezloPerPeriod: 'Per Period',
+    goalTimeline: 'Goal Timeline', projLabel: '(at current rate)',
+    expPdf: '📄 Export PDF', pdfPrep: 'Preparing PDF...',
   },
   ar: {
     loginSub: 'دخول آمن — بياناتك خاصة',
@@ -37,7 +52,7 @@ const TX = {
     loginErr: '✕ اسم المستخدم أو كلمة المرور غلط',
     loading: 'جاري التحميل...', noPeriods: 'مفيش فترات',
     finance: 'المالية', langBtn: '🇬🇧 English',
-    tabs: ['الرئيسية', '💳 فيزتي', '🎯 أهدافي', '⚡ Vezlo', '🚇 مواصلاتي', '📋 المعاملات'],
+    tabs: ['الرئيسية', '💳 فيزتي', '🎯 أهدافي', '⚡ Vezlo', '🚇 مواصلاتي', '📋 المعاملات', '📊 مقارنة', '➕ مصروف'],
     summary: { opening: 'أول الفترة', income: 'الدخل', expenses: 'المصروفات', balance: 'الرصيد' },
     netCard: 'صافي الدخل بعد الالتزامات',
     netCalc: 'المرتب - الثابت - الأقساط',
@@ -60,7 +75,22 @@ const TX = {
     periodSummary: 'ملخص الفترة',
     netFlow: 'صافي التدفق', savings: 'الادخار', daysToPay: 'أيام للقبض',
     subscriptions: 'اشتراكات',
-  }
+    compare: 'مقارنة الفترات', compTitle: 'مقارنة بين الفترات',
+    compIncome: 'الدخل', compExpenses: 'المصروفات', compFixed: 'ثابت', compInst: 'أقساط', compNet: 'صافي التدفق',
+    compBudget: 'ميزانية البيت', compSpent: 'صرف', compRemain: 'متبقي',
+    debtCalc: 'حاسبة سداد الديون', debtMonth: 'القسط الشهري',
+    debtMonthLabel: 'كام هتدفع في الشهر؟', debtCalcBtn: 'احسب',
+    debtSummary: 'خطة السداد', debtFree: 'هتتخلص من الديون', debtTotal: 'المطلوب',
+    debtNoPayment: 'حدد مبلغ شهري عشان نحسب',
+    quickExpense: 'إضافة مصروف سريع', qeItem: 'البيان', qeAmount: 'المبلغ',
+    qeCategory: 'التصنيف', qeWho: 'مين', qeMethod: 'طريقة الدفع',
+    qeAdd: 'أضف المصروف', qeAdded: '✅ اتضاف! اعمل تحديث عشان تشوفه.',
+    qeNote: 'بيتحفظ محلياً — قول لي في الشات عشان التسجيل الدائم',
+    vezloTrack: 'تتبع Vezlo', vezloHoursTotal: 'إجمالي الساعات',
+    vezloEarned: 'إجمالي المكسب', vezloPerPeriod: 'كل فترة',
+    goalTimeline: 'خط زمني للأهداف', projLabel: '(بالمعدل الحالي)',
+    expPdf: '📄 تصدير PDF', pdfPrep: 'يتم تحضير PDF...',
+  },
 };
 
 // ===== CONSTANTS =====
@@ -161,6 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.tab-btn[data-tab="tab3"]').textContent = TX[LANG].tabs[3];
   document.querySelector('.tab-btn[data-tab="tab4"]').textContent = TX[LANG].tabs[4];
   document.querySelector('.tab-btn[data-tab="tab5"]').textContent = TX[LANG].tabs[5];
+  document.querySelector('.tab-btn[data-tab="tab6"]').textContent = TX[LANG].tabs[6];
+  document.querySelector('.tab-btn[data-tab="tab7"]').textContent = TX[LANG].tabs[7];
 });
 
 // ===== TABS =====
@@ -801,3 +833,451 @@ function calcVezlo() {
   let det = document.querySelector('.vc-breakdown');
   if (det) det.textContent = `${LANG === 'ar' ? 'قولهم' : 'Tell them'}: ${h} ${LANG === 'ar' ? 'ساعة' : 'hrs'} × ${fmt(rate, false)} + ${fmt(olAm, false)} (Olama) = ${total} EGP`;
 }
+
+// ===== TAB 6 RENDERERS =====
+
+function renderComparison() {
+  const pds = Object.keys(AD.periods || {});
+  if (pds.length < 1) {
+    document.getElementById('comparisonSection').innerHTML = `<div style="text-align:center;color:var(--text3);padding:20px;font-size:12px">${LANG === 'ar' ? 'مفيش فترات كافية للمقارنة' : 'Not enough periods'}</div>`;
+    return;
+  }
+  let h = '';
+  
+  // Table header
+  h += `<div class="table-wrap"><table><thead><tr><th>${LANG === 'ar' ? 'البند' : 'Item'}</th>`;
+  pds.forEach(pk => {
+    let p = AD.periods[pk];
+    h += `<th style="text-align:center">${p.salary_info?.salary_month || pk}</th>`;
+  });
+  h += `</tr></thead><tbody>`;
+
+  // Helper to get value
+  function getVal(pk, path) {
+    let p = AD.periods[pk];
+    let keys = path.split('.');
+    let v = p;
+    for (let k of keys) v = v?.[k];
+    return v || 0;
+  }
+
+  // Income row
+  h += `<tr><td style="font-weight:600;color:var(--accent)">💰 ${tr('compIncome')}</td>`;
+  pds.forEach(pk => h += `<td style="text-align:center;color:var(--accent)">${fmt(getVal(pk, 'income.total_expected'))}</td>`);
+  h += `</tr>`;
+
+  // Fixed expenses row
+  h += `<tr><td style="font-weight:600;color:var(--amber)">🏠 ${tr('compFixed')}</td>`;
+  pds.forEach(pk => {
+    let p = AD.periods[pk];
+    let fp = p.fixed_expenses?.total || 0;
+    h += `<td style="text-align:center;color:var(--amber)">${fmt(fp)}</td>`;
+  });
+  h += `</tr>`;
+
+  // Installments row
+  h += `<tr><td style="font-weight:600;color:var(--blue)">💳 ${tr('compInst')}</td>`;
+  pds.forEach(pk => {
+    let p = AD.periods[pk];
+    let t = p.installments?.total_monthly || 0;
+    h += `<td style="text-align:center;color:var(--blue)">${fmt(t)}</td>`;
+  });
+  h += `</tr>`;
+
+  // Expenses row
+  h += `<tr><td style="font-weight:600;color:var(--red)">📉 ${tr('compExpenses')}</td>`;
+  pds.forEach(pk => h += `<td style="text-align:center;color:var(--red)">${fmt(getVal(pk, 'expenses.total'))}</td>`);
+  h += `</tr>`;
+
+  // Net flow row
+  h += `<tr><td style="font-weight:700;color:var(--accent2)">📊 ${tr('compNet')}</td>`;
+  pds.forEach(pk => {
+    let p = AD.periods[pk];
+    let nf = (p.income?.total_expected || 0) - (p.expenses?.total || 0) - (p.fixed_expenses?.total || 0) - (p.installments?.total_monthly || 0);
+    let clr = nf >= 0 ? 'var(--accent)' : 'var(--red)';
+    h += `<td style="text-align:center;font-weight:700;color:${clr}">${fmt(nf)}</td>`;
+  });
+  h += `</tr>`;
+
+  // Home budget row
+  h += `<tr><td style="font-weight:600;color:var(--accent)">🏠 ${tr('compBudget')}</td>`;
+  pds.forEach(pk => {
+    let p = AD.periods[pk];
+    let hb = p.home_budget || {};
+    let sp = hb.spent_so_far || 0;
+    let tt = hb.total_budget || 0;
+    let pct = tt > 0 ? (sp / tt * 100).toFixed(0) : 0;
+    h += `<td style="text-align:center;font-size:10px">${fmt(sp)} / ${fmt(tt)}<br><span style="color:${pct > 80 ? 'var(--red)' : 'var(--text3)'}">${pct}%</span></td>`;
+  });
+  h += `</tr>`;
+
+  h += `</tbody></table></div>`;
+  
+  // Chart canvas for comparison
+  h += `<canvas id="compChart" style="margin-top:12px;max-height:200px"></canvas>`;
+
+  document.getElementById('comparisonSection').innerHTML = h;
+
+  // Draw comparison chart
+  const ctx = document.getElementById('compChart')?.getContext('2d');
+  if (ctx) {
+    if (window._compChart) window._compChart.destroy();
+    let labels = pds.map(pk => AD.periods[pk].salary_info?.salary_month || pk);
+    let incomes = pds.map(pk => AD.periods[pk]?.income?.total_expected || 0);
+    let expenses = pds.map(pk => AD.periods[pk]?.expenses?.total || 0);
+    let fixed = pds.map(pk => AD.periods[pk]?.fixed_expenses?.total || 0);
+    window._compChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels.map(l => LANG === 'ar' ? l : l.replace('إبريل','Apr').replace('مايو','May')),
+        datasets: [
+          { label: tr('compIncome'), data: incomes, backgroundColor: 'rgba(16,185,129,0.6)', borderColor: '#10b981', borderWidth: 1 },
+          { label: tr('compExpenses'), data: expenses, backgroundColor: 'rgba(239,68,68,0.6)', borderColor: '#ef4444', borderWidth: 1 },
+          { label: tr('compFixed'), data: fixed, backgroundColor: 'rgba(245,158,11,0.6)', borderColor: '#f59e0b', borderWidth: 1 },
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom', labels: { color: '#e2e8f0', font: { size: 9 } } } },
+        scales: {
+          x: { ticks: { color: '#94a3b8', font: { size: 9 } } },
+          y: { ticks: { color: '#64748b', font: { size: 9 }, callback: v => v.toLocaleString() } }
+        }
+      }
+    });
+  }
+}
+
+// ===== DEBT REPAYMENT CALCULATOR =====
+function renderDebtCalc() {
+  const debts = AD.periods?.[curP]?.debts?.entries || [];
+  let totalDebt = 0;
+  debts.forEach(d => totalDebt += d.remaining || 0);
+  
+  if (totalDebt === 0) {
+    document.getElementById('debtCalcSection').innerHTML = `<div style="text-align:center;color:var(--accent);padding:20px;font-size:13px">✅ ${LANG === 'ar' ? 'مفيش ديون 🎉' : 'No debts 🎉'}</div>`;
+    return;
+  }
+
+  const plan = AD.debt_repayment_plan || {};
+  let monthly = plan.monthly_payment || 0;
+
+  let h = `<div style="background:var(--bg3);border-radius:var(--radius-sm);padding:14px">`;
+
+  // Input
+  h += `<div class="vc-input" style="margin-bottom:10px">
+    <span style="font-size:12px">${tr('debtMonthLabel')}</span>
+    <input type="number" id="debtMonthlyInput" value="${monthly || 5000}" min="0" step="500" style="width:100px;padding:7px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:14px;font-weight:700;text-align:center;outline:none;font-family:inherit">
+    <span style="font-size:11px;color:var(--text3)">EGP</span>
+    <button onclick="calcDebtRepayment()" style="background:var(--accent);border:none;color:white;padding:7px 16px;border-radius:6px;cursor:pointer;font-weight:700;font-family:inherit;font-size:12px">${tr('debtCalcBtn')}</button>
+  </div>`;
+
+  // Results
+  h += `<div id="debtResults" style="font-size:12px">`;
+
+  if (monthly > 0) {
+    let months = Math.ceil(totalDebt / monthly);
+    let endMonth = months;
+    let now = new Date();
+    let targetDate = new Date(now.getFullYear(), now.getMonth() + months, 27);
+    let monthsStr = targetDate.toLocaleString(LANG === 'ar' ? 'ar-EG' : 'en-US', { month: 'long', year: 'numeric' });
+
+    // Per debt breakdown
+    h += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">`;
+    debts.forEach(d => {
+      let p = d.remaining || 0;
+      let dMonths = Math.ceil(p / monthly);
+      let pct = d.amount > 0 ? ((d.amount - d.remaining) / d.amount * 100).toFixed(0) : 0;
+      h += `<div style="background:var(--bg4);border-radius:6px;padding:8px;border:1px solid var(--border)">
+        <div style="font-weight:600;font-size:11px">${d.description}</div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:2px">
+          <span>${LANG === 'ar' ? 'متبقي' : 'Left'}: <strong style="color:var(--red)">${fmt(d.remaining)}</strong></span>
+          <span>${LANG === 'ar' ? 'يسدد في' : 'Cleared in'}: <strong style="color:var(--accent)">${dMonths} ${LANG === 'ar' ? 'شهر' : 'mo'}</strong></span>
+        </div>
+        <div style="height:4px;border-radius:2px;background:var(--bg4);margin-top:4px;overflow:hidden">
+          <div style="height:100%;width:${pct}%;background:var(--red);border-radius:2px"></div>
+        </div>
+      </div>`;
+    });
+    h += `</div>`;
+
+    // Summary
+    h += `<div style="background:var(--bg2);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:12px;text-align:center">
+      <div style="font-size:10px;color:var(--text3)">${LANG === 'ar' ? 'هتسد كل الديون في' : 'Debt-free in'}</div>
+      <div style="font-size:22px;font-weight:800;color:var(--accent);margin:4px 0">${months} ${LANG === 'ar' ? 'شهر' : 'months'}</div>
+      <div style="font-size:12px;color:var(--accent2)">📅 ${tr('debtFree')}: <strong>${monthsStr}</strong></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px">💰 ${fmt(monthly)}/${LANG === 'ar' ? 'شهر' : 'mo'} × ${months} ${LANG === 'ar' ? 'شهر' : 'mo'} = ${fmt(monthly * months)}</div>
+    </div>`;
+  } else {
+    h += `<div style="text-align:center;color:var(--text3);padding:10px;font-size:12px">${tr('debtNoPayment')}</div>`;
+  }
+
+  h += `</div></div>`;
+  document.getElementById('debtCalcSection').innerHTML = h;
+}
+
+function calcDebtRepayment() {
+  const val = parseFloat(document.getElementById('debtMonthlyInput').value) || 0;
+  AD.debt_repayment_plan = AD.debt_repayment_plan || {};
+  AD.debt_repayment_plan.monthly_payment = val;
+  renderDebtCalc();
+}
+
+// ===== GOAL TIMELINE =====
+function addGoalTimeline() {
+  // This is called inside goals tab rendering
+  const goals = AD.goals || [];
+  const sa = AD.periods?.[curP]?.salary_info?.salary_amount || 0;
+  const fpT = AD.fixed_expenses_profile?.total || 0;
+  const instT = AD.periods?.[curP]?.installments?.total_monthly || 0;
+  const netPerMonth = sa - fpT - instT; // rough available
+  
+  let h = `<div style="margin-top:12px;background:var(--bg3);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--border)">`;
+  h += `<div style="font-size:12px;font-weight:700;margin-bottom:8px;color:var(--accent2)">📈 ${tr('goalTimeline')} <span style="font-size:9px;color:var(--text3)">${tr('projLabel')}</span></div>`;
+
+  // Assume 30% of net can go to goals (after expenses, vezlo, etc)
+  let monthlyAlloc = netPerMonth * 0.3;
+  let remainingDebt = 27000; // total from debts
+  // After debts, goals start
+  
+  let timelineHtml = '';
+  let cumulative = 0;
+  let monthCount = 0;
+  let currentMonth = new Date();
+  
+  // First pay off debts
+  if (remainingDebt > 0) {
+    let debtMonths = Math.ceil(remainingDebt / monthlyAlloc);
+    let targetD = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + debtMonths, 27);
+    let labelD = targetD.toLocaleString(LANG === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', year: 'numeric' });
+    timelineHtml += `<div class="list-row" style="border-left:3px solid var(--red);padding-left:6px;margin-bottom:3px">
+      <span><span style="color:var(--red);font-weight:700">💸 ${LANG === 'ar' ? 'سداد الديون' : 'Pay off debts'}</span> <span style="color:var(--text3);font-size:9px">${fmt(monthlyAlloc)}/${LANG === 'ar' ? 'شهر' : 'mo'}</span></span>
+      <span style="color:var(--accent);font-weight:700">📅 ${labelD}</span>
+    </div>`;
+    monthCount = debtMonths;
+    currentMonth.setMonth(currentMonth.getMonth() + debtMonths);
+  }
+
+  // Then each goal
+  goals.forEach(g => {
+    if (g.target <= 0 || g.priority <= 2) return; // skip debt goals (already handled) and apartment
+    let need = g.target - g.saved;
+    if (need <= 0) return;
+    let gMonths = Math.ceil(need / monthlyAlloc);
+    let targetG = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + gMonths, 27);
+    let labelG = targetG.toLocaleString(LANG === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', year: 'numeric' });
+    let colors = ['#ef4444','#f59e0b','#3b82f6','#8b5cf6','#ec4899','#10b981'];
+    let clr = colors[g.priority - 1] || '#64748b';
+    timelineHtml += `<div class="list-row" style="border-left:3px solid ${clr};padding-left:6px;margin-bottom:3px">
+      <span><span style="color:${clr};font-weight:700">${g.name}</span> <span style="color:var(--text3);font-size:9px">${fmt(need)} ${LANG === 'ar' ? 'متبقي' : 'left'}</span></span>
+      <span style="color:var(--accent2);font-weight:700">📅 ${labelG}</span>
+    </div>`;
+    monthCount += gMonths;
+    currentMonth.setMonth(currentMonth.getMonth() + gMonths);
+  });
+
+  if (!timelineHtml) {
+    h += `<div style="text-align:center;color:var(--text3);padding:8px;font-size:11px">—</div>`;
+  } else {
+    h += timelineHtml;
+    h += `<div style="font-size:9px;color:var(--text3);margin-top:6px;text-align:center">${LANG === 'ar' ? 'تقديري — على حسب كام هتحوش في الشهر' : 'Estimate — depends on actual monthly saving'}</div>`;
+  }
+
+  h += `</div>`;
+  
+  // Append to goals tab
+  document.getElementById('goalsSection').innerHTML += h;
+}
+
+// ===== VEZLO TRACKER (per period) =====
+function addVezloTracker() {
+  const vt = AD.vezlo?.tracking || AD.periods?.[curP]?.vezlo_tracking;
+  if (!vt) return;
+
+  let h = `<div style="margin-top:10px;background:var(--bg3);border-radius:var(--radius-sm);padding:12px;border:1px solid var(--accent)">`;
+  h += `<div style="font-size:13px;font-weight:700;margin-bottom:6px;color:var(--amber)">📊 ${tr('vezloTrack')}</div>`;
+  
+  let totalHours = 0, totalEarned = 0;
+  // Sum all periods
+  Object.entries(AD.periods || {}).forEach(([pk, p]) => {
+    let v = p.vezlo_tracking;
+    if (v) {
+      totalHours += v.hours || 0;
+      totalEarned += v.earned || 0;
+    }
+  });
+
+  h += `<div class="list-row"><span>⏱️ ${tr('vezloHoursTotal')}</span><span class="amt green"><strong>${totalHours}</strong> ${LANG === 'ar' ? 'ساعة' : 'hrs'}</span></div>`;
+  h += `<div class="list-row"><span>💰 ${tr('vezloEarned')}</span><span class="amt green"><strong>${fmt(totalEarned)}</strong></span></div>`;
+
+  // Current period
+  let cv = AD.periods?.[curP]?.vezlo_tracking;
+  if (cv) {
+    h += `<div style="margin-top:6px;background:var(--bg4);border-radius:6px;padding:8px;font-size:10px">`;
+    h += `<div class="list-row" style="font-size:10px;padding:3px 0"><span>📅 ${LANG === 'ar' ? 'الفترة الحالية' : 'Current Period'}</span><span><strong>${cv.hours || 0}</strong> ${LANG === 'ar' ? 'ساعة' : 'hrs'} · <strong style="color:var(--accent)">${fmt(cv.earned || 0)}</strong></span></div>`;
+    h += `</div>`;
+  }
+
+  h += `</div>`;
+
+  // Append to vezlo tab
+  document.getElementById('vezloSection').innerHTML += h;
+}
+
+// ===== QUICK EXPENSE FORM =====
+function renderQuickExpense() {
+  const categories = ['Food','Transport','Coffee','Bills','Shopping','Entertainment','Healthcare','Clothes','Electronics','Home','Other'];
+  const whoOpts = ['Ahmed','Wife','House','Other'];
+  const methods = ['CIB Account','Cash','Banque du Caire','Fawry Account','Vodafone Cash','QNB'];
+  const catNames_ar = {'Food':'أكل','Transport':'مواصلات','Coffee':'قهوة','Bills':'فواتير','Shopping':'تسوق','Entertainment':'ترفيه','Healthcare':'صحة','Clothes':'هدوم','Electronics':'إلكترونيات','Home':'بيت','Other':'غيره'};
+  const whoNames_ar = {'Ahmed':'أحمد','Wife':'مراتي','House':'البيت','Other':'غيره'};
+  const methodNames_ar = {'CIB Account':'CIB','Cash':'كاش','Banque du Caire':'بنك القاهرة','Fawry Account':'فوري','Vodafone Cash':'فودافون كاش','QNB':'QNB'};
+
+  let h = `<div style="background:var(--bg3);border-radius:var(--radius-sm);padding:14px">`;
+  
+  // Form
+  h += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">`;
+
+  // Item
+  h += `<div style="grid-column:span 2"><label style="font-size:10px;color:var(--text3)">${tr('qeItem')}</label><input type="text" id="qeItemInput" placeholder="${LANG === 'ar' ? 'خضار, لبن, سجاير...' : 'Groceries, milk, ...'}" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:13px;outline:none;font-family:inherit"></div>`;
+
+  // Amount
+  h += `<div><label style="font-size:10px;color:var(--text3)">${tr('qeAmount')}</label><input type="number" id="qeAmountInput" placeholder="250" min="1" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:13px;font-weight:700;outline:none;font-family:inherit"></div>`;
+
+  // Category
+  h += `<div><label style="font-size:10px;color:var(--text3)">${tr('qeCategory')}</label><select id="qeCategoryInput" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:12px;outline:none;font-family:inherit">`;
+  categories.forEach(c => h += `<option value="${c}">${LANG === 'ar' ? catNames_ar[c] : c}</option>`);
+  h += `</select></div>`;
+
+  // Who
+  h += `<div><label style="font-size:10px;color:var(--text3)">${tr('qeWho')}</label><select id="qeWhoInput" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:12px;outline:none;font-family:inherit">`;
+  whoOpts.forEach(w => h += `<option value="${w}">${LANG === 'ar' ? whoNames_ar[w] : w}</option>`);
+  h += `</select></div>`;
+
+  // Payment method
+  h += `<div><label style="font-size:10px;color:var(--text3)">${tr('qeMethod')}</label><select id="qeMethodInput" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border);background:var(--bg4);color:var(--text);font-size:12px;outline:none;font-family:inherit">`;
+  methods.forEach(m => h += `<option value="${m}">${LANG === 'ar' ? methodNames_ar[m] || m : m}</option>`);
+  h += `</select></div>`;
+
+  h += `</div>`;
+
+  // Add button
+  h += `<button onclick="addQuickExpense()" style="width:100%;padding:10px;margin-top:10px;border-radius:6px;border:none;background:var(--accent);color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">${tr('qeAdd')}</button>`;
+  h += `<div id="qeStatus" style="font-size:11px;color:var(--accent);margin-top:6px;text-align:center"></div>`;
+  h += `<div style="font-size:9px;color:var(--text3);margin-top:6px;text-align:center">💡 ${tr('qeNote')}</div>`;
+
+  h += `</div>`;
+  document.getElementById('quickExpenseSection').innerHTML = h;
+}
+
+function addQuickExpense() {
+  const item = document.getElementById('qeItemInput').value.trim();
+  const amount = parseFloat(document.getElementById('qeAmountInput').value);
+  const category = document.getElementById('qeCategoryInput').value;
+  const who = document.getElementById('qeWhoInput').value;
+  const method = document.getElementById('qeMethodInput').value;
+  const statusEl = document.getElementById('qeStatus');
+
+  if (!item || !amount || amount <= 0) {
+    statusEl.textContent = LANG === 'ar' ? '⚠️ اكتب البيان والمبلغ' : '⚠️ Enter item and amount';
+    statusEl.style.color = 'var(--red)';
+    return;
+  }
+
+  // Save to localStorage so it persists until refresh
+  let localExpenses = JSON.parse(localStorage.getItem('blue_local_expenses') || '[]');
+  localExpenses.push({
+    date: new Date().toISOString().split('T')[0],
+    item, amount, category, who, method,
+    added_at: new Date().toISOString()
+  });
+  localStorage.setItem('blue_local_expenses', JSON.stringify(localExpenses));
+
+  statusEl.textContent = `✅ ${fmt(amount)} — ${item}`;
+  statusEl.style.color = 'var(--accent)';
+  document.getElementById('qeItemInput').value = '';
+  document.getElementById('qeAmountInput').value = '';
+}
+
+// ===== PDF EXPORT =====
+function exportPDF() {
+  if (!AD || !curP) return;
+  const po = AD.periods[curP];
+  const si = po.salary_info || {};
+  const exp = po.expenses || {};
+  const fix = po.fixed_expenses || {};
+  const inst = po.installments || {};
+  const debts = po.debts || {};
+  const inc = po.income || {};
+  const hb = po.home_budget || {};
+  
+  let text = '';
+  let sep = '═══════════════════════════════\n';
+  
+  text += `🐋 Blue Finance Report\n`;
+  text += `${si.salary_month || curP} — ${po.date_range?.start || '?'} → ${po.date_range?.end || '?'}\n`;
+  text += sep;
+  text += `💰 Salary: ${si.salary_amount || 0} EGP\n`;
+  text += `📈 Expected Income: ${inc.total_expected || 0} EGP\n`;
+  text += sep;
+  text += `🏠 Fixed Expenses: ${fix.total || 0} EGP\n`;
+  (fix.items || []).forEach(f => text += `  ${f.name}: ${f.amount} EGP\n`);
+  text += sep;
+  text += `💳 Installments: ${inst.total_monthly || 0} EGP\n`;
+  (inst.items || []).forEach(i => text += `  ${i.name}: ${i.monthly} EGP/mo (${i.remaining_months}mo left)\n`);
+  text += sep;
+  text += `💰 Net After Obligations: ${(si.salary_amount||0) - (fix.total||0) - (inst.total_monthly||0)} EGP\n`;
+  text += sep;
+  if (hb.total_budget > 0) {
+    text += `🏠 Home Budget: ${hb.spent_so_far || 0}/${hb.total_budget} EGP (${hb.total_budget - (hb.spent_so_far||0)} remaining)\n`;
+    text += sep;
+  }
+  text += `📉 Expenses: ${exp.total || 0} EGP (${exp.count || 0} txns)\n`;
+  (exp.items || []).forEach(t => text += `  ${t.date} | ${t.item} | ${t.amount} EGP | ${t.category} | ${t.who}\n`);
+  text += sep;
+  text += `💸 Debts: ${debts.total_i_owe || 0} EGP\n`;
+  (debts.entries || []).forEach(d => text += `  ${d.description}: ${d.remaining}/${d.amount} EGP\n`);
+  text += sep;
+  text += `📱 Fawry Investment: ${AD.investments?.fawry_funds?.total_balance || 0} EGP\n`;
+  text += sep;
+  text += `📊 Net Flow: ${(inc.total_expected||0) - (exp.total||0) - (fix.total||0) - (inst.total_monthly||0)} EGP\n`;
+  text += `Generated: ${new Date().toLocaleString()}\n`;
+  text += `🐋 Blue Finance — Ahmed Khaled\n`;
+
+  // Create download
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Blue_Finance_${curP}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ===== ADD EXPORT BUTTON TO HEADER =====
+function addExportBtn() {
+  const headerRight = document.querySelector('.header-right');
+  if (headerRight && !document.getElementById('exportBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'exportBtn';
+    btn.className = 'lang-btn';
+    btn.innerHTML = '📄';
+    btn.title = LANG === 'ar' ? 'تصدير تقرير' : 'Export Report';
+    btn.onclick = exportPDF;
+    headerRight.appendChild(btn);
+  }
+}
+
+// ===== RENDER ALL NEW SECTIONS AFTER DATA LOADS =====
+// Hook into the existing loadData by checking periodically
+const checkInterval = setInterval(() => {
+  if (AD && document.getElementById('content').style.display === 'block') {
+    clearInterval(checkInterval);
+    addExportBtn();
+    renderComparison();
+    renderDebtCalc();
+    renderQuickExpense();
+    addVezloTracker();
+    addGoalTimeline();
+  }
+}, 500);

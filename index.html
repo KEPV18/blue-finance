@@ -59,6 +59,8 @@
       <button class="tab-btn" data-tab="tab3" onclick="switchTab('tab3')" id="tabLabel3">⚡ Vezlo</button>
       <button class="tab-btn" data-tab="tab4" onclick="switchTab('tab4')" id="tabLabel4">🚇 مواصلاتي</button>
       <button class="tab-btn" data-tab="tab5" onclick="switchTab('tab5')" id="tabLabel5">📋 المعاملات</button>
+      <button class="tab-btn" data-tab="tab6" onclick="switchTab('tab6')" id="tabLabel6">📊 مقارنة</button>
+      <button class="tab-btn" data-tab="tab7" onclick="switchTab('tab7')" id="tabLabel7">➕ مصروف</button>
     </div>
 
     <!-- TAB 0: OVERVIEW -->
@@ -125,6 +127,26 @@
         <div class="table-wrap">
           <table><thead><tr id="txnHd"><th>التاريخ</th><th>البيان</th><th>المبلغ</th><th>التصنيف</th><th>مين</th><th>الدفع</th></tr></thead><tbody id="txnBody"></tbody></table>
         </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: COMPARE -->
+    <div class="tab-content" id="tab6">
+      <div class="panel panel-full">
+        <div class="panel-title" id="compTitle">📊 مقارنة بين الفترات</div>
+        <div id="comparisonSection"></div>
+      </div>
+      <div class="panel panel-full" style="margin-top:12px">
+        <div class="panel-title" id="debtCalcTitle">💰 حاسبة سداد الديون</div>
+        <div id="debtCalcSection"></div>
+      </div>
+    </div>
+
+    <!-- TAB 7: QUICK EXPENSE -->
+    <div class="tab-content" id="tab7">
+      <div class="panel panel-full">
+        <div class="panel-title" id="qeTitle">➕ إضافة مصروف سريع</div>
+        <div id="quickExpenseSection"></div>
       </div>
     </div>
 
