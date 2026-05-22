@@ -173,9 +173,11 @@ function renderP(pk){
 
   // Period info bar
   const dr=po.date_range||{};
-  const sr=po.salary_month||'';
+  const si=po.salary_info||{};
+  const sr=si.salary_month||po.salary_month||'';
+  const sa=si.salary_amount?' | 💰 مرتب: '+fm(si.salary_amount,false)+' EGP':'';
   document.getElementById('prdInfo').innerHTML=
-    `📆 ${sr} | <span style="color:#888">${dr.start||'?'}</span> → <span style="color:#888">${dr.end||'?'}</span>`;
+    `📆 ${sr}${sa} | <span style="color:#888">${dr.start||'?'}</span> → <span style="color:#888">${dr.end||'?'}</span> | <span style="color:#888">قبض ${si.received_date||'?'}</span>`;
 
   // Summary cards
   document.getElementById('sc').innerHTML=`
@@ -196,14 +198,30 @@ function renderP(pk){
     let used=v.used?fm(v.used,false):'---';
     let insts=v.installments_details||{};
     let totalInst=v.total_monthly_installments||0;
+    let subs=v.subscriptions||[];
     let paidEarly=v.paid_early_total||0;
-    let hasInst=totalInst>0;
+    let hasInst=totalInst>0||subs.length>0;
     let bankIcon=v.bank==='CIB'?'🏦':'🏛️';
     let instCount=Object.keys(insts).length;
     
     cardH+=`<div class="ci">
       <div class="r1"><span>${bankIcon} ${v.bank} - ${v.type}</span><span style="font-weight:bold;color:${av!=='محتاج تحديث'?'#00d4aa':'#ffc312'}">متبقي ${av}</span></div>
       <div style="font-size:11px">الحد ${lim} EGP | مستخدم ${used}</div>`;
+    
+    // Subscriptions section
+    if(subs.length>0){
+      cardH+=`<div class="dets">
+        <div style="margin-top:5px;font-weight:bold;color:#ffc312">📡 اشتراكات شهرية</div>`;
+      for(let s of subs){
+        let warn=s.billing_day;
+        cardH+=`<div style="font-size:10px;padding:2px 0;display:flex;justify-content:space-between">
+          <span>📡 ${s.name}</span>
+          <span style="color:#ff9f43">$${s.amount_usd} ≈ ${fm(s.amount_egp)} — يوم ${s.billing_day}</span>
+        </div>
+        <div style="font-size:8px;color:#555;padding:0 0 4px 0">${s.notes||''}</div>`;
+      }
+      cardH+=`</div>`;
+    }
     
     if(hasInst){
       cardH+=`<div class="dets">
@@ -308,10 +326,14 @@ function renderP(pk){
     let bal=mt.current_balance;
     let balStr=bal!==null&&bal!==undefined?fm(bal):'محتاج تحديث 🗣️';
     let warn=bal!==null&&bal!==undefined&&bal<=mt.low_balance_warning;
+    let tripsLeft=bal!==null?Math.floor(bal/mt.trip_cost):'—';
+    let daysLeft=tripsLeft!=='—'?Math.ceil(tripsLeft/mt.daily_trips):'—';
+    let dailyCost=mt.trip_cost*mt.daily_trips;
     mtH+=`<div style="font-size:11px"><strong>${mt.name}</strong></div>
-      <div class="bi"><span>🚇 تكلفة الرحلة</span><span>${fm(mt.trip_cost)} × ${mt.daily_trips} يومياً</span></div>
+      <div class="bi"><span>🚇 تكلفة اليوم</span><span>${fm(mt.trip_cost)} x ${mt.daily_trips} = ${fm(dailyCost)}/يوم</span></div>
       <div class="bi" style="${warn?'background:#ff475722;border-radius:4px;padding:5px 0;':''}"><span>💰 الرصيد الحالي</span><span style="font-weight:bold;color:${warn?'#ff4757':bal!==null?'#00d4aa':'#ffc312'}">${balStr} ${warn?'⚠️':'✅'}</span></div>
-      <div class="bi"><span>📆 شهرياً</span><span>${fm(mt.monthly_cost)}</span></div>
+      <div class="bi"><span>🎫 رحلات متبقية</span><span style="font-weight:bold;color:${tripsLeft<=mt.daily_trips*2?'#ffc312':'#00d4aa'}">${tripsLeft} رحلة — ${daysLeft} يوم</span></div>
+      <div class="bi"><span>📆 الشهر</span><span>${fm(mt.monthly_cost)}</span></div>
       ${warn?`<div style="font-size:10px;color:#ff4757;margin-top:3px">⚠️ الرصيد قليل! اقترح أشحن ${fm(mt.top_up_amount)}</div>`:''}
       <div style="font-size:9px;color:#666;margin-top:3px">لو قرب يخلص هقولك ⚡</div>`;
   }else{
@@ -340,13 +362,25 @@ function renderP(pk){
   else trendH+='<div style="text-align:center;color:#888;font-size:10px;width:100%;padding-top:12px">📝 مفيش مصروفات</div>';
   trendH+='</div>';document.getElementById('trendC').innerHTML=trendH;
 
-  // === VEZLO ===
+  // === VEZLO + OLAMA ===
   const vz=AD.vezlo||{};
+  const ol=AD.olama_vezlo||{};
   let vzH='';
   if(vz.hourly_rate){
+    let olAmount=ol.amount_egp||0;
+    let olNote='';
+    if(olAmount>0){
+      let coverHours=Math.ceil(olAmount/vz.hourly_rate);
+      olNote=`<div style="font-size:10px;color:#ff9f43;margin-top:4px;padding:5px;background:#0f1923;border-radius:5px;border:1px solid #ff9f4322">
+        📡 <strong>Olama AI</strong> — $20 ≈ ${fm(olAmount)}/شهر (يوم ${ol.billing_day})<br>
+        ⚡ عشان تغطيه: ${coverHours} ساعة Vezlo = ${fm(olAmount)}<br>
+        🐋 قول كام ساعة — أنا أحسبلك: <strong>ساعات × ${fm(vz.hourly_rate)} + ${fm(olAmount)}</strong>
+      </div>`;
+    }
     vzH+=`<div style="font-size:12px"><strong>⚡ Vezlo</strong></div>
       <div class="bi"><span>💰 السعر</span><span style="font-weight:bold;color:#00d4aa">${fm(vz.hourly_rate)}/ساعة</span></div>
       <div class="bi"><span>👑 التحكم</span><span style="color:#ffc312">أنت اللي بتقرر ⏰</span></div>
+      ${olNote}
       <div style="font-size:10px;color:#888;margin-top:5px">أي ساعات تشتغلها — قولي واحسبها 🐋</div>`;
   }else vzH='<div style="color:#888;font-size:11px">مفيش بيانات فيزلو</div>';
   document.getElementById('vezloSection').innerHTML=vzH;
