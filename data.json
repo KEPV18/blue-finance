@@ -11,7 +11,7 @@
       "platform": "فوري",
       "last_updated": "2026-05-22",
       "total_balance": 26070.53,
-      "total_deposits": 54146,
+      "total_deposits": 25510.85,
       "total_profit": -1439.95,
       "total_profit_after_fees": -127.89,
       "funds": {
@@ -91,7 +91,7 @@
         "fawry_stable": {
           "name": "فوري",
           "current_balance": 8650.7,
-          "total_deposits": 37869,
+          "total_deposits": 9233.85,
           "profit": -2582.78,
           "profit_after_fees": -1258.45,
           "status": "profitable",
