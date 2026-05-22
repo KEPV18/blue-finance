@@ -23,7 +23,7 @@
       "salary_info": {
         "salary_month": "إبريل 2026",
         "salary_amount": 23114,
-        "notes": "أحمد يقول الـ net من الميل كل شهر",
+        "notes": "شامل بدل المواصلات — كل حاجة في الميل",
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
@@ -37,10 +37,9 @@
         "QNB": 0.76
       },
       "income": {
-        "total_expected": 29362,
+        "total_expected": 25314,
         "sources": [
-          {"name": "Tabby (راتب إبريل)", "amount": 23114, "variable": false, "detail": "Net من الميل"},
-          {"name": "بدل مواصلات", "amount": 4048, "variable": false},
+          {"name": "Tabby (راتب إبريل)", "amount": 23114, "variable": false, "detail": "شامل بدل المواصلات"},
           {"name": "Vezlo (جانبي)", "amount": 0, "variable": true, "detail": "85/ساعة"},
           {"name": "أم الزوجة", "amount": 700, "variable": false},
           {"name": "أختي", "amount": 1500, "variable": false}
