@@ -361,24 +361,55 @@ function renderPeriod(pk) {
   bh += `<div class="list-row-total"><span>${tr('total')}</span><span class="amt">${fmt(balT)}</span></div>`;
   document.getElementById('overviewBalances').innerHTML = bh;
 
-  // Fawry Investment panel
-  const fawryInv = AD.investments?.fawry || {};
-  if (fawryInv.current_balance) {
+  // Fawry Investment panel - 4 funds
+  const fawryFunds = AD.investments?.fawry_funds || {};
+  if (fawryFunds.funds) {
     let invLabel = LANG === 'ar' ? '📈 فوري استثمار' : '📈 Fawry Investment';
-    let statusLabel = LANG === 'ar' ? 'حالة' : 'Status';
-    let profitLabel = LANG === 'ar' ? 'الأرباح' : 'Profit';
-    let balanceLabel = LANG === 'ar' ? 'الرصيد الحالي' : 'Current Balance';
-    let typeLabel = LANG === 'ar' ? 'النوع' : 'Type';
-    let invType = LANG === 'ar' ? 'استثمار' : 'Investment';
-    let statusClr = fawryInv.status === 'profitable' ? 'var(--accent)' : 'var(--amber)';
-    let statusEmoji = fawryInv.status === 'profitable' ? '✅' : '⚠️';
+    let funds = fawryFunds.funds || {};
+    let totalBal = fawryFunds.total_balance || 0;
+    let totalDep = fawryFunds.total_deposits || 0;
+    let totalProfit = fawryFunds.total_profit || 0;
+    
+    // Build each fund card
+    let fundCards = '';
+    let fundColors = {'sharia':'var(--accent)','opportunities':'var(--blue)','gold':'var(--amber)','fawry_stable':'var(--accent2)'};
+    let fundEmojis = {'sharia':'📜','opportunities':'🚀','gold':'🥇','fawry_stable':'💰'};
+    let profitLabel = LANG === 'ar' ? 'الربح' : 'Profit';
+    let afterFeesLabel = LANG === 'ar' ? 'بعد الرسوم' : 'After Fees';
+    let depLabel = LANG === 'ar' ? 'إيداعات' : 'Deposits';
+    let balLabel = LANG === 'ar' ? 'الرصيد' : 'Balance';
+    let varLabel = LANG === 'ar' ? 'متغير' : 'Variable';
+    let fixLabel = LANG === 'ar' ? 'ثابت' : 'Fixed';
+    
+    Object.entries(funds).forEach(([key, fund]) => {
+      let clr = fundColors[key] || 'var(--text3)';
+      let emj = fundEmojis[key] || '📊';
+      let isProfitable = fund.status === 'profitable';
+      let pct = fund.total_deposits > 0 ? ((fund.profit_after_fees / fund.total_deposits) * 100).toFixed(2) : 0;
+      let typeLabel = fund.type === 'ثابت' ? fixLabel : varLabel;
+      let statusIcon = isProfitable ? '✅' : '⚠️';
+      let profitClr = fund.profit_after_fees >= 0 ? 'var(--accent)' : 'var(--red)';
+      
+      fundCards += `<div style="background:var(--bg3);border-radius:8px;padding:10px;margin-bottom:6px;border-left:3px solid ${clr}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <span style="font-weight:700;font-size:12px">${emj} ${fund.name}</span>
+          <span style="font-size:10px;color:var(--text3)">${typeLabel}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;font-size:10px">
+          <span>💰 ${balLabel}: <strong style="color:${clr}">${fmt(fund.current_balance)}</strong></span>
+          <span>📥 ${depLabel}: ${fmt(fund.total_deposits)}</span>
+          <span style="color:${profitClr}">📈 ${profitLabel}: ${fund.profit_after_fees >= 0 ? '+' : ''}${fmt(fund.profit_after_fees)}</span>
+          <span>${pct >= 0 ? '📊 +' : '📊 '}${pct}%</span>
+        </div>
+      </div>`;
+    });
+
     document.getElementById('fawryInvestment').innerHTML = `
-      <div style="font-size:13px;font-weight:700;margin-bottom:8px">${invLabel}</div>
-      <div class="list-row"><span>${typeLabel}</span><span>${fawryInv.type || invType}</span></div>
-      <div class="list-row"><span>💰 ${balanceLabel}</span><span class="amt" style="color:var(--accent2);font-weight:700">${fmt(fawryInv.current_balance)}</span></div>
-      <div class="list-row"><span>📈 ${profitLabel}</span><span class="amt green">+${fmt(fawryInv.profit)}</span></div>
-      <div class="list-row"><span>📊 ${statusLabel}</span><span style="color:${statusClr};font-weight:600">${statusEmoji} ${fawryInv.status === 'profitable' ? (LANG === 'ar' ? 'مربح' : 'Profitable') : fawryInv.status}</span></div>
-      ${fawryInv.notes ? `<div style="font-size:10px;color:var(--text3);margin-top:6px;padding:6px;background:var(--bg3);border-radius:6px">${fawryInv.notes}</div>` : ''}
+      <div style="font-size:13px;font-weight:700;margin-bottom:6px">${invLabel}</div>
+      <div class="list-row"><span>${LANG === 'ar' ? 'إجمالي الرصيد' : 'Total Balance'}</span><span class="amt" style="color:var(--accent2);font-weight:700">${fmt(totalBal)}</span></div>
+      <div class="list-row"><span>${LANG === 'ar' ? 'إجمالي الإيداعات' : 'Total Deposits'}</span><span>${fmt(totalDep)}</span></div>
+      <div class="list-row"><span>📊 ${LANG === 'ar' ? 'صافي الربح' : 'Net Profit'}</span><span class="amt ${totalProfit >= 0 ? 'green' : 'red'}">${totalProfit >= 0 ? '+' : ''}${fmt(totalProfit)}</span></div>
+      <div style="margin-top:8px">${fundCards}</div>
     `;
   }
 

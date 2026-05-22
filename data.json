@@ -7,14 +7,55 @@
     "usd_rate": 52.93
   },
   "investments": {
-    "fawry": {
-      "current_balance": 26070.82,
-      "profit": 1681.43,
-      "status": "profitable",
-      "type": "فوري استثمار",
-      "monthly_profit": null,
-      "last_profit_date": null,
-      "notes": "استثمار في فوري — مكسب مستمر"
+    "fawry_funds": {
+      "platform": "فوري",
+      "last_updated": "2026-05-22",
+      "total_balance": 26070.53,
+      "total_deposits": 26186.15,
+      "total_profit": -1439.95,
+      "total_profit_after_fees": -127.89,
+      "funds": {
+        "sharia": {
+          "name": "شريعة",
+          "current_balance": 7112.58,
+          "total_deposits": 4000,
+          "profit": 862.58,
+          "profit_after_fees": 851.37,
+          "status": "profitable",
+          "type": "متغير",
+          "notes": ""
+        },
+        "opportunities": {
+          "name": "فرص",
+          "current_balance": 4414.50,
+          "total_deposits": 2000,
+          "profit": 414.50,
+          "profit_after_fees": 410.36,
+          "status": "profitable",
+          "type": "متغير",
+          "notes": ""
+        },
+        "gold": {
+          "name": "دهب",
+          "current_balance": 5892.75,
+          "total_deposits": 2027,
+          "profit": -134.25,
+          "profit_after_fees": -131.16,
+          "status": "losing",
+          "type": "متغير",
+          "notes": "خسارة حالياً"
+        },
+        "fawry_stable": {
+          "name": "فوري",
+          "current_balance": 8650.70,
+          "total_deposits": 5,
+          "profit": -2582.78,
+          "profit_after_fees": -1258.45,
+          "status": "profitable",
+          "type": "ثابت",
+          "notes": "الثابت اللي بيدي أرباح ثابتة — انت هتحدد النسبة"
+        }
+      }
     }
   },
   "periods": {
