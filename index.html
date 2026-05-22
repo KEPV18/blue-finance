@@ -17,6 +17,7 @@
     .bb{background:#1a2634;border:1px solid #2a3a4a;color:#aaa;padding:5px 12px;border-radius:16px;font-size:11px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.2s}
     .bb.ac{background:#00d4aa33;border-color:#00d4aa;color:#00d4aa;font-weight:bold}
     .bb:hover{background:#2a3a4a}
+    .prd{font-size:9px;color:#666;text-align:center;margin-bottom:10px;padding:5px;background:#1a2634;border-radius:6px;border:1px solid #2a3a4a}
     .cds{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:8px}
     .cd{background:#1a2634;border-radius:8px;padding:10px;border:1px solid #2a3a4a}
     .cd .l{font-size:10px;color:#888;margin-bottom:3px}.cd .v{font-size:15px;font-weight:bold;color:#fff}
@@ -73,6 +74,7 @@
   <div class="ld" id="ld"><div class="sp"></div><span>جاري تحميل...</span></div>
   <div id="ct" style="display:none">
     <div class="mb" id="mb"></div>
+    <div id="prdInfo" class="prd"></div>
     <div class="cds" id="sc"></div>
 
     <!-- Cards section -->
@@ -121,13 +123,12 @@
 </div>
 
 <script>
-const MTHS=['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 const CC={'Food':'#ff6b6b','Transport':'#54a0ff','Coffee':'#ff9f43','Bills':'#ee5a24','Shopping':'#a29bfe','Entertainment':'#fd79a8','Healthcare':'#00cec9','Clothes':'#6c5ce7','Electronics':'#00b894','Home':'#e17055','Debt':'#d63031','Installment':'#e17055','Income':'#00d4aa','Other':'#636e72','Housing':'#2ecc71','Utilities':'#f39c12','Family':'#e74c3c'};
 const WE={'Ahmed':'🧑','Wife':'👩','House':'🏠','Other':'❓'};
 const WC={'Ahmed':'#54a0ff','Wife':'#ff6b6b','House':'#00d4aa','Other':'#636e72'};
 const BN={'CIB Account':'🏦 CIB','Cash':'💵 كاش','Banque du Caire':'💳 بنك القاهرة','Fawry Account':'📱 فوري','Vodafone Cash':'📱 فودافون','QNB':'🏦 QNB'};
 
-let AD=null,curM=null,chartI=null;
+let AD=null,curP=null,chartI=null;
 
 function fm(n,s){if(n===undefined||n===null)return'-';return Number(n).toLocaleString('en-US',{minFrac:2,maxFrac:2})+(s!==false?' EGP':'')}
 function fd(d){if(!d||d.length<10)return d;return d.slice(8,10)+'/'+d.slice(5,7)}
@@ -139,10 +140,10 @@ async function load(){
     let r=await fetch('./data.json');
     if(!r.ok)throw new Error('HTTP '+r.status);
     AD=await r.json();
-    let ms=AD.all_data.available_months||[];
-    if(!ms.length)throw new Error('مفيش شهور');
-    curM=ms[ms.length-1];
-    renderMB(ms);renderM(curM);
+    let pds=Object.keys(AD.periods||{});
+    if(!pds.length)throw new Error('مفيش فترات');
+    curP=AD.current_period||pds[pds.length-1];
+    renderMB(pds);renderP(curP);
     document.getElementById('ld').style.display='none';
     document.getElementById('ct').style.display='block';
     document.getElementById('lu').textContent=new Date().toLocaleString('ar-EG');
@@ -151,31 +152,37 @@ async function load(){
   }
 }
 
-function renderMB(ms){
+function renderMB(pds){
   let h='';
-  for(let mk of ms){
-    let p=mk.split('-'),y=p[0],m=parseInt(p[1]);
-    h+=`<button class="bb ${mk===curM?'ac':''}" data-mk="${mk}">${MTHS[m-1]} ${y}</button>`;
+  for(let pk of pds){
+    let p=AD.periods[pk];
+    h+=`<button class="bb ${pk===curP?'ac':''}" data-pk="${pk}">${p.label}</button>`;
   }
   document.getElementById('mb').innerHTML=h;
   document.querySelectorAll('.bb').forEach(b=>{b.onclick=()=>{
     document.querySelectorAll('.bb').forEach(x=>x.classList.remove('ac'));
-    b.classList.add('ac');curM=b.dataset.mk;renderM(curM);
+    b.classList.add('ac');curP=b.dataset.pk;renderP(curP);
   }});
 }
 
-function renderM(mk){
-  if(!AD||!AD.all_data||!AD.all_data.months[mk])return;
-  const mo=AD.all_data.months[mk];
-  const exp=mo.expenses||{};const fix=mo.fixed_expenses||{};const inst=mo.installments||{};const debts=mo.debts||{};const sm=mo.summary||{};const inc=mo.income||{};
-  const eI=inc.total_expected||0;const cb=mo.current_balance||{};
+function renderP(pk){
+  if(!AD||!AD.periods||!AD.periods[pk])return;
+  const po=AD.periods[pk];
+  const exp=po.expenses||{};const fix=po.fixed_expenses||{};const inst=po.installments||{};const debts=po.debts||{};const sm=po.summary||{};const inc=po.income||{};
+  const eI=inc.total_expected||0;
 
+  // Period info bar
+  const dr=po.date_range||{};
+  const sr=po.salary_month||'';
+  document.getElementById('prdInfo').innerHTML=
+    `📆 ${sr} | <span style="color:#888">${dr.start||'?'}</span> → <span style="color:#888">${dr.end||'?'}</span>`;
+
+  // Summary cards
   document.getElementById('sc').innerHTML=`
-    <div class="cd"><div class="l">💵 أول الشهر</div><div class="v g">${fm(mo.opening_balance_total)}</div></div>
+    <div class="cd"><div class="l">💵 أول الفترة</div><div class="v g">${fm(po.opening_balance_total)}</div></div>
     <div class="cd"><div class="l">💰 الدخل</div><div class="v g">${fm(eI)}</div></div>
     <div class="cd"><div class="l">💸 مصروفات</div><div class="v r">${fm(exp.total)}</div><div class="s">${exp.count} معاملة</div></div>
-    <div class="cd"><div class="l">📊 صافي التدفق</div><div class="v ${sm.net_flow>=0?'g':'r'}">${fm(sm.net_flow)}</div></div>
-    <div class="cd"><div class="l">🏦 دلوقتي</div><div class="v ${mo.current_balance_total>0?'g':'r'}">${fm(mo.current_balance_total)}</div></div>
+    <div class="cd"><div class="l">🏦 أرصدة دلوقتي</div><div class="v ${po.current_balance_total>0?'g':'r'}">${fm(po.current_balance_total)}</div></div>
   `;
 
   // === CARDS ===
@@ -206,7 +213,7 @@ function renderM(mk){
         let pe=iv.paid_early?' (مبكر)':'';
         let clr=iv.remaining_months<=3?'#ffc312':iv.remaining_months<=6?'#54a0ff':'#888';
         cardH+=`<div style="font-size:10px;padding:2px 0;display:flex;justify-content:space-between">
-          <span>${ik.replace(/_/g,' ')}</span>
+          <span>${ik}</span>
           <span style="color:${clr}">${fm(iv.monthly)}/ش - ${iv.remaining_months} ش متبقي${pe}</span>
         </div>`;
       }
@@ -219,8 +226,8 @@ function renderM(mk){
   // === INCOME ===
   let incH='';let sources=inc.sources||[];
   for(let s of sources){
-    let det=s.detail?'<span class="dt">'+s.detail+'</span>':'';
-    let clr=s.amount>0?'':'';let ch=s.variable?'⚡':'';
+    let det=s.detail?'<span class="dt"> '+s.detail+'</span>':'';
+    let ch=s.variable?'⚡':'';
     incH+=`<div class="isi"><span>${ch}${s.name} ${det}</span><span>${fm(s.amount)}</span></div>`;
   }
   incH+=`<div class="isi" style="border-top:2px solid #00d4aa;padding-top:5px;margin-top:3px"><strong>المجموع</strong><strong style="color:#00d4aa">${fm(eI)}</strong></div>`;
@@ -235,7 +242,7 @@ function renderM(mk){
     feH+=`<div class="fei ${cls}"><span><span class="ck" style="color:${clr}">${f.paid?'✅':'◻️'}</span>${f.name}</span><span style="font-weight:bold;color:${clr}">${fm(f.amount)}</span></div>`;
   }
   let fT=AD.fixed_expenses_profile?AD.fixed_expenses_profile.total||0:0;
-  let fP=fix.paid_total||0;let allP=fP>=fT;
+  let fP=fix.paid_total||fix.total||0;let allP=fP>=fT;
   feH+=`<div class="fei" style="border-top:1px solid #2a3a4a;margin-top:3px;padding-top:5px"><span>الإجمالي</span><span style="font-weight:bold;color:${allP?'#00d4aa':'#ffc312'}">${fm(fP)} / ${fm(fT)} ${allP?'✅':''}</span></div>`;
   document.getElementById('feL').innerHTML=feH;
 
@@ -270,8 +277,9 @@ function renderM(mk){
   else dH+=`<div class="di" style="border:1px solid #ff475722"><div style="display:flex;justify-content:space-between"><strong>عليا فلوس</strong><span style="color:#ff4757;font-weight:bold">${fm(debts.total_i_owe)}</span></div></div>`;
   document.getElementById('debtL').innerHTML=dH;
 
-  // === BALANCES (6 wallets) ===
+  // === BALANCES ===
   let balH='';let balT=0;
+  const cb=po.current_balance||{};
   for(let[k,v]of Object.entries(cb)){balT+=v;let nm=BN[k]||k.replace(/_/g,' ');balH+=`<div class="bi"><span>${nm}</span><span class="a" style="color:${v>0?'#00d4aa':'#555'}">${fm(v)}</span></div>`;}
   balH+=`<div class="bi" style="border-top:2px solid #00d4aa;margin-top:4px;padding-top:5px"><span style="font-weight:bold">الإجمالي</span><span class="a" style="font-size:13px;color:#00d4aa">${fm(balT)}</span></div>`;
   document.getElementById('balL').innerHTML=balH;
@@ -326,7 +334,7 @@ function renderM(mk){
   document.getElementById('whoL').innerHTML=whoH;
 
   // === TREND ===
-  const trend=mo.daily_trend||[];let trendH='<div class="tr">';
+  const trend=po.daily_trend||[];let trendH='<div class="tr">';
   const maxT=Math.max(...trend.map(d=>d.total),1);
   if(trend.length){for(let d of trend){let h=Math.max((d.total/maxT)*100,3);trendH+=`<div class="tc"><div class="tv">${d.total>0?fm(d.total,false):''}</div><div class="tb" style="height:${h}%"></div><div class="tl">${fd(d.date)}</div></div>`;}}
   else trendH+='<div style="text-align:center;color:#888;font-size:10px;width:100%;padding-top:12px">📝 مفيش مصروفات</div>';
