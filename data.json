@@ -7,9 +7,9 @@
   },
   "balances": {
     "CIB Account": 316.09,
-    "Cash": 500,
+    "Cash": 205,
     "Banque du Caire": 0,
-    "Fawry Account": 0,
+    "Fawry Account": 35.14,
     "Vodafone Cash": 0
   },
   "income": {
@@ -28,12 +28,12 @@
   "next_payday": "25 مايو 2026",
   "payday_countdown": 3,
   "goals": [],
-  "last_updated": "22/05/2026 06:40",
+  "last_updated": "22/05/2026 06:46",
   "month": {
     "name": "مايو",
     "total_income": 26248,
     "total_expenses": 80,
-    "transactions_count": 3,
+    "transactions_count": 4,
     "who_spending": {
       "Ahmed": 50,
       "Other": 30
@@ -87,9 +87,19 @@
     "paid_fixed": 0,
     "unpaid_fixed": 4409,
     "remaining": 21292.239999999998,
-    "total_balance": 816.0899999999999
+    "total_balance": 556.2299999999999
   },
   "recent_transactions": [
+    {
+      "date": "2026-05-22",
+      "item": "إيداع في CIB_Account",
+      "amount": 0,
+      "category": "Income",
+      "payment_method": "CIB_Account",
+      "who": "Ahmed",
+      "notes": "إضافة إلى CIB_Account",
+      "timestamp": "2026-05-22T06:46:20.302134"
+    },
     {
       "date": "2026-05-22",
       "item": "قهوة",
