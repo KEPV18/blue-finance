@@ -66,10 +66,30 @@
     @keyframes ss{to{transform:rotate(360deg)}}
     .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     @media(max-width:500px){.card-grid{grid-template-columns:1fr}}
+    /* Login Screen */
+    .lg{position:fixed;top:0;left:0;right:0;bottom:0;background:#0f1923;display:flex;align-items:center;justify-content:center;z-index:9999}
+    .lgb{background:#1a2634;border:1px solid #2a3a4a;border-radius:12px;padding:30px 25px;width:90%;max-width:320px;text-align:center}
+    .lgb .lc{font-size:40px;margin-bottom:8px}.lgb h2{color:#00d4aa;font-size:16px;margin-bottom:4px}.lgb p{color:#888;font-size:11px;margin-bottom:18px}
+    .lgb input{width:100%;padding:10px 12px;margin-bottom:10px;border-radius:8px;border:1px solid #2a3a4a;background:#0f1923;color:#e0e0e0;font-size:14px;text-align:right;outline:none}
+    .lgb input:focus{border-color:#00d4aa}
+    .lgb button{width:100%;padding:10px;border-radius:8px;border:none;background:#00d4aa;color:#0f1923;font-size:14px;font-weight:bold;cursor:pointer;transition:.2s}
+    .lgb button:hover{opacity:.85}
+    .lgb .er{color:#ff4757;font-size:11px;margin-top:6px;display:none}
   </style>
 </head>
 <body>
-<div class="co">
+<div class="lg" id="lg">
+  <div class="lgb">
+    <div class="lc">🐋</div>
+    <h2>Blue Finance</h2>
+    <p>دخول آمن — بياناتك خاصة</p>
+    <input type="text" id="luIn" placeholder="اسم المستخدم" autocomplete="username">
+    <input type="password" id="lpIn" placeholder="كلمة المرور" autocomplete="current-password" style="direction:ltr;text-align:left">
+    <button onclick="login()">دخول</button>
+    <div class="er" id="le">❌ اسم المستخدم أو كلمة المرور غلط</div>
+  </div>
+</div>
+<div class="co" id="co" style="display:none">
   <div class="hd"><h1>🐋 Blue <sp>Finance</sp></h1><span class="lu" id="lu"></span></div>
   <div class="ld" id="ld"><div class="sp"></div><span>جاري تحميل...</span></div>
   <div id="ct" style="display:none">
@@ -129,6 +149,27 @@ const WC={'Ahmed':'#54a0ff','Wife':'#ff6b6b','House':'#00d4aa','Other':'#636e72'
 const BN={'CIB Account':'🏦 CIB','Cash':'💵 كاش','Banque du Caire':'💳 بنك القاهرة','Fawry Account':'📱 فوري','Vodafone Cash':'📱 فودافون','QNB':'🏦 QNB'};
 
 let AD=null,curP=null,chartI=null;
+
+// Login
+const LOGIN_USER = 'ahmed';
+const LOGIN_PASS = 'khalid123';
+function login(){
+  let u=document.getElementById('luIn').value.trim();
+  let p=document.getElementById('lpIn').value.trim();
+  if(u===LOGIN_USER && p===LOGIN_PASS){
+    document.getElementById('lg').style.display='none';
+    document.getElementById('co').style.display='block';
+    load();
+  }else{
+    document.getElementById('le').style.display='block';
+    setTimeout(()=>document.getElementById('le').style.display='none',3000);
+  }
+}
+// Enter key support
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('lpIn').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+  document.getElementById('luIn').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('lpIn').focus()});
+});
 
 function fm(n,s){if(n===undefined||n===null)return'-';return Number(n).toLocaleString('en-US',{minFrac:2,maxFrac:2})+(s!==false?' EGP':'')}
 function fd(d){if(!d||d.length<10)return d;return d.slice(8,10)+'/'+d.slice(5,7)}
