@@ -3,146 +3,8 @@
     "name": "Ahmed Khaled",
     "company": "Tabby",
     "salary_day": 27,
-    "currency": "EGP"
-  },
-  "current_balances": {
-    "CIB Account": 316.09,
-    "Cash": 205,
-    "Banque du Caire": 19.14,
-    "Fawry Account": 35.14,
-    "Vodafone Cash": 0.52,
-    "QNB": 0.76
-  },
-  "cards": {
-    "CIB_Visa_Purchases": {
-      "bank": "CIB",
-      "type": "مشتريات",
-      "limit": 45800,
-      "available": 12788.01,
-      "used": 33012,
-      "installments_details": {
-        "laptop": {
-          "monthly": 3543.08,
-          "remaining_months": 6,
-          "total_remaining": 21258.48,
-          "paid_early": false
-        },
-        "screen": {
-          "monthly": 542.66,
-          "remaining_months": 14,
-          "total_remaining": 7597.24,
-          "paid_early": false
-        },
-        "hard_drive": {
-          "monthly": 533.25,
-          "remaining_months": 7,
-          "total_remaining": 3732.75,
-          "paid_early": false
-        },
-        "speaker": {
-          "monthly": 38.25,
-          "remaining_months": 11,
-          "total_remaining": 420.75,
-          "paid_early": false
-        },
-        "camera": {
-          "monthly": 72.06,
-          "remaining_months": 10,
-          "total_remaining": 720.6,
-          "paid_early": false
-        },
-        "hand_blender": {
-          "monthly": 146.46,
-          "remaining_months": 10,
-          "total_remaining": 1464.58,
-          "paid_early": false
-        }
-      },
-      "total_monthly_installments": 4875.76,
-      "paid_early_total": 4093.12,
-      "notes": "4093.12 مدفوع مبكر"
-    },
-    "Banque_du_Caire_Visa_Purchases": {
-      "bank": "بنك القاهرة",
-      "type": "مشتريات",
-      "limit": 23000,
-      "available": null,
-      "used": null,
-      "installments_details": [],
-      "total_monthly_installments": 0,
-      "paid_early_total": 0,
-      "notes": "المتاح/المستخدم محتاج تحديث"
-    }
-  },
-  "transport": {
-    "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
-    "segments": [
-      {
-        "from": "الخصوص",
-        "to": "غمرة",
-        "cost": 12,
-        "method": "ميكروباص/تاكسي"
-      },
-      {
-        "from": "غمرة",
-        "to": "جمال عبد الناصر",
-        "cost": 10,
-        "method": "مترو"
-      }
-    ],
-    "one_way_total": 22,
-    "round_trip": 44,
-    "working_days_month": 22,
-    "monthly_total": 968
-  },
-  "metro_card": {
-    "name": "كارت مترو",
-    "trip_cost": 10,
-    "daily_trips": 2,
-    "monthly_cost": 440,
-    "current_balance": null,
-    "last_recharge": null,
-    "last_recharge_amount": null,
-    "low_balance_warning": 30,
-    "top_up_amount": 100
-  },
-  "vezlo": {
-    "hourly_rate": 85,
-    "can_choose_when": true,
-    "notes": "أحمد هو اللي بيقرر امتي يشتغل وعدد الساعات"
-  },
-  "income_profile": {
-    "sources": [],
-    "total_expected": 0
-  },
-  "debts_profile": {
-    "entries": [
-      {
-        "id": "wife_5000",
-        "description": "عليا فلوس لمراتي",
-        "debtor": "me",
-        "creditor": "wife",
-        "amount": 5000,
-        "remaining": 5000,
-        "direction": "عليا",
-        "creditor_name": "مراتي",
-        "debtor_name": "أنا"
-      },
-      {
-        "id": "uncle_22000",
-        "description": "عليا فلوس لخالي",
-        "debtor": "me",
-        "creditor": "uncle",
-        "amount": 22000,
-        "remaining": 22000,
-        "direction": "عليا",
-        "creditor_name": "خالي",
-        "debtor_name": "أنا"
-      }
-    ],
-    "total_i_owe": 27000,
-    "total_owed_to_me": 0,
-    "net_debt": 27000
+    "currency": "EGP",
+    "usd_rate": 52.93
   },
   "investments": {
     "fawry": {
@@ -151,237 +13,195 @@
       "status": "profitable"
     }
   },
-  "goals": [
-    {
-      "id": "debt_uncle",
-      "name": "سداد خالي",
-      "target": 22000,
-      "saved": 0,
-      "priority": 1
-    },
-    {
-      "id": "debt_wife",
-      "name": "سداد مراتي",
-      "target": 5000,
-      "saved": 0,
-      "priority": 2
-    },
-    {
-      "id": "air_fryer",
-      "name": "Air Fryer",
-      "target": 6000,
-      "saved": 0,
-      "priority": 3
-    },
-    {
-      "id": "ac",
-      "name": "تكييف",
-      "target": 22000,
-      "saved": 0,
-      "priority": 4
-    },
-    {
-      "id": "alexandria",
-      "name": "رحلة إسكندرية",
-      "target": 15000,
-      "saved": 0,
-      "priority": 5
-    },
-    {
-      "id": "apartment",
-      "name": "شقة 🏠",
-      "target": 0,
-      "saved": 0,
-      "priority": 6,
-      "notes": "الهدف الأكبر — لسة ما حددناش السعر"
-    }
-  ],
-  "fixed_expenses_profile": {},
-  "all_data": {
-    "months": {
-      "2026-05": {
-        "label": "مايو 2026",
-        "month_key": "2026-05",
-        "income": {
-          "sources": [],
-          "total_expected": 0
-        },
-        "income_received": {
-          "total": 0,
-          "items": []
-        },
-        "expenses": {
-          "total": 0,
-          "count": 0,
-          "by_who": {},
-          "by_category": {},
-          "items": []
-        },
-        "fixed_expenses": {
-          "items": [],
-          "total": 0,
-          "paid_total": 4409,
-          "unpaid_total": -4409,
-          "all_paid": true
-        },
-        "installments": {
-          "items": [],
-          "total_monthly": 0,
-          "paid": true,
-          "date_paid": "2026-05-27",
-          "paid_early": 0
-        },
-        "debts": {
-          "entries": [
-            {
-              "id": "wife_5000",
-              "description": "عليا فلوس لمراتي",
-              "debtor": "me",
-              "creditor": "wife",
-              "amount": 5000,
-              "remaining": 5000,
-              "direction": "عليا",
-              "creditor_name": "مراتي",
-              "debtor_name": "أنا"
-            },
-            {
-              "id": "uncle_22000",
-              "description": "عليا فلوس لخالي",
-              "debtor": "me",
-              "creditor": "uncle",
-              "amount": 22000,
-              "remaining": 22000,
-              "direction": "عليا",
-              "creditor_name": "خالي",
-              "debtor_name": "أنا"
-            }
-          ],
-          "total_i_owe": 27000,
-          "total_owed_to_me": 0,
-          "net_debt": 27000
-        },
-        "daily_trend": [],
-        "opening_balance": {
-          "CIB Account": 316.09,
-          "Cash": 205,
-          "Banque du Caire": 19.14,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0.52,
-          "QNB": 0.76
-        },
-        "opening_balance_total": 576.6499999999999,
-        "current_balance": {
-          "CIB Account": 316.09,
-          "Cash": 205,
-          "Banque du Caire": 19.14,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0.52,
-          "QNB": 0.76
-        },
-        "current_balance_total": 576.6499999999999,
-        "summary": {
-          "expected_income": 0,
-          "total_expenses": 0,
-          "fixed_paid": 4409,
-          "fixed_unpaid": -4409,
-          "net_flow": 0,
-          "remaining": 0
-        }
+  "periods": {
+    "period_5": {
+      "label": "الفترة 5 — إبريل",
+      "date_range": {
+        "start": "2026-04-27",
+        "end": "2026-05-26"
       },
-      "2026-06": {
-        "label": "يونيو 2026",
-        "month_key": "2026-06",
-        "income": {
-          "sources": [],
-          "total_expected": 0
-        },
-        "income_received": {
-          "total": 0,
-          "items": []
-        },
-        "expenses": {
-          "total": 0,
-          "count": 0,
-          "by_who": {},
-          "by_category": {},
-          "items": []
-        },
-        "fixed_expenses": {
-          "items": [],
-          "total": 0,
-          "paid_total": 0,
-          "unpaid_total": 0,
-          "all_paid": true
-        },
-        "installments": {
-          "items": [],
-          "total_monthly": 0,
-          "paid": false,
-          "date_paid": null,
-          "paid_early": 0
-        },
-        "debts": {
-          "entries": [
-            {
-              "id": "wife_5000",
-              "description": "عليا فلوس لمراتي",
-              "debtor": "me",
-              "creditor": "wife",
-              "amount": 5000,
-              "remaining": 5000,
-              "direction": "عليا",
-              "creditor_name": "مراتي",
-              "debtor_name": "أنا"
-            },
-            {
-              "id": "uncle_22000",
-              "description": "عليا فلوس لخالي",
-              "debtor": "me",
-              "creditor": "uncle",
-              "amount": 22000,
-              "remaining": 22000,
-              "direction": "عليا",
-              "creditor_name": "خالي",
-              "debtor_name": "أنا"
-            }
-          ],
-          "total_i_owe": 27000,
-          "total_owed_to_me": 0,
-          "net_debt": 27000
-        },
-        "daily_trend": [],
-        "opening_balance": {
-          "CIB Account": 316.09,
-          "Cash": 205,
-          "Banque du Caire": 19.14,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0.52,
-          "QNB": 0.76
-        },
-        "opening_balance_total": 576.6499999999999,
-        "current_balance": {
-          "CIB Account": 316.09,
-          "Cash": 205,
-          "Banque du Caire": 19.14,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0.52,
-          "QNB": 0.76
-        },
-        "current_balance_total": 576.6499999999999,
-        "summary": {
-          "expected_income": 0,
-          "total_expenses": 0,
-          "fixed_paid": 0,
-          "fixed_unpaid": 0,
-          "net_flow": 0,
-          "remaining": 0
-        }
+      "salary_info": {
+        "salary_month": "إبريل 2026",
+        "salary_amount": 20000,
+        "received_date": "2026-04-27"
+      },
+      "opening_balance_total": 0,
+      "current_balance_total": 576.65,
+      "current_balance": {
+        "CIB Account": 316.09,
+        "Cash": 205,
+        "Banque du Caire": 19.14,
+        "Fawry Account": 35.14,
+        "Vodafone Cash": 0.52,
+        "QNB": 0.76
+      },
+      "income": {
+        "total_expected": 26248,
+        "sources": [
+          {"name": "Tabby (راتب إبريل)", "amount": 20000, "variable": false},
+          {"name": "بدل مواصلات", "amount": 4048, "variable": false},
+          {"name": "Vezlo (جانبي)", "amount": 0, "variable": true, "detail": "85/ساعة"},
+          {"name": "أم الزوجة", "amount": 700, "variable": false},
+          {"name": "أختي", "amount": 1500, "variable": false}
+        ]
+      },
+      "fixed_expenses": {
+        "total": 4409,
+        "paid_total": 4409,
+        "items": [
+          {"id": "rent", "name": "🏠 إيجار", "amount": 750, "paid": true},
+          {"id": "internet", "name": "🌐 نت أرضي", "amount": 250, "paid": true},
+          {"id": "mobile", "name": "📱 محمول", "amount": 240, "paid": true},
+          {"id": "sewage", "name": "🚰 صرف صحي", "amount": 80, "paid": true},
+          {"id": "landline", "name": "☎️ تليفون أرضي", "amount": 45, "paid": true},
+          {"id": "electricity", "name": "💡 كهربا", "amount": 26, "paid": true},
+          {"id": "gas", "name": "🔥 غاز", "amount": 18, "paid": true},
+          {"id": "wife_expenses", "name": "👩 مراتي", "amount": 1000, "paid": true},
+          {"id": "mom_money", "name": "👩‍👩‍👧 ماما", "amount": 2000, "paid": true}
+        ]
+      },
+      "installments": {
+        "paid": true,
+        "total_monthly": 4875.76,
+        "items": [
+          {"name": "لابتوب", "monthly": 3543.08, "remaining_months": 6},
+          {"name": "شاشة", "monthly": 542.66, "remaining_months": 14},
+          {"name": "هارد خارجي", "monthly": 533.25, "remaining_months": 7},
+          {"name": "سبيكر", "monthly": 38.25, "remaining_months": 11},
+          {"name": "كاميرا", "monthly": 72.06, "remaining_months": 10},
+          {"name": "هاند بليندر", "monthly": 146.46, "remaining_months": 10}
+        ]
+      },
+      "debts": {
+        "entries": [
+          {"description": "عليا فلوس لمراتي", "direction": "عليا", "creditor_name": "مراتي", "amount": 5000, "remaining": 5000},
+          {"description": "عليا فلوس لخالي", "direction": "عليا", "creditor_name": "خالي", "amount": 22000, "remaining": 22000}
+        ],
+        "total_i_owe": 27000
+      },
+      "expenses": {"total": 0, "count": 0, "items": [], "by_category": {}, "by_who": {}},
+      "daily_trend": [],
+      "summary": {"net_flow": 0, "savings_rate": 0}
+    }
+  },
+  "current_period": "period_5",
+  "next_period_id": "period_6",
+  "cards": {
+    "CIB_Visa_Purchases": {
+      "bank": "CIB",
+      "type": "مشتريات",
+      "limit": 45800,
+      "available": 12788.01,
+      "used": 33012,
+      "paid_early_total": 4093.12,
+      "total_monthly_installments": 4875.76,
+      "notes": "4,093.12 مدفوع مبكر",
+      "subscriptions": [],
+      "installments_details": {
+        "لابتوب": {"monthly": 3543.08, "remaining_months": 6, "total_remaining": 21258.48, "paid_early": false},
+        "شاشة": {"monthly": 542.66, "remaining_months": 14, "total_remaining": 7597.24, "paid_early": false},
+        "هارد خارجي": {"monthly": 533.25, "remaining_months": 7, "total_remaining": 3732.75, "paid_early": false},
+        "سبيكر": {"monthly": 38.25, "remaining_months": 11, "total_remaining": 420.75, "paid_early": false},
+        "كاميرا": {"monthly": 72.06, "remaining_months": 10, "total_remaining": 720.60, "paid_early": false},
+        "هاند بليندر": {"monthly": 146.46, "remaining_months": 10, "total_remaining": 1464.58, "paid_early": false}
       }
     },
-    "available_months": [
-      "2026-05",
-      "2026-06"
+    "Banque_du_Caire_Visa_Purchases": {
+      "bank": "بنك القاهرة",
+      "type": "مشتريات",
+      "limit": 23000,
+      "available": null,
+      "used": null,
+      "paid_early_total": 0,
+      "total_monthly_installments": 0,
+      "notes": "فيه اشتراك Olama $20/شهر",
+      "subscriptions": [
+        {
+          "name": "Olama AI",
+          "amount_usd": 20,
+          "amount_egp": 1059,
+          "billing_day": 18,
+          "currency": "USD",
+          "notes": "يتحط على Vezlo كل شهر — ساعات × 85 + 1,059"
+        }
+      ],
+      "installments_details": {}
+    }
+  },
+  "fixed_expenses_profile": {
+    "total": 4409,
+    "items": [
+      {"id": "rent", "name": "🏠 إيجار", "amount": 750},
+      {"id": "internet", "name": "🌐 نت أرضي", "amount": 250},
+      {"id": "mobile", "name": "📱 محمول", "amount": 240},
+      {"id": "sewage", "name": "🚰 صرف صحي", "amount": 80},
+      {"id": "landline", "name": "☎️ تليفون أرضي", "amount": 45},
+      {"id": "electricity", "name": "💡 كهربا", "amount": 26},
+      {"id": "gas", "name": "🔥 غاز", "amount": 18},
+      {"id": "wife_expenses", "name": "👩 مراتي", "amount": 1000},
+      {"id": "mom_money", "name": "👩‍👩‍👧 ماما", "amount": 2000}
     ]
   },
-  "last_updated": "22/05/2026 07:25"
+  "olama_vezlo": {
+    "subscription_name": "Olama AI",
+    "amount_usd": 20,
+    "amount_egp": 1059,
+    "billing_day": 18,
+    "card": "Banque du Caire Visa مشتريات",
+    "vezlo_hourly_rate": 85,
+    "notes": "لما تقولي ساعات Vezlo — بحسب: ساعات × 85 + 1,059 = المبلغ اللي تقولهوم"
+  },
+  "vezlo": {
+    "hourly_rate": 85,
+    "can_choose_when": true,
+    "notes": "لما تقولي ساعات Vezlo — بحسبلك كام ساعة عشان يغطي شغلك + Olama"
+  },
+  "metro_card": {
+    "name": "كارت مترو",
+    "trip_cost": 10,
+    "daily_trips": 2,
+    "daily_cost": 20,
+    "monthly_cost": 440,
+    "current_balance": 80,
+    "last_recharge": null,
+    "last_recharge_amount": null,
+    "low_balance_warning": 30,
+    "top_up_amount": 100,
+    "trips_remaining": 4,
+    "days_remaining_at_current_usage": 2
+  },
+  "transport": {
+    "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
+    "segments": [
+      {"from": "الخصوص", "to": "غمرة", "cost": 12, "method": "ميكروباص/تاكسي"},
+      {"from": "غمرة", "to": "جمال عبد الناصر", "cost": 10, "method": "مترو"}
+    ],
+    "one_way_total": 22,
+    "round_trip": 44,
+    "working_days_month": 22,
+    "monthly_total": 968
+  },
+  "debts_system": {
+    "people": {
+      "uncle": {"name": "خالي", "relationship": "خال"},
+      "wife": {"name": "مراتي", "relationship": "زوجة"},
+      "mom": {"name": "ماما", "relationship": "أم"},
+      "sister": {"name": "أختي", "relationship": "أخت"}
+    },
+    "active_debts": {
+      "wife_5000": {"description": "عليا فلوس لمراتي", "debtor": "me", "creditor": "wife", "amount": 5000, "remaining": 5000, "created": "2026-05-01"},
+      "uncle_22000": {"description": "عليا فلوس لخالي", "debtor": "me", "creditor": "uncle", "amount": 22000, "remaining": 22000, "created": "2026-04-01", "notes": "هتدفع كاملة من الجمعية"}
+    },
+    "transactions": []
+  },
+  "goals": [
+    {"id": "debt_uncle", "name": "سداد خالي", "target": 22000, "saved": 0, "priority": 1},
+    {"id": "debt_wife", "name": "سداد مراتي", "target": 5000, "saved": 0, "priority": 2},
+    {"id": "air_fryer", "name": "Air Fryer", "target": 6000, "saved": 0, "priority": 3},
+    {"id": "ac", "name": "تكييف", "target": 22000, "saved": 0, "priority": 4},
+    {"id": "alexandria", "name": "رحلة إسكندرية", "target": 15000, "saved": 0, "priority": 5},
+    {"id": "apartment", "name": "شقة 🏠", "target": 0, "saved": 0, "priority": 6, "notes": "الهدف الأكبر"}
+  ],
+  "reminders": {"morning": "07:00", "evening": "22:00"},
+  "last_updated": "22/05/2026"
 }
