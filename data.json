@@ -200,10 +200,10 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 444.65,
+      "current_balance_total": 442.65,
       "current_balance": {
         "CIB Account": 316.09,
-        "Cash": 73,
+        "Cash": 71,
         "Banque du Caire": 19.14,
         "Fawry Account": 35.14,
         "Vodafone Cash": 0.52,
@@ -359,13 +359,13 @@
         "total_i_owe": 27000
       },
       "expenses": {
-        "total": 132,
+        "total": 134,
         "count": 6,
         "items": [
           {
             "date": "2026-05-22",
             "item": "مواصلات غمرة ذهاب وعودة",
-            "amount": 22,
+            "amount": 24,
             "category": "Transport",
             "who": "Ahmed",
             "payment_method": "Cash"
@@ -412,20 +412,20 @@
           }
         ],
         "by_category": {
-          "Transport": 22,
+          "Transport": 24,
           "Coffee": 20,
           "Food": 80,
           "Shopping": 10
         },
         "by_who": {
-          "Ahmed": 122,
+          "Ahmed": 124,
           "Wife": 10
         }
       },
       "daily_trend": [
         {
           "date": "2026-05-22",
-          "total": 132
+          "total": 134
         }
       ],
       "home_budget": {
@@ -434,7 +434,7 @@
         "remaining": 6000
       },
       "summary": {
-        "net_flow": 15897.24,
+        "net_flow": 15895.24,
         "savings_rate": 62.8
       },
       "vezlo_tracking": {
