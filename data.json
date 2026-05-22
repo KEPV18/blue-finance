@@ -200,10 +200,10 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 576.65,
+      "current_balance_total": 444.65,
       "current_balance": {
         "CIB Account": 316.09,
-        "Cash": 205,
+        "Cash": 73,
         "Banque du Caire": 19.14,
         "Fawry Account": 35.14,
         "Vodafone Cash": 0.52,
@@ -359,21 +359,83 @@
         "total_i_owe": 27000
       },
       "expenses": {
-        "total": 0,
-        "count": 0,
-        "items": [],
-        "by_category": {},
-        "by_who": {}
+        "total": 132,
+        "count": 6,
+        "items": [
+          {
+            "date": "2026-05-22",
+            "item": "مواصلات غمرة ذهاب وعودة",
+            "amount": 22,
+            "category": "Transport",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "سجاير",
+            "amount": 10,
+            "category": "Coffee",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "سجاير",
+            "amount": 10,
+            "category": "Coffee",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "فطار",
+            "amount": 20,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "بلونة لمراتي",
+            "amount": 10,
+            "category": "Shopping",
+            "who": "Wife",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-22",
+            "item": "كشري ليا ولمراتي",
+            "amount": 60,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          }
+        ],
+        "by_category": {
+          "Transport": 22,
+          "Coffee": 20,
+          "Food": 80,
+          "Shopping": 10
+        },
+        "by_who": {
+          "Ahmed": 122,
+          "Wife": 10
+        }
       },
-      "daily_trend": [],
+      "daily_trend": [
+        {
+          "date": "2026-05-22",
+          "total": 132
+        }
+      ],
       "home_budget": {
         "total_budget": 6000,
         "spent_so_far": 0,
         "remaining": 6000
       },
       "summary": {
-        "net_flow": 0,
-        "savings_rate": 0
+        "net_flow": 15897.24,
+        "savings_rate": 62.8
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -548,13 +610,13 @@
     "daily_trips": 2,
     "daily_cost": 20,
     "monthly_cost": 440,
-    "current_balance": 80,
+    "current_balance": 70,
     "last_recharge": null,
     "last_recharge_amount": null,
     "low_balance_warning": 30,
     "top_up_amount": 100,
-    "trips_remaining": 4,
-    "days_remaining_at_current_usage": 2
+    "trips_remaining": 7,
+    "days_remaining_at_current_usage": 3
   },
   "transport": {
     "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
