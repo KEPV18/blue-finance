@@ -99,58 +99,16 @@
           "expected_salary": 20000,
           "expected_extra": 2200,
           "expected_total": 22200,
-          "received_total": 20000,
-          "received_items": [
-            {
-              "date": "2026-05-25",
-              "item": "مرتب مايو",
-              "amount": -20000,
-              "category": "Income",
-              "payment_method": "CIB_Account",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.456606"
-            }
-          ]
+          "received_total": 0,
+          "received_items": []
         },
         "expenses": {
-          "total": 380,
-          "count": 2,
-          "by_who": {
-            "Ahmed": 130,
-            "House": 250
-          },
-          "by_category": {
-            "Food": 380
-          },
-          "top_categories": [
-            [
-              "Food",
-              380
-            ]
-          ],
-          "items": [
-            {
-              "date": "2026-05-23",
-              "item": "سوبر ماركت",
-              "amount": 250,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "House",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.456360"
-            },
-            {
-              "date": "2026-05-22",
-              "item": "غدا",
-              "amount": 130,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.456191"
-            }
-          ]
+          "total": 0,
+          "count": 0,
+          "by_who": {},
+          "by_category": {},
+          "top_categories": [],
+          "items": []
         },
         "fixed_expenses": {
           "budget": 4409,
@@ -163,277 +121,21 @@
           "paid": 0,
           "remaining": 4875.76
         },
-        "daily_trend": [
-          {
-            "date": "2026-05-22",
-            "total": 130
-          },
-          {
-            "date": "2026-05-23",
-            "total": 250
-          }
-        ],
+        "daily_trend": [],
         "summary": {
           "expected_income": 22200,
-          "total_expenses": 380,
-          "net_flow": 16944.239999999998,
-          "remaining_budget": 12535.239999999998
+          "total_expenses": 0,
+          "net_flow": 17324.239999999998,
+          "remaining_budget": 12915.239999999998
         },
         "opening_balance": {
-          "CIB Account": -19683.91,
-          "Cash": 585,
-          "Banque du Caire": 0,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0
-        },
-        "opening_balance_total": -19063.77,
-        "current_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
           "Banque du Caire": 0,
           "Fawry Account": 35.14,
           "Vodafone Cash": 0
         },
-        "current_balance_total": 556.2299999999999
-      },
-      "2026-06": {
-        "label": "يونيو 2026",
-        "month_key": "2026-06",
-        "income": {
-          "expected_salary": 20000,
-          "expected_extra": 2200,
-          "expected_total": 22200,
-          "received_total": 0,
-          "received_items": []
-        },
-        "expenses": {
-          "total": 7464,
-          "count": 12,
-          "by_who": {
-            "Ahmed": 5664,
-            "House": 1350,
-            "Wife": 450
-          },
-          "by_category": {
-            "Food": 930,
-            "Transport": 288,
-            "Clothes": 450,
-            "Bills": 750,
-            "Installment": 4876,
-            "Coffee": 50,
-            "Healthcare": 120
-          },
-          "top_categories": [
-            [
-              "Installment",
-              4876
-            ],
-            [
-              "Food",
-              930
-            ],
-            [
-              "Bills",
-              750
-            ],
-            [
-              "Clothes",
-              450
-            ],
-            [
-              "Transport",
-              288
-            ]
-          ],
-          "items": [
-            {
-              "date": "2026-06-08",
-              "item": "دواء",
-              "amount": 120,
-              "category": "Healthcare",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.456038"
-            },
-            {
-              "date": "2026-06-07",
-              "item": "مواصلات",
-              "amount": 44,
-              "category": "Transport",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455887"
-            },
-            {
-              "date": "2026-06-05",
-              "item": "خضار وفاكهة",
-              "amount": 280,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "House",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455738"
-            },
-            {
-              "date": "2026-06-04",
-              "item": "قهوة",
-              "amount": 50,
-              "category": "Coffee",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455587"
-            },
-            {
-              "date": "2026-06-04",
-              "item": "غدا بره",
-              "amount": 180,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455420"
-            },
-            {
-              "date": "2026-06-03",
-              "item": "قسط CIB",
-              "amount": 4876,
-              "category": "Installment",
-              "payment_method": "CIB_Account",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455239"
-            },
-            {
-              "date": "2026-06-03",
-              "item": "بنزين",
-              "amount": 200,
-              "category": "Transport",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.455077"
-            },
-            {
-              "date": "2026-06-03",
-              "item": "إيجار",
-              "amount": 750,
-              "category": "Bills",
-              "payment_method": "Cash",
-              "who": "House",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454919"
-            },
-            {
-              "date": "2026-06-02",
-              "item": "هدوم مراتي",
-              "amount": 450,
-              "category": "Clothes",
-              "payment_method": "CIB_Account",
-              "who": "Wife",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454758"
-            },
-            {
-              "date": "2026-06-02",
-              "item": "سوبر ماركت",
-              "amount": 320,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "House",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454618"
-            },
-            {
-              "date": "2026-06-01",
-              "item": "مواصلات",
-              "amount": 44,
-              "category": "Transport",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454292"
-            },
-            {
-              "date": "2026-06-01",
-              "item": "غدا",
-              "amount": 150,
-              "category": "Food",
-              "payment_method": "Cash",
-              "who": "Ahmed",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454107"
-            }
-          ]
-        },
-        "fixed_expenses": {
-          "budget": 4409,
-          "paid": 750,
-          "remaining": 3659,
-          "paid_items": [
-            {
-              "date": "2026-06-03",
-              "item": "إيجار",
-              "amount": 750,
-              "category": "Bills",
-              "payment_method": "Cash",
-              "who": "House",
-              "notes": "",
-              "timestamp": "2026-05-22T06:54:20.454919"
-            }
-          ]
-        },
-        "installments": {
-          "budget": 4875.76,
-          "paid": 4876,
-          "remaining": 0
-        },
-        "daily_trend": [
-          {
-            "date": "2026-06-01",
-            "total": 194
-          },
-          {
-            "date": "2026-06-02",
-            "total": 770
-          },
-          {
-            "date": "2026-06-03",
-            "total": 5826
-          },
-          {
-            "date": "2026-06-04",
-            "total": 230
-          },
-          {
-            "date": "2026-06-05",
-            "total": 280
-          },
-          {
-            "date": "2026-06-07",
-            "total": 44
-          },
-          {
-            "date": "2026-06-08",
-            "total": 120
-          }
-        ],
-        "summary": {
-          "expected_income": 22200,
-          "total_expenses": 7464,
-          "net_flow": 9860.24,
-          "remaining_budget": 5451.24
-        },
-        "opening_balance": {
-          "CIB Account": 5642.09,
-          "Cash": 2343,
-          "Banque du Caire": 0,
-          "Fawry Account": 35.14,
-          "Vodafone Cash": 0
-        },
-        "opening_balance_total": 8020.2300000000005,
+        "opening_balance_total": 556.2299999999999,
         "current_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
@@ -445,9 +147,8 @@
       }
     },
     "available_months": [
-      "2026-05",
-      "2026-06"
+      "2026-05"
     ]
   },
-  "last_updated": "22/05/2026 06:54"
+  "last_updated": "22/05/2026 06:55"
 }
