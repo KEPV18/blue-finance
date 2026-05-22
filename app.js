@@ -559,6 +559,23 @@ function renderPeriod(pk) {
       ch2 += `</div>`;
     }
 
+    // Last charge (credit card payment due)
+    const lastCharge = v.last_charge || null;
+    if (lastCharge && !lastCharge.paid) {
+      let dueLabel = LANG === 'ar' ? '🚨 مستحق الدفع' : '🚨 Due for Payment';
+      let dateLabel = LANG === 'ar' ? `اتخصم ${fmtDate(lastCharge.charged_date)}` : `Charged ${fmtDate(lastCharge.charged_date)}`;
+      let dueDateLabel = LANG === 'ar' ? `آخر موعد: ${fmtDate(lastCharge.due_date)}` : `Due: ${fmtDate(lastCharge.due_date)}`;
+      let daysLeft = Math.ceil((new Date(lastCharge.due_date) - new Date()) / (1000*60*60*24));
+      let warnClr = daysLeft <= 5 ? 'var(--red)' : daysLeft <= 10 ? 'var(--amber)' : 'var(--accent)';
+      let urgentLabel = LANG === 'ar' ? `متبقي ${daysLeft} يوم للدفع` : `${daysLeft} days to pay`;
+      ch2 += `<div class="details" style="border:1px solid ${warnClr}33;background:${warnClr}11;padding:6px 8px;border-radius:6px;margin-top:6px">
+        <div class="sub-header" style="color:${warnClr}">${dueLabel}</div>
+        <div class="sub-item"><span class="key">${lastCharge.name}</span><span class="val" style="color:var(--amber)">\$${lastCharge.amount_usd} ≈ ${fmt(lastCharge.amount_egp)}</span></div>
+        <div style="font-size:9px;color:var(--text3);padding:2px 0">${dateLabel} · ${dueDateLabel}</div>
+        <div style="font-size:10px;font-weight:600;color:${warnClr};margin-top:3px">⚠️ ${urgentLabel}</div>
+      </div>`;
+    }
+
     if (hasInst) {
       ch2 += `<div class="details"><div class="sub-header">${LANG === 'ar' ? 'أقساط شهرية' : 'Monthly Installments'}: ${fmt(totalInst)} ${paidEarly > 0 ? '· ' + tr('paidEarly') + ': ' + fmt(paidEarly) : ''}</div>`;
       Object.entries(insts).forEach(([ik, iv]) => {

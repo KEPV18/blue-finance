@@ -111,11 +111,20 @@
       "bank": "بنك القاهرة",
       "type": "مشتريات",
       "limit": 23000,
-      "available": null,
-      "used": null,
+      "available": 21749,
+      "used": 1251,
       "paid_early_total": 0,
       "total_monthly_installments": 0,
-      "notes": "فيه اشتراك Olama $20/شهر",
+      "notes": "فيه اشتراك Olama $20/شهر — 1,059 EGP اتعصم 18 مايو",
+      "last_charge": {
+        "name": "Olama AI",
+        "amount_usd": 20,
+        "amount_egp": 1059,
+        "charged_date": "2026-05-18",
+        "due_within_days": 30,
+        "due_date": "2026-06-17",
+        "paid": false
+      },
       "subscriptions": [
         {
           "name": "Olama AI",
