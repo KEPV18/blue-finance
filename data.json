@@ -8,56 +8,112 @@
   "current_balances": {
     "CIB Account": 316.09,
     "Cash": 205,
-    "Banque du Caire": 0,
+    "Banque du Caire": 19.14,
     "Fawry Account": 35.14,
-    "Vodafone Cash": 0
+    "Vodafone Cash": 0.52,
+    "QNB": 0.76
   },
   "cards": {
-    "CIB_Visa": {
+    "CIB_Visa_Purchases": {
       "bank": "CIB",
       "type": "مشتريات",
       "limit": 45800,
       "available": 12788.01,
-      "used": 33012
+      "used": 33012,
+      "installments_details": {
+        "laptop": {
+          "monthly": 3543.08,
+          "remaining_months": 6,
+          "total_remaining": 21258.48,
+          "paid_early": false
+        },
+        "screen": {
+          "monthly": 542.66,
+          "remaining_months": 14,
+          "total_remaining": 7597.24,
+          "paid_early": false
+        },
+        "hard_drive": {
+          "monthly": 533.25,
+          "remaining_months": 7,
+          "total_remaining": 3732.75,
+          "paid_early": false
+        },
+        "speaker": {
+          "monthly": 38.25,
+          "remaining_months": 11,
+          "total_remaining": 420.75,
+          "paid_early": false
+        },
+        "camera": {
+          "monthly": 72.06,
+          "remaining_months": 10,
+          "total_remaining": 720.6,
+          "paid_early": false
+        },
+        "hand_blender": {
+          "monthly": 146.46,
+          "remaining_months": 10,
+          "total_remaining": 1464.58,
+          "paid_early": false
+        }
+      },
+      "total_monthly_installments": 4875.76,
+      "paid_early_total": 4093.12,
+      "notes": "4093.12 مدفوع مبكر"
     },
-    "Banque_du_Caire_Visa": {
+    "Banque_du_Caire_Visa_Purchases": {
       "bank": "بنك القاهرة",
       "type": "مشتريات",
       "limit": 23000,
       "available": null,
-      "used": null
+      "used": null,
+      "installments_details": [],
+      "total_monthly_installments": 0,
+      "paid_early_total": 0,
+      "notes": "المتاح/المستخدم محتاج تحديث"
     }
   },
-  "income_profile": {
-    "sources": [
+  "transport": {
+    "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
+    "segments": [
       {
-        "name": "Tabby (مرتب)",
-        "amount": 20000,
-        "detail": "صافي المرتب"
+        "from": "الخصوص",
+        "to": "غمرة",
+        "cost": 12,
+        "method": "ميكروباص/تاكسي"
       },
       {
-        "name": "بدل مواصلات",
-        "amount": 4048,
-        "detail": "184 EGP/يوم × 22 يوم"
-      },
-      {
-        "name": "Vezlo (جانبي)",
-        "amount": 0,
-        "detail": "85 EGP/ساعة (متغير)",
-        "variable": true
-      },
-      {
-        "name": "أم الزوجة",
-        "amount": 700,
-        "detail": "شهري"
-      },
-      {
-        "name": "أختك",
-        "amount": 1500,
-        "detail": "شهري"
+        "from": "غمرة",
+        "to": "جمال عبد الناصر",
+        "cost": 10,
+        "method": "مترو"
       }
     ],
-    "total_expected": 26248
+    "one_way_total": 22,
+    "round_trip": 44,
+    "working_days_month": 22,
+    "monthly_total": 968
+  },
+  "metro_card": {
+    "name": "كارت مترو",
+    "trip_cost": 10,
+    "daily_trips": 2,
+    "monthly_cost": 440,
+    "current_balance": null,
+    "last_recharge": null,
+    "last_recharge_amount": null,
+    "low_balance_warning": 30,
+    "top_up_amount": 100
+  },
+  "vezlo": {
+    "hourly_rate": 85,
+    "can_choose_when": true,
+    "notes": "أحمد هو اللي بيقرر امتي يشتغل وعدد الساعات"
+  },
+  "income_profile": {
+    "sources": [],
+    "total_expected": 0
   },
   "debts_profile": {
     "entries": [
@@ -140,100 +196,15 @@
       "notes": "الهدف الأكبر — لسة ما حددناش السعر"
     }
   ],
-  "fixed_expenses_profile": {
-    "items": [
-      {
-        "id": "rent",
-        "name": "إيجار",
-        "amount": 750,
-        "category": "Housing"
-      },
-      {
-        "id": "internet",
-        "name": "نت أرضي",
-        "amount": 250,
-        "category": "Utilities"
-      },
-      {
-        "id": "mobile",
-        "name": "باقة المحمول",
-        "amount": 240,
-        "category": "Utilities"
-      },
-      {
-        "id": "sewage",
-        "name": "صرف صحي",
-        "amount": 80,
-        "category": "Utilities"
-      },
-      {
-        "id": "landline",
-        "name": "تليفون أرضي",
-        "amount": 45,
-        "category": "Utilities"
-      },
-      {
-        "id": "electricity",
-        "name": "كهربا",
-        "amount": 26,
-        "category": "Utilities"
-      },
-      {
-        "id": "gas",
-        "name": "غاز",
-        "amount": 18,
-        "category": "Utilities"
-      },
-      {
-        "id": "wife_expenses",
-        "name": "مصروف مراتي",
-        "amount": 1000,
-        "category": "Family"
-      },
-      {
-        "id": "mom_money",
-        "name": "مصروف ماما",
-        "amount": 2000,
-        "category": "Family"
-      }
-    ],
-    "total": 4409
-  },
+  "fixed_expenses_profile": {},
   "all_data": {
     "months": {
       "2026-05": {
         "label": "مايو 2026",
         "month_key": "2026-05",
         "income": {
-          "sources": [
-            {
-              "name": "Tabby (مرتب)",
-              "amount": 20000,
-              "detail": "صافي المرتب"
-            },
-            {
-              "name": "بدل مواصلات",
-              "amount": 4048,
-              "detail": "184 EGP/يوم × 22 يوم"
-            },
-            {
-              "name": "Vezlo (جانبي)",
-              "amount": 0,
-              "detail": "85 EGP/ساعة (متغير)",
-              "variable": true
-            },
-            {
-              "name": "أم الزوجة",
-              "amount": 700,
-              "detail": "شهري"
-            },
-            {
-              "name": "أختك",
-              "amount": 1500,
-              "detail": "شهري"
-            }
-          ],
-          "total_expected": 26248
+          "sources": [],
+          "total_expected": 0
         },
         "income_received": {
           "total": 0,
@@ -247,134 +218,18 @@
           "items": []
         },
         "fixed_expenses": {
-          "items": [
-            {
-              "id": "rent",
-              "name": "إيجار",
-              "amount": 750,
-              "category": "Housing",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "internet",
-              "name": "نت أرضي",
-              "amount": 250,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "mobile",
-              "name": "باقة المحمول",
-              "amount": 240,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "sewage",
-              "name": "صرف صحي",
-              "amount": 80,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "landline",
-              "name": "تليفون أرضي",
-              "amount": 45,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "electricity",
-              "name": "كهربا",
-              "amount": 26,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "gas",
-              "name": "غاز",
-              "amount": 18,
-              "category": "Utilities",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "wife_expenses",
-              "name": "مصروف مراتي",
-              "amount": 1000,
-              "category": "Family",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            },
-            {
-              "id": "mom_money",
-              "name": "مصروف ماما",
-              "amount": 2000,
-              "category": "Family",
-              "paid": true,
-              "date_paid": "2026-05-01"
-            }
-          ],
-          "total": 4409,
+          "items": [],
+          "total": 0,
           "paid_total": 4409,
-          "unpaid_total": 0,
+          "unpaid_total": -4409,
           "all_paid": true
         },
         "installments": {
-          "items": [
-            {
-              "id": "laptop",
-              "name": "Laptop",
-              "monthly": 3543.08,
-              "remaining_months": 6,
-              "total_remaining": 21258.48
-            },
-            {
-              "id": "screen",
-              "name": "Screen",
-              "monthly": 542.66,
-              "remaining_months": 14,
-              "total_remaining": 7597.24
-            },
-            {
-              "id": "hard_drive",
-              "name": "Hard Drive",
-              "monthly": 533.25,
-              "remaining_months": 7,
-              "total_remaining": 3732.75
-            },
-            {
-              "id": "speaker",
-              "name": "Speaker",
-              "monthly": 38.25,
-              "remaining_months": 11,
-              "total_remaining": 420.75
-            },
-            {
-              "id": "camera",
-              "name": "Camera",
-              "monthly": 72.06,
-              "remaining_months": 10,
-              "total_remaining": 720.6
-            },
-            {
-              "id": "hand_blender",
-              "name": "Hand Blender",
-              "monthly": 146.46,
-              "remaining_months": 10,
-              "total_remaining": 1464.58
-            }
-          ],
-          "total_monthly": 4875.76,
+          "items": [],
+          "total_monthly": 0,
           "paid": true,
           "date_paid": "2026-05-27",
-          "paid_early": 4093.12
+          "paid_early": 0
         },
         "debts": {
           "entries": [
@@ -409,61 +264,36 @@
         "opening_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
-          "Banque du Caire": 0,
+          "Banque du Caire": 19.14,
           "Fawry Account": 35.14,
-          "Vodafone Cash": 0
+          "Vodafone Cash": 0.52,
+          "QNB": 0.76
         },
-        "opening_balance_total": 556.2299999999999,
+        "opening_balance_total": 576.6499999999999,
         "current_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
-          "Banque du Caire": 0,
+          "Banque du Caire": 19.14,
           "Fawry Account": 35.14,
-          "Vodafone Cash": 0
+          "Vodafone Cash": 0.52,
+          "QNB": 0.76
         },
-        "current_balance_total": 556.2299999999999,
+        "current_balance_total": 576.6499999999999,
         "summary": {
-          "expected_income": 26248,
+          "expected_income": 0,
           "total_expenses": 0,
           "fixed_paid": 4409,
-          "fixed_unpaid": 0,
-          "net_flow": 21372.239999999998,
-          "remaining": 16963.239999999998
+          "fixed_unpaid": -4409,
+          "net_flow": 0,
+          "remaining": 0
         }
       },
       "2026-06": {
         "label": "يونيو 2026",
         "month_key": "2026-06",
         "income": {
-          "sources": [
-            {
-              "name": "Tabby (مرتب)",
-              "amount": 20000,
-              "detail": "صافي المرتب"
-            },
-            {
-              "name": "بدل مواصلات",
-              "amount": 4048,
-              "detail": "184 EGP/يوم × 22 يوم"
-            },
-            {
-              "name": "Vezlo (جانبي)",
-              "amount": 0,
-              "detail": "85 EGP/ساعة (متغير)",
-              "variable": true
-            },
-            {
-              "name": "أم الزوجة",
-              "amount": 700,
-              "detail": "شهري"
-            },
-            {
-              "name": "أختك",
-              "amount": 1500,
-              "detail": "شهري"
-            }
-          ],
-          "total_expected": 26248
+          "sources": [],
+          "total_expected": 0
         },
         "income_received": {
           "total": 0,
@@ -477,134 +307,18 @@
           "items": []
         },
         "fixed_expenses": {
-          "items": [
-            {
-              "id": "rent",
-              "name": "إيجار",
-              "amount": 750,
-              "category": "Housing",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "internet",
-              "name": "نت أرضي",
-              "amount": 250,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "mobile",
-              "name": "باقة المحمول",
-              "amount": 240,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "sewage",
-              "name": "صرف صحي",
-              "amount": 80,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "landline",
-              "name": "تليفون أرضي",
-              "amount": 45,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "electricity",
-              "name": "كهربا",
-              "amount": 26,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "gas",
-              "name": "غاز",
-              "amount": 18,
-              "category": "Utilities",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "wife_expenses",
-              "name": "مصروف مراتي",
-              "amount": 1000,
-              "category": "Family",
-              "paid": false,
-              "date_paid": null
-            },
-            {
-              "id": "mom_money",
-              "name": "مصروف ماما",
-              "amount": 2000,
-              "category": "Family",
-              "paid": false,
-              "date_paid": null
-            }
-          ],
-          "total": 4409,
+          "items": [],
+          "total": 0,
           "paid_total": 0,
-          "unpaid_total": 4409,
-          "all_paid": false
+          "unpaid_total": 0,
+          "all_paid": true
         },
         "installments": {
-          "items": [
-            {
-              "id": "laptop",
-              "name": "Laptop",
-              "monthly": 3543.08,
-              "remaining_months": 6,
-              "total_remaining": 21258.48
-            },
-            {
-              "id": "screen",
-              "name": "Screen",
-              "monthly": 542.66,
-              "remaining_months": 14,
-              "total_remaining": 7597.24
-            },
-            {
-              "id": "hard_drive",
-              "name": "Hard Drive",
-              "monthly": 533.25,
-              "remaining_months": 7,
-              "total_remaining": 3732.75
-            },
-            {
-              "id": "speaker",
-              "name": "Speaker",
-              "monthly": 38.25,
-              "remaining_months": 11,
-              "total_remaining": 420.75
-            },
-            {
-              "id": "camera",
-              "name": "Camera",
-              "monthly": 72.06,
-              "remaining_months": 10,
-              "total_remaining": 720.6
-            },
-            {
-              "id": "hand_blender",
-              "name": "Hand Blender",
-              "monthly": 146.46,
-              "remaining_months": 10,
-              "total_remaining": 1464.58
-            }
-          ],
-          "total_monthly": 4875.76,
+          "items": [],
+          "total_monthly": 0,
           "paid": false,
           "date_paid": null,
-          "paid_early": 4093.12
+          "paid_early": 0
         },
         "debts": {
           "entries": [
@@ -639,26 +353,28 @@
         "opening_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
-          "Banque du Caire": 0,
+          "Banque du Caire": 19.14,
           "Fawry Account": 35.14,
-          "Vodafone Cash": 0
+          "Vodafone Cash": 0.52,
+          "QNB": 0.76
         },
-        "opening_balance_total": 556.2299999999999,
+        "opening_balance_total": 576.6499999999999,
         "current_balance": {
           "CIB Account": 316.09,
           "Cash": 205,
-          "Banque du Caire": 0,
+          "Banque du Caire": 19.14,
           "Fawry Account": 35.14,
-          "Vodafone Cash": 0
+          "Vodafone Cash": 0.52,
+          "QNB": 0.76
         },
-        "current_balance_total": 556.2299999999999,
+        "current_balance_total": 576.6499999999999,
         "summary": {
-          "expected_income": 26248,
+          "expected_income": 0,
           "total_expenses": 0,
           "fixed_paid": 0,
-          "fixed_unpaid": 4409,
-          "net_flow": 21372.239999999998,
-          "remaining": 16963.239999999998
+          "fixed_unpaid": 0,
+          "net_flow": 0,
+          "remaining": 0
         }
       }
     },
@@ -667,5 +383,5 @@
       "2026-06"
     ]
   },
-  "last_updated": "22/05/2026 07:17"
+  "last_updated": "22/05/2026 07:25"
 }
