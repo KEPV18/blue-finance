@@ -1,448 +1,375 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🐋 Blue Financial Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: #0f1923;
-            color: #e0e0e0;
-            padding: 16px;
-            min-height: 100vh;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .header h1 { font-size: 22px; color: #00d4aa; }
-        .header h1 span { color: #e0e0e0; }
-        .last-update { font-size: 12px; color: #666; }
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .card {
-            background: #1a2634;
-            border-radius: 10px;
-            padding: 16px;
-            border: 1px solid #2a3a4a;
-        }
-        .card .label { font-size: 11px; color: #888; margin-bottom: 6px; }
-        .card .value { font-size: 20px; font-weight: bold; color: #fff; }
-        .card .value.green { color: #00d4aa; }
-        .card .value.red { color: #ff4757; }
-        .card .value.blue { color: #54a0ff; }
-        .card .value.yellow { color: #ffc312; }
-        .card .sub { font-size: 11px; color: #555; margin-top: 4px; }
-        
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        @media (max-width: 768px) { .row { grid-template-columns: 1fr; } }
-        
-        .panel {
-            background: #1a2634;
-            border-radius: 10px;
-            padding: 16px;
-            border: 1px solid #2a3a4a;
-        }
-        .panel h2 {
-            font-size: 14px;
-            color: #00d4aa;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .panel h2 .count {
-            background: #2a3a4a;
-            color: #888;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-        canvas { max-height: 250px; max-width: 100%; }
-        
-        .balance-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #2a3a4a;
-        }
-        .balance-item:last-child { border-bottom: none; }
-        .balance-item .name { font-size: 13px; }
-        .balance-item .amount { font-size: 14px; font-weight: bold; }
-        .balance-item .amount.green { color: #00d4aa; }
-        .balance-total {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0 0;
-            margin-top: 8px;
-            border-top: 2px solid #00d4aa;
-            font-weight: bold;
-        }
-        .balance-total .amount { font-size: 18px; color: #00d4aa; }
-
-        .who-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
-        }
-        .who-card {
-            background: #0f1923;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-        }
-        .who-card .emoji { font-size: 24px; margin-bottom: 4px; }
-        .who-card .name { font-size: 11px; color: #888; margin-bottom: 4px; }
-        .who-card .amount { font-size: 15px; font-weight: bold; }
-        
-        .trend-chart {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            height: 100px;
-            gap: 4px;
-        }
-        .trend-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-        .trend-bar-wrap {
-            width: 100%;
-            height: 80px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-        .trend-bar {
-            width: 70%;
-            background: linear-gradient(to top, #00d4aa, #54a0ff);
-            border-radius: 3px 3px 0 0;
-            min-height: 2px;
-            transition: height 0.3s;
-        }
-        .trend-val { font-size: 9px; color: #888; margin-bottom: 4px; }
-        .trend-label { font-size: 9px; color: #555; margin-top: 4px; }
-        
-        table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        th {
-            text-align: right;
-            padding: 8px 6px;
-            color: #666;
-            font-size: 10px;
-            border-bottom: 1px solid #2a3a4a;
-        }
-        td { padding: 7px 6px; border-bottom: 1px solid #1a2634; }
-        td:last-child { text-align: left; }
-        .badge {
-            background: #2a3a4a;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-size: 10px;
-        }
-        
-        #loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-            color: #00d4aa;
-            gap: 16px;
-        }
-        .spinner {
-            width: 36px; height: 36px;
-            border: 3px solid #2a3a4a;
-            border-top: 3px solid #00d4aa;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #refreshBtn {
-            background: #00d4aa;
-            border: none;
-            color: #0f1923;
-            padding: 6px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🐋 Blue Finance</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:#0f1923;color:#e0e0e0;padding:14px;min-height:100vh}
+    .container{max-width:1100px;margin:0 auto}
+    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px;flex-wrap:wrap}
+    .header h1{font-size:18px;color:#00d4aa}
+    .header h1 span{color:#e0e0e0;font-size:13px}
+    .last-update{font-size:10px;color:#666}
+    
+    /* Month selector */
+    .month-bar{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+    .month-bar::-webkit-scrollbar{display:none}
+    .month-btn{background:#1a2634;border:1px solid #2a3a4a;color:#aaa;padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+    .month-btn.active{background:#00d4aa33;border-color:#00d4aa;color:#00d4aa;font-weight:bold}
+    .month-btn:hover{background:#2a3a4a}
+    
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+    .card{background:#1a2634;border-radius:10px;padding:14px;border:1px solid #2a3a4a}
+    .card .lbl{font-size:10px;color:#888;margin-bottom:4px}
+    .card .val{font-size:18px;font-weight:bold;color:#fff}
+    .card .val.green{color:#00d4aa}.card .val.red{color:#ff4757}.card .val.blue{color:#54a0ff}.card .val.yellow{color:#ffc312}
+    .card .sub{font-size:10px;color:#555;margin-top:2px}
+    .status-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;margin-top:4px}
+    .status-badge.paid{background:#00d4aa22;color:#00d4aa}
+    .status-badge.unpaid{background:#ff475722;color:#ff4757}
+    
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    @media(max-width:700px){.row{grid-template-columns:1fr}}
+    
+    .panel{background:#1a2634;border-radius:10px;padding:14px;border:1px solid #2a3a4a;overflow:hidden}
+    .panel h2{font-size:13px;color:#00d4aa;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .panel h2 .ct{background:#2a3a4a;color:#888;font-size:10px;padding:2px 8px;border-radius:10px}
+    
+    canvas{max-height:200px;max-width:100%}
+    
+    /* Balance list */
+    .bal-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #2a3a4a;font-size:13px}
+    .bal-item:last-child{border-bottom:none}
+    .bal-item .amt{font-weight:bold}
+    
+    /* Who spending */
+    .who-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+    .who-card{background:#0f1923;border-radius:8px;padding:10px;text-align:center}
+    .who-card .emoji{font-size:22px;margin-bottom:2px}
+    .who-card .nm{font-size:11px;color:#888}
+    .who-card .amt{font-size:14px;font-weight:bold;margin-top:2px}
+    
+    /* Categories */
+    .cat-list{margin-top:4px}
+    .cat-row{display:flex;justify-content:space-between;padding:5px 8px;border-radius:6px;margin-bottom:3px;background:#0f1923;font-size:12px}
+    
+    /* Trend */
+    .trend{display:flex;justify-content:space-between;align-items:flex-end;height:70px;gap:2px;margin-top:6px}
+    .tcol{display:flex;flex-direction:column;align-items:center;flex:1}
+    .tbar{width:60%;background:linear-gradient(to top,#00d4aa,#54a0ff);border-radius:2px 2px 0 0;transition:height .3s}
+    .tval{font-size:8px;color:#888;margin-bottom:2px}
+    .tlabel{font-size:8px;color:#555;margin-top:2px}
+    
+    /* Table */
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:11px}
+    th{text-align:right;padding:6px 4px;color:#666;font-size:9px;border-bottom:1px solid #2a3a4a}
+    td{padding:5px 4px;border-bottom:1px solid #1e2a36}
+    .b{background:#2a3a4a;padding:1px 6px;border-radius:8px;font-size:9px}
+    
+    /* Opening balance section */
+    .opening-box{background:#0f1923;border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px}
+    .opening-box .lbl{color:#888;font-size:10px}
+    .opening-box .val{font-size:16px;font-weight:bold}
+    
+    #loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:250px;gap:12px;color:#00d4aa}
+    .spinner{width:30px;height:30px;border:3px solid #2a3a4a;border-top:3px solid #00d4aa;border-radius:50%;animation:s 1s linear infinite}
+    @keyframes s{to{transform:rotate(360deg)}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🐋 <span>Blue</span> Financial Dashboard</h1>
-            <div>
-                <button id="refreshBtn" onclick="loadData()">🔄 تحديث</button>
-                <div class="last-update" id="updateTime" style="margin-top:4px;"></div>
-            </div>
-        </div>
-        
-        <div id="loading">
-            <div class="spinner"></div>
-            <span>جاري تحميل البيانات المالية...</span>
-        </div>
-        
-        <div id="content" style="display:none;">
-            <div class="cards" id="summaryCards"></div>
-            
-            <div class="row">
-                <div class="panel">
-                    <h2>💰 الأرصدة</h2>
-                    <div id="balancesList"></div>
-                    <div class="balance-total" id="balanceTotal"></div>
-                </div>
-                <div class="panel">
-                    <h2>📈 المصروفات حسب التصنيف</h2>
-                    <canvas id="categoryChart"></canvas>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="panel">
-                    <h2>👤 مين صرف كام؟</h2>
-                    <div id="whoSpending"></div>
-                </div>
-                <div class="panel">
-                    <h2>📅 آخر 7 أيام</h2>
-                    <div id="trendChart"></div>
-                </div>
-            </div>
-            
-            <div class="panel" style="margin-bottom: 16px;">
-                <h2>📋 آخر المعاملات <span class="count" id="txnCount"></span></h2>
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>التاريخ</th>
-                                <th>البيان</th>
-                                <th>المبلغ</th>
-                                <th>التصنيف</th>
-                                <th>مين</th>
-                                <th>طريقة الدفع</th>
-                            </tr>
-                        </thead>
-                        <tbody id="transactionsTable"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <h1>🐋 Blue <span>Finance</span></h1>
+      <div><span class="last-update" id="updateTime"></span></div>
     </div>
+    
+    <div id="loading"><div class="spinner"></div><span>جاري تحميل البيانات...</span></div>
+    
+    <div id="content" style="display:none">
+      <!-- Month selector -->
+      <div class="month-bar" id="monthBar"></div>
+      
+      <!-- Summary cards -->
+      <div class="cards" id="summaryCards"></div>
+      
+      <!-- Opening Balance -->
+      <div class="opening-box" id="openingBox"></div>
+      
+      <!-- Balances + Category Chart -->
+      <div class="row">
+        <div class="panel"><h2>💰 الأرصدة</h2><div id="balancesList"></div></div>
+        <div class="panel"><h2>📈 صرفت على إيه؟</h2><canvas id="catChart"></canvas></div>
+      </div>
+      
+      <!-- Who + Trend -->
+      <div class="row">
+        <div class="panel"><h2>👤 مين صرف؟</h2><div id="whoList"></div></div>
+        <div class="panel"><h2>📅 المصروفات اليومية</h2><div id="trendChart"></div></div>
+      </div>
+      
+      <!-- Fixed expenses status -->
+      <div class="cards" id="fixedCards"></div>
+      
+      <!-- Transactions table -->
+      <div class="panel">
+        <h2>📋 كل المعاملات <span class="ct" id="txnCount"></span></h2>
+        <div class="table-wrap">
+          <table><thead><tr>
+            <th>التاريخ</th><th>البيان</th><th>المبلغ</th><th>التصنيف</th><th>مين</th><th>الدفع</th>
+          </tr></thead><tbody id="txnTable"></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<script>
+const M=['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const C={'Food':'#ff6b6b','Transport':'#54a0ff','Coffee':'#ff9f43','Bills':'#ee5a24','Shopping':'#a29bfe','Entertainment':'#fd79a8','Healthcare':'#00cec9','Clothes':'#6c5ce7','Electronics':'#00b894','Home':'#e17055','Debt':'#d63031','Installment':'#e17055','Income':'#00d4aa','Other':'#636e72'};
+const W={'Ahmed':'🧑','Wife':'👩','House':'🏠','Other':'❓'};
+const WC={'Ahmed':'#54a0ff','Wife':'#ff6b6b','House':'#00d4aa','Other':'#636e72'};
+const BN={'CIB Account':'🏦 CIB','Cash':'💵 كاش','Banque du Caire':'💳 بنك القاهرة','Fawry Account':'📱 فوري','Vodafone Cash':'📱 فودافون كاش'};
 
-    <script>
-        const COLORS = {
-            'Food': '#ff6b6b', 'Transport': '#54a0ff', 'Coffee': '#ff9f43',
-            'Bills': '#ee5a24', 'Shopping': '#a29bfe', 'Entertainment': '#fd79a8',
-            'Healthcare': '#00cec9', 'Personal Care': '#ffeaa7', 'Clothes': '#6c5ce7',
-            'Electronics': '#00b894', 'Home': '#e17055', 'Debt': '#d63031',
-            'Other': '#636e72', 'Income': '#00d4aa'
-        };
-        const WHO_EMOJI = {'Ahmed': '🧑', 'Wife': '👩', 'House': '🏠', 'Other': '❓'};
-        const WHO_NAMES = {'Ahmed': 'أحمد', 'Wife': 'مراتي', 'House': 'البيت', 'Other': 'حاجات تانية'};
-        const WHO_COLORS = {'Ahmed': '#54a0ff', 'Wife': '#ff6b6b', 'House': '#00d4aa', 'Other': '#636e72'};
-        const BAL_NAMES = {
-            'CIB_Account': '🏦 CIB', 'Cash': '💵 كاش',
-            'Banque_du_Caire': '💳 بنك القاهرة',
-            'Fawry_Account': '📱 فوري', 'Vodafone_Cash': '📱 فودافون كاش'
-        };
+let allData = null, currentMonth = null, chartInstance = null;
 
-        function fm(n, suffix = true) {
-            if (n === undefined || n === null) return '-';
-            return Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + (suffix ? ' EGP' : '');
+function fm(n,s=true){if(n===undefined||n===null)return'-';return Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+(s?' EGP':'')}
+function fd(d){if(!d)return'';if(d.length<10)return d;return d.slice(8,10)+'/'+d.slice(5,7)}
+function sd(d){if(!d)return'';let p=d.split('-');return parseInt(p[2])+' '+M[parseInt(p[1])-1]}
+
+async function loadData(){
+  document.getElementById('loading').style.display='flex';
+  document.getElementById('content').style.display='none';
+  try{
+    let r=await fetch('./data.json');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    allData=await r.json();
+    
+    let months=allData.all_data.available_months||[];
+    if(!months.length){throw new Error('مفيش شهور متاحة')}
+    
+    // Set current month to latest
+    currentMonth=months[months.length-1];
+    
+    renderMonthBar(months);
+    renderMonth(currentMonth);
+    
+    document.getElementById('loading').style.display='none';
+    document.getElementById('content').style.display='block';
+    document.getElementById('updateTime').textContent='آخر تحديث: '+new Date().toLocaleString('ar-EG');
+  }catch(e){
+    document.getElementById('loading').innerHTML='❌ خطأ: '+e.message+'<br><br><small>تأكد من وجود ملف data.json</small>';
+  }
+}
+
+function renderMonthBar(months){
+  let h='';
+  for(let mk of months){
+    let p=mk.split('-'),y=p[0],m=parseInt(p[1]);
+    let label=M[m-1]+' '+y;
+    let active=mk===currentMonth?'active':'';
+    h+=`<button class="month-btn ${active}" data-month="${mk}">${label}</button>`;
+  }
+  document.getElementById('monthBar').innerHTML=h;
+  
+  // Click handler
+  document.querySelectorAll('.month-btn').forEach(btn=>{
+    btn.onclick=()=>{
+      document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMonth=btn.dataset.month;
+      renderMonth(currentMonth);
+    };
+  });
+}
+
+function renderMonth(mk){
+  if(!allData||!allData.all_data||!allData.all_data.months[mk])return;
+  
+  const mo=allData.all_data.months[mk];
+  const ip=allData.income_profile||{};
+  
+  // Expected income for this month
+  const expIncome=(ip.salary_net||0)+(ip.mother_in_law||0)+(ip.sister||0);
+  const inc=mo.income||{};
+  const exp=mo.expenses||{};
+  const fix=mo.fixed_expenses||{};
+  const inst=mo.installments||{};
+  const sm=mo.summary||{};
+  const ob=mo.opening_balance||{};
+  const cb=mo.current_balance||{};
+  
+  // ===== SUMMARY CARDS =====
+  let cardsHTML=`
+    <div class="card">
+      <div class="lbl">💵 معاك أول الشهر</div>
+      <div class="val green">${fm(mo.opening_balance_total)}</div>
+      <div class="sub">كل الأرصدة</div>
+    </div>
+    <div class="card">
+      <div class="lbl">💰 الدخل المتوقع</div>
+      <div class="val green">${fm(expIncome)}</div>
+      <div class="sub">المرتب + أم الزوجة + أختك</div>
+    </div>
+    <div class="card">
+      <div class="lbl">💸 المصروفات</div>
+      <div class="val red">${fm(exp.total)}</div>
+      <div class="sub">${exp.count} معاملة</div>
+    </div>
+    <div class="card">
+      <div class="lbl">📊 صافي التدفق</div>
+      <div class="val ${sm.net_flow>=0?'green':'red'}">${fm(sm.net_flow)}</div>
+      <div class="sub">دخل - مصروفات - أقساط</div>
+    </div>
+    <div class="card">
+      <div class="lbl">🏦 دلوقتي معاك</div>
+      <div class="val ${mo.current_balance_total>0?'green':'red'}">${fm(mo.current_balance_total)}</div>
+      <div class="sub">الرصيد الحالي</div>
+    </div>
+  `;
+  document.getElementById('summaryCards').innerHTML=cardsHTML;
+  
+  // ===== OPENING BALANCE DETAIL =====
+  let obHTML='<div class="lbl">💵 رصيد أول الشهر:</div><div>';
+  let obTotal=0;
+  for(let[k,v]of Object.entries(ob)){
+    obTotal+=v;
+    obHTML+=`${BN[k]||k}: <strong>${fm(v)}</strong> &nbsp;&nbsp;`;
+  }
+  obHTML+=`<br><span style="font-size:14px"><strong>الإجمالي: ${fm(obTotal)}</strong></span></div>`;
+  document.getElementById('openingBox').innerHTML=obHTML;
+  
+  // ===== BALANCES =====
+  let balHTML='';
+  let balTotal=0;
+  for(let[k,v]of Object.entries(cb)){
+    balTotal+=v;
+    let name=BN[k]||k.replace(/_/g,' ');
+    balHTML+=`<div class="bal-item"><span>${name}</span><span class="amt ${v>0?'green':''}" style="color:${v>0?'#00d4aa':'#666'}">${fm(v)}</span></div>`;
+  }
+  balHTML+=`<div class="bal-item" style="border-top:2px solid #00d4aa;margin-top:6px;padding-top:8px">
+    <span style="font-weight:bold">الإجمالي</span>
+    <span class="amt green" style="font-size:16px;color:#00d4aa">${fm(balTotal)}</span></div>`;
+  document.getElementById('balancesList').innerHTML=balHTML;
+  
+  // ===== CATEGORY CHART =====
+  const cats=exp.by_category||{};
+  const catLabels=Object.keys(cats);
+  const catValues=Object.values(cats);
+  const ctx=document.getElementById('catChart').getContext('2d');
+  if(chartInstance)chartInstance.destroy();
+  if(catLabels.length){
+    chartInstance=new Chart(ctx,{
+      type:'doughnut',
+      data:{
+        labels:catLabels,
+        datasets:[{
+          data:catValues,
+          backgroundColor:catLabels.map(l=>C[l]||'#636e72'),
+          borderColor:'#1a2634',borderWidth:2
+        }]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{position:'bottom',labels:{color:'#e0e0e0',font:{size:9},boxWidth:10,boxHeight:10}}
         }
-        function fd(d) {
-            if (!d || d.length < 10) return d;
-            return d.slice(8,10) + '/' + d.slice(5,7) + '/' + d.slice(0,4);
-        }
-        function sd(d) {
-            if (!d) return '';
-            const months = ['يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-            const parts = d.split('-');
-            return parseInt(parts[2]) + ' ' + months[parseInt(parts[1])-1];
-        }
+      }
+    });
+  }else{
+    chartInstance=new Chart(ctx,{
+      type:'doughnut',
+      data:{labels:['لا توجد مصروفات'],datasets:[{data:[1],backgroundColor:['#2a3a4a'],borderColor:'#1a2634',borderWidth:2}]},
+      options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#888',font:{size:9}}}}}
+    });
+  }
+  
+  // ===== WHO SPENDING =====
+  const who=exp.by_who||{};
+  const whoKeys=Object.keys(who);
+  let whoHTML='<div class="who-grid">';
+  if(!whoKeys.length){
+    whoHTML+='<div style="grid-column:span 3;text-align:center;color:#888;padding:16px;font-size:12px">📝 مفيش مصروفات</div>';
+  }else{
+    for(let[k,v]of Object.entries(who)){
+      let pct=exp.total?((v/exp.total)*100).toFixed(1):'0';
+      whoHTML+=`<div class="who-card" style="border:1px solid ${WC[k]||'#2a3a4a'}">
+        <div class="emoji">${W[k]||'❓'}</div>
+        <div class="nm">${k==='Ahmed'?'أحمد':k==='Wife'?'مراتي':k==='House'?'البيت':k}</div>
+        <div class="amt" style="color:${WC[k]||'#e0e0e0'}">${fm(v)}</div>
+        <div style="font-size:9px;color:#666">${pct}%</div>
+      </div>`;
+    }
+  }
+  whoHTML+='</div>';
+  document.getElementById('whoList').innerHTML=whoHTML;
+  
+  // ===== DAILY TREND =====
+  const trend=mo.daily_trend||[];
+  let trendHTML='<div class="trend">';
+  const maxT=Math.max(...trend.map(d=>d.total),1);
+  if(trend.length){
+    for(let d of trend){
+      let h=Math.max((d.total/maxT)*100,3);
+      trendHTML+=`<div class="tcol">
+        <div class="tval">${d.total>0?fm(d.total,false):''}</div>
+        <div class="tbar" style="height:${h}%"></div>
+        <div class="tlabel">${fd(d.date)}</div>
+      </div>`;
+    }
+  }else{
+    trendHTML+='<div style="text-align:center;color:#888;font-size:11px;width:100%;padding-top:20px">📝 مفيش مصروفات</div>';
+  }
+  trendHTML+='</div>';
+  document.getElementById('trendChart').innerHTML=trendHTML;
+  
+  // ===== FIXED EXPENSES STATUS =====
+  const fixedCardsHTML=`
+    <div class="card">
+      <div class="lbl">🏠 المصاريف الثابتة</div>
+      <div class="val yellow">${fm(fix.budget)}</div>
+      <div class="status-badge ${fix.paid>=fix.budget?'paid':'unpaid'}">${fix.paid>=fix.budget?'✅ مدفوعة':'⏳ لسه متدفعتش'}</div>
+      <div class="sub">${fix.paid>=fix.budget?'كله تمام':'متبقي: '+fm(fix.remaining)}</div>
+    </div>
+    <div class="card">
+      <div class="lbl">💳 الأقساط (CIB Visa)</div>
+      <div class="val blue">${fm(inst.budget)}</div>
+      <div class="status-badge ${inst.paid>=inst.budget?'paid':'unpaid'}">${inst.paid>=inst.budget?'✅ مدفوعة':'⏳ لسه متدفعتش'}</div>
+      <div class="sub">${inst.paid>=inst.budget?'خلصت': 'متبقي: '+fm(inst.remaining)}</div>
+    </div>
+    <div class="card">
+      <div class="lbl">💵 المتبقي للصرف</div>
+      <div class="val ${sm.remaining_budget>=0?'green':'red'}">${fm(sm.remaining_budget)}</div>
+      <div class="sub">بعد المصاريف الثابتة + الأقساط</div>
+    </div>
+  `;
+  document.getElementById('fixedCards').innerHTML=fixedCardsHTML;
+  
+  // ===== TRANSACTIONS TABLE =====
+  const items=exp.items||[];
+  document.getElementById('txnCount').textContent=items.length+' معاملة';
+  let tbody='';
+  for(let t of items){
+    let whoEmoji=W[t.who]||'';
+    let cls=t.amount>0?'red':'green';
+    let sign=t.amount>0?'':'+';
+    tbody+=`<tr>
+      <td>${fd(t.date)}</td>
+      <td>${t.item||'-'}</td>
+      <td style="color:${t.amount>0?'#ff4757':'#00d4aa'}">${sign}${t.amount?fm(t.amount):'-'}</td>
+      <td><span class="b" style="background:${C[t.category]||'#2a3a4a'}30;color:${C[t.category]||'#888'}">${t.category||'-'}</span></td>
+      <td>${whoEmoji} ${t.who||'-'}</td>
+      <td>${t.payment_method||'-'}</td>
+    </tr>`;
+  }
+  if(!tbody)tbody='<tr><td colspan="6" style="text-align:center;color:#888;padding:24px">📝 مفيش معاملات. ابعتلي مصروفاتك!</td></tr>';
+  document.getElementById('txnTable').innerHTML=tbody;
+}
 
-        async function loadData() {
-            document.getElementById('loading').style.display = 'flex';
-            document.getElementById('content').style.display = 'none';
-            try {
-                const res = await fetch('./data.json');
-                if (!res.ok) {
-                    if (res.status === 404) {
-                        // Try fetching from root
-                        const res2 = await fetch('/data.json');
-                        if (!res2.ok) throw new Error('البيانات مش موجودة. أول مرة تشغل؟ جري export');
-                    } else {
-                        throw new Error('HTTP ' + res.status);
-                    }
-                }
-                const _ = await (res.ok ? res : await fetch('/data.json'));
-                const d = await (res.ok ? res.json() : (await fetch('/data.json')).json());
-                render(d);
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                document.getElementById('updateTime').textContent = 'آخر تحديث: ' + new Date().toLocaleString('ar-EG');
-            } catch(e) {
-                document.getElementById('loading').innerHTML = '❌ خطأ: ' + e.message + '<br><br><small>تأكد من وجود ملف data.json بجانب index.html</small>';
-            }
-        }
-
-        function render(d) {
-            const m = d.month || {};
-            const income = m.total_income || d.income?.total_monthly || 0;
-            
-            // Summary cards
-            const cardsHTML = `
-                <div class="card">
-                    <div class="label">الدخل الشهري</div>
-                    <div class="value green">${fm(income)}</div>
-                    <div class="sub">المرتب + البدل + الإضافي</div>
-                </div>
-                <div class="card">
-                    <div class="label">المصروفات (${m.name || ''})</div>
-                    <div class="value red">${fm(m.total_expenses)}</div>
-                    <div class="sub">${m.transactions_count || 0} معاملة</div>
-                </div>
-                <div class="card">
-                    <div class="label">الأقساط الشهرية</div>
-                    <div class="value blue">${fm(d.installments)}</div>
-                    <div class="sub">CIB Visa</div>
-                </div>
-                <div class="card">
-                    <div class="label">المتبقي</div>
-                    <div class="value ${(m.remaining || 0) > 0 ? 'green' : 'red'}">${fm(m.remaining)}</div>
-                    <div class="sub">بعد المصروفات + الأقساط</div>
-                </div>
-                <div class="card">
-                    <div class="label">إجمالي الأرصدة</div>
-                    <div class="value ${(m.total_balance || 0) > 0 ? 'green' : 'red'}">${fm(m.total_balance)}</div>
-                    <div class="sub">كل الحسابات</div>
-                </div>
-                <div class="card">
-                    <div class="label">المصاريف الثابتة</div>
-                    <div class="value yellow">${fm(d.fixed_expenses)}</div>
-                    <div class="sub">مدفوع: ${fm(m.paid_fixed)} | باقي: ${fm(Math.max(0, m.unpaid_fixed || 0))}</div>
-                </div>
-            `;
-            document.getElementById('summaryCards').innerHTML = cardsHTML;
-
-            // Balances
-            let balHTML = '';
-            for (const [k, v] of Object.entries(d.balances || {})) {
-                const name = BAL_NAMES[k] || k.replace(/_/g, ' ');
-                balHTML += `<div class="balance-item"><span class="name">${name}</span><span class="amount ${v > 0 ? 'green' : ''}">${fm(v)}</span></div>`;
-            }
-            document.getElementById('balancesList').innerHTML = balHTML;
-            document.getElementById('balanceTotal').innerHTML = `<span>الإجمالي</span><span class="amount">${fm(m.total_balance || 0)}</span>`;
-
-            // Category chart
-            const cats = m.by_category || {};
-            const labels = Object.keys(cats);
-            const values = Object.values(cats);
-            const ctx = document.getElementById('categoryChart').getContext('2d');
-            if (window._catChart) window._catChart.destroy();
-            window._catChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels.length ? labels : ['لا توجد مصروفات'],
-                    datasets: [{
-                        data: labels.length ? values : [1],
-                        backgroundColor: labels.length ? labels.map(l => COLORS[l] || '#636e72') : ['#2a3a4a'],
-                        borderColor: '#1a2634',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { color: '#e0e0e0', font: { size: 10 } } }
-                    }
-                }
-            });
-
-            // Who spending
-            const who = m.who_spending || {};
-            const whoKeys = Object.keys(who);
-            let whoHTML = '<div class="who-grid">';
-            if (whoKeys.length === 0) {
-                whoHTML += '<div style="grid-column:span 3;text-align:center;color:#888;padding:20px;">📝 لسه مفيش مصروفات</div>';
-            } else {
-                const maxWho = Math.max(...Object.values(who), 1);
-                for (const [key, val] of Object.entries(who)) {
-                    const pct = ((val / (m.total_expenses || 1)) * 100).toFixed(1);
-                    whoHTML += `
-                        <div class="who-card" style="border:1px solid ${WHO_COLORS[key] || '#2a3a4a'}">
-                            <div class="emoji">${WHO_EMOJI[key] || '❓'}</div>
-                            <div class="name">${WHO_NAMES[key] || key}</div>
-                            <div class="amount" style="color:${WHO_COLORS[key] || '#e0e0e0'}">${fm(val)}</div>
-                            <div style="font-size:10px;color:#666;">${pct}%</div>
-                        </div>
-                    `;
-                }
-            }
-            whoHTML += '</div>';
-            document.getElementById('whoSpending').innerHTML = whoHTML;
-
-            // Trend chart
-            const trend = m.daily_trend || [];
-            let trendHTML = '<div class="trend-chart">';
-            const maxT = Math.max(...trend.map(d => d.total), 1);
-            for (const d of trend) {
-                const h = Math.max((d.total / maxT) * 100, 2);
-                trendHTML += `
-                    <div class="trend-col">
-                        <div class="trend-val">${d.total > 0 ? fm(d.total, false) : ''}</div>
-                        <div class="trend-bar-wrap"><div class="trend-bar" style="height:${h}%"></div></div>
-                        <div class="trend-label">${sd(d.date)}</div>
-                    </div>
-                `;
-            }
-            trendHTML += '</div>';
-            document.getElementById('trendChart').innerHTML = trendHTML;
-
-            // Recent transactions
-            const txns = (d.recent_transactions || []).slice(0, 30);
-            document.getElementById('txnCount').textContent = txns.length + ' معاملة';
-            let tbody = '';
-            for (const t of txns) {
-                const emoji = WHO_EMOJI[t.who] || '';
-                const cls = t.amount > 0 ? 'red' : 'green';
-                tbody += `
-                    <tr>
-                        <td>${fd(t.date)}</td>
-                        <td>${t.item || '-'}</td>
-                        <td style="color:var(--${cls});">${t.amount ? fm(t.amount) : '-'}</td>
-                        <td><span class="badge" style="background:${COLORS[t.category] || '#2a3a4a'}40;color:${COLORS[t.category] || '#888'}">${t.category || '-'}</span></td>
-                        <td>${emoji} ${t.who || '-'}</td>
-                        <td>${t.payment_method || '-'}</td>
-                    </tr>
-                `;
-            }
-            if (!tbody) tbody = '<tr><td colspan="6" style="text-align:center;color:#888;padding:30px;">📝 لسه مفيش معاملات. ابعتلي مصروفاتك عشان تظهر!</td></tr>';
-            document.getElementById('transactionsTable').innerHTML = tbody;
-        }
-
-        loadData();
-    </script>
+loadData();
+</script>
 </body>
 </html>
