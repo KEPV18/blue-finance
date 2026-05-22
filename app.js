@@ -87,6 +87,17 @@ function fmtDate(d) {
 function tr(key) { return TX[LANG][key] || key; }
 function trs(prefix, key) { return TX[LANG][prefix] ? (TX[LANG][prefix][key] || key) : key; }
 
+// ===== INFO POPUP =====
+function toggleInfo(id) {
+  let el = document.getElementById(id);
+  if (!el) return;
+  // Close all other popups
+  document.querySelectorAll('.info-popup.show').forEach(p => {
+    if (p.id !== id) p.classList.remove('show');
+  });
+  el.classList.toggle('show');
+}
+
 // ===== LANGUAGE TOGGLE =====
 function toggleLang() {
   LANG = LANG === 'ar' ? 'en' : 'ar';
@@ -432,31 +443,92 @@ function renderPeriod(pk) {
   if (daysToPay < 0) daysToPay += 30; // approximate
   let netFlow = eI - (exp.total || 0) - fpT - instT;
   let savingsPct = eI > 0 ? ((netFlow / eI) * 100).toFixed(1) : 0;
+  let totalObligations = fpT + instT;
+  
+  // Generate unique IDs for info popups
+  const uid = Math.random().toString(36).substr(2, 5);
+  
+  // Build fixed expense breakdown for salary popup
+  let salaryBreakdown = '';
+  (fix.items || []).forEach(f => {
+    let status = f.paid ? (LANG === 'ar' ? 'مدفوع ✅' : 'Paid ✅') : (LANG === 'ar' ? '◻️ لسه' : '◻️ Pending');
+    salaryBreakdown += `<div class="ip-row"><span class="ip-l">${f.name}</span><span class="ip-v">${fmt(f.amount)}</span></div>`;
+  });
+  // Build installment breakdown
+  let instBreakdown = '';
+  (inst.items || []).forEach(i => {
+    instBreakdown += `<div class="ip-row"><span class="ip-l">${i.name}</span><span class="ip-v">${fmt(i.monthly)}</span></div>`;
+  });
+  
+  let salaryLabel = LANG === 'ar' ? 'المرتب' : 'Salary';
+  let fixedLabel = LANG === 'ar' ? 'ثابت' : 'Fixed';
+  let instLabel2 = LANG === 'ar' ? 'أقساط' : 'Installments';
+  let allPaidLabel = LANG === 'ar' ? 'مدفوع ✅' : 'All Paid ✅';
+  
   document.getElementById('periodSummary').innerHTML = `
     <div class="ps-item">
-      <div class="ps-label">💰 ${tr('salary')}</div>
+      <div class="ps-label">💰 ${tr('salary')} <button class="btn-info" onclick="toggleInfo('sal${uid}')">🔍</button></div>
       <div class="ps-value green">${fmt(sa)}</div>
+      <div class="info-popup" id="sal${uid}">
+        <div class="ip-row"><span class="ip-l">${salaryLabel}</span><span class="ip-v">${fmt(sa)}</span></div>
+        <div class="ip-total"><span class="ip-l">${LANG === 'ar' ? 'كل المرتب' : 'Total Salary'}</span><span class="ip-v">${fmt(sa)}</span></div>
+      </div>
     </div>
     <div class="ps-divider"></div>
     <div class="ps-item">
-      <div class="ps-label">💸 ${tr('fixed')} + ${tr('inst')}</div>
-      <div class="ps-value red">${fmt(fpT + instT)}</div>
+      <div class="ps-label">💸 ${tr('fixed')} + ${tr('inst')} <button class="btn-info" onclick="toggleInfo('obl${uid}')">🔍</button></div>
+      <div class="ps-value red">${fmt(totalObligations)}</div>
+      <div class="info-popup" id="obl${uid}">
+        <div class="ip-row" style="color:var(--accent);font-weight:700;border-bottom:1px solid var(--border);padding-bottom:4px;margin-bottom:4px"><span class="ip-l">${fixedLabel}</span><span class="ip-v">${fmt(fpT)}</span></div>
+        ${salaryBreakdown}
+        <div class="ip-row" style="color:var(--blue);font-weight:700;border-bottom:1px solid var(--border);padding-bottom:4px;margin:4px 0"><span class="ip-l">${instLabel2}</span><span class="ip-v">${fmt(instT)}</span></div>
+        ${instBreakdown}
+        <div class="ip-total"><span class="ip-l">${LANG === 'ar' ? 'المجموع' : 'Total'}</span><span class="ip-v">${fmt(totalObligations)}</span></div>
+      </div>
     </div>
     <div class="ps-divider"></div>
     <div class="ps-item">
-      <div class="ps-label">📊 ${tr('netFlow')}</div>
+      <div class="ps-label">📊 ${tr('netFlow')} <button class="btn-info" onclick="toggleInfo('net${uid}')">🔍</button></div>
       <div class="ps-value ${netFlow >= 0 ? 'green' : 'red'}">${fmt(netFlow)}</div>
+      <div class="info-popup" id="net${uid}">
+        <div class="ip-row"><span class="ip-l">${salaryLabel}</span><span class="ip-v" style="color:var(--accent)">${fmt(sa)}</span></div>
+        <div class="ip-row"><span class="ip-l">- ${fixedLabel}</span><span class="ip-v" style="color:var(--red)">-${fmt(fpT)}</span></div>
+        <div class="ip-row"><span class="ip-l">- ${instLabel2}</span><span class="ip-v" style="color:var(--red)">-${fmt(instT)}</span></div>
+        ${(exp.total || 0) > 0 ? `<div class="ip-row"><span class="ip-l">- ${LANG === 'ar' ? 'مصروفات' : 'Expenses'}</span><span class="ip-v" style="color:var(--red)">-${fmt(exp.total)}</span></div>` : ''}
+        <div class="ip-total"><span class="ip-l">${LANG === 'ar' ? 'صافي التدفق' : 'Net Flow'}</span><span class="ip-v">${fmt(netFlow)}</span></div>
+      </div>
     </div>
     <div class="ps-divider"></div>
     <div class="ps-item">
-      <div class="ps-label">📈 ${tr('savings')}</div>
+      <div class="ps-label">📈 ${tr('savings')} <button class="btn-info" onclick="toggleInfo('sav${uid}')">🔍</button></div>
       <div class="ps-value ${savingsPct >= 0 ? 'green' : 'red'}">${savingsPct}%</div>
+      <div class="info-popup" id="sav${uid}">
+        <div class="ip-row"><span class="ip-l">${LANG === 'ar' ? 'صافي التدفق' : 'Net Flow'}</span><span class="ip-v" style="color:${netFlow >= 0 ? 'var(--accent)' : 'var(--red)'}">${fmt(netFlow)}</span></div>
+        <div class="ip-row"><span class="ip-l">${LANG === 'ar' ? 'المقسوم على' : 'Divided by'}</span><span class="ip-v">${fmt(sa)}</span></div>
+        <div class="ip-total"><span class="ip-l">${LANG === 'ar' ? 'نسبة الادخار' : 'Savings Rate'}</span><span class="ip-v">${savingsPct}%</span></div>
+        <div style="font-size:9px;color:var(--text3);margin-top:4px">${fmt(netFlow, false)} ÷ ${fmt(sa, false)} × 100 = ${savingsPct}%</div>
+      </div>
     </div>
     <div class="ps-divider"></div>
     <div class="ps-item">
-      <div class="ps-label">📆 ${tr('daysToPay')}</div>
+      <div class="ps-label">📆 ${tr('daysToPay')} <button class="btn-info" onclick="toggleInfo('day${uid}')">🔍</button></div>
       <div class="ps-value blue">${daysToPay} ${LANG === 'ar' ? 'يوم' : 'days'}</div>
+      <div class="info-popup" id="day${uid}">
+        <div class="ip-row"><span class="ip-l">${LANG === 'ar' ? 'يوم القبض' : 'Payday'}</span><span class="ip-v">${LANG === 'ar' ? '27 كل شهر' : '27th each month'}</span></div>
+        <div class="ip-row"><span class="ip-l">${LANG === 'ar' ? 'النهاردة' : 'Today'}</span><span class="ip-v">${now.getDate()}/${now.getMonth()+1}</span></div>
+        <div class="ip-total"><span class="ip-l">${LANG === 'ar' ? 'المتبقي' : 'Remaining'}</span><span class="ip-v" style="color:var(--blue)">${daysToPay} ${LANG === 'ar' ? 'يوم' : 'days'}</span></div>
+      </div>
     </div>`;
+
+  // Add click-outside listeners for info popups
+  if (!window._infoListenerAdded) {
+    window._infoListenerAdded = true;
+    document.addEventListener('click', function(e) {
+      if (!e.target.classList.contains('btn-info')) {
+        document.querySelectorAll('.info-popup.show').forEach(p => p.classList.remove('show'));
+      }
+    });
+  }
 
   // ===== TAB 1 - CARDS =====
   const cards = AD.cards || {};
