@@ -116,6 +116,7 @@ function toggleLang() {
   document.getElementById('goalsTitle').textContent = '🎯 ' + (LANG === 'ar' ? 'أهدافي المالية' : 'Financial Goals');
   document.getElementById('trTitle1').textContent = '🚌 ' + (LANG === 'ar' ? 'المواصلات' : 'Transport');
   document.getElementById('trTitle2').textContent = '🚇 ' + (LANG === 'ar' ? 'كارت المترو' : 'Metro Card');
+  document.getElementById('invTitle').textContent = '📈 ' + (LANG === 'ar' ? 'استثماراتي' : 'My Investments');
   if (AD && curP) renderPeriod(curP);
 }
 
@@ -340,7 +341,7 @@ function renderPeriod(pk) {
     }
   }
 
-  // Balances (6 wallets + Fawry investment)
+  // Balances (6 wallets only)
   let bh = ''; let balT = 0;
   const cb = po.current_balance || {};
   let bnk = LANG === 'ar' ? BN_ar : BN;
@@ -349,14 +350,29 @@ function renderPeriod(pk) {
     let nm = bnk[k] || k.replace(/_/g, ' ');
     bh += `<div class="list-row"><span>${nm}</span><span class="amt green">${fmt(v)}</span></div>`;
   });
-  // Fawry investment
+  bh += `<div class="list-row-total"><span>${tr('total')}</span><span class="amt">${fmt(balT)}</span></div>`;
+  document.getElementById('overviewBalances').innerHTML = bh;
+
+  // Fawry Investment panel
   const fawryInv = AD.investments?.fawry || {};
   if (fawryInv.current_balance) {
     let invLabel = LANG === 'ar' ? '📈 فوري استثمار' : '📈 Fawry Investment';
-    bh += `<div class="list-row" style="border-top:1px solid var(--accent2)"><span>${invLabel} <span style="font-size:9px;color:var(--text3)">(+${fmt(fawryInv.profit, false)} ${LANG === 'ar' ? 'أرباح' : 'profit'})</span></span><span class="amt" style="color:var(--accent2);font-weight:700">${fmt(fawryInv.current_balance)}</span></div>`;
+    let statusLabel = LANG === 'ar' ? 'حالة' : 'Status';
+    let profitLabel = LANG === 'ar' ? 'الأرباح' : 'Profit';
+    let balanceLabel = LANG === 'ar' ? 'الرصيد الحالي' : 'Current Balance';
+    let typeLabel = LANG === 'ar' ? 'النوع' : 'Type';
+    let invType = LANG === 'ar' ? 'استثمار' : 'Investment';
+    let statusClr = fawryInv.status === 'profitable' ? 'var(--accent)' : 'var(--amber)';
+    let statusEmoji = fawryInv.status === 'profitable' ? '✅' : '⚠️';
+    document.getElementById('fawryInvestment').innerHTML = `
+      <div style="font-size:13px;font-weight:700;margin-bottom:8px">${invLabel}</div>
+      <div class="list-row"><span>${typeLabel}</span><span>${fawryInv.type || invType}</span></div>
+      <div class="list-row"><span>💰 ${balanceLabel}</span><span class="amt" style="color:var(--accent2);font-weight:700">${fmt(fawryInv.current_balance)}</span></div>
+      <div class="list-row"><span>📈 ${profitLabel}</span><span class="amt green">+${fmt(fawryInv.profit)}</span></div>
+      <div class="list-row"><span>📊 ${statusLabel}</span><span style="color:${statusClr};font-weight:600">${statusEmoji} ${fawryInv.status === 'profitable' ? (LANG === 'ar' ? 'مربح' : 'Profitable') : fawryInv.status}</span></div>
+      ${fawryInv.notes ? `<div style="font-size:10px;color:var(--text3);margin-top:6px;padding:6px;background:var(--bg3);border-radius:6px">${fawryInv.notes}</div>` : ''}
+    `;
   }
-  bh += `<div class="list-row-total"><span>${tr('total')}</span><span class="amt">${fmt(balT)}</span></div>`;
-  document.getElementById('overviewBalances').innerHTML = bh;
 
   // Who spent
   const who = exp.by_who || {};
