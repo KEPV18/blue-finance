@@ -26,9 +26,9 @@
   "installments": 4875.76,
   "debts_total": 27000,
   "next_payday": "25 مايو 2026",
-  "payday_countdown": 4,
+  "payday_countdown": 3,
   "goals": [],
-  "last_updated": "21/05/2026 23:44",
+  "last_updated": "22/05/2026 06:31",
   "month": {
     "name": "مايو",
     "total_income": 26248,
@@ -41,11 +41,6 @@
       "Coffee": 50
     },
     "daily_trend": [
-      {
-        "date": "2026-05-15",
-        "total": 0,
-        "count": 0
-      },
       {
         "date": "2026-05-16",
         "total": 0,
@@ -75,6 +70,11 @@
         "date": "2026-05-21",
         "total": 50,
         "count": 1
+      },
+      {
+        "date": "2026-05-22",
+        "total": 0,
+        "count": 0
       }
     ],
     "top_categories": [
