@@ -366,6 +366,11 @@
         "by_who": {}
       },
       "daily_trend": [],
+      "home_budget": {
+        "total_budget": 6000,
+        "spent_so_far": 0,
+        "remaining": 6000
+      },
       "summary": {
         "net_flow": 0,
         "savings_rate": 0

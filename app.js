@@ -263,6 +263,34 @@ function renderPeriod(pk) {
       </div>
     </div>`;
 
+  // ===== HOME BUDGET TRACKER =====
+  const hb = po.home_budget || {};
+  const hbTotal = hb.total_budget || 0;
+  const hbSpent = hb.spent_so_far || 0;
+  const hbRemaining = Math.max(hbTotal - hbSpent, 0);
+  const hbPct = hbTotal > 0 ? Math.min((hbSpent / hbTotal) * 100, 100) : 0;
+  const hbWarn = hbRemaining <= hbTotal * 0.25;
+
+  document.getElementById('homeBudgetCard').innerHTML = `
+    <div style="background:var(--bg2);border:1px solid ${hbWarn ? 'var(--red)' : 'var(--accent)'};border-radius:var(--radius);padding:14px;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:13px;font-weight:700">🏠 ${LANG === 'ar' ? 'ميزانية البيت' : 'Home Budget'}</span>
+        <span style="font-size:11px;color:var(--text3)">${LANG === 'ar' ? 'أكل + شرب + مستلزمات' : 'Food + Drinks + Supplies'}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-size:10px;color:var(--text3)">${LANG === 'ar' ? 'صرفت' : 'Spent'}: <strong style="color:var(--red);font-size:12px">${fmt(hbSpent)}</strong></span>
+        <span style="font-size:10px;color:var(--text3)">${LANG === 'ar' ? 'متبقي' : 'Left'}: <strong style="color:${hbWarn ? 'var(--red)' : 'var(--accent)'};font-size:14px">${fmt(hbRemaining)}</strong></span>
+        <span style="font-size:10px;color:var(--text3)">${LANG === 'ar' ? 'الميزانية' : 'Budget'}: <strong>${fmt(hbTotal)}</strong></span>
+      </div>
+      <div style="height:8px;border-radius:4px;background:var(--bg4);overflow:hidden;margin-bottom:3px">
+        <div style="height:100%;width:${hbPct}%;border-radius:4px;background:${hbWarn ? 'var(--red)' : hbPct > 70 ? 'var(--amber)' : 'var(--accent)'};transition:width 0.3s"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text3)">
+        <span>${hbPct.toFixed(0)}% ${LANG === 'ar' ? 'مستخدم' : 'used'}</span>
+        ${hbWarn ? `<span style="color:var(--red);font-weight:600">⚠️ ${LANG === 'ar' ? 'الميزانية أكلت بقى!' : 'Budget running low!'}</span>` : ''}
+      </div>
+    </div>`;
+
   // ===== TAB 0 - OVERVIEW =====
   // Income
   let ih = '';
