@@ -374,7 +374,7 @@ function renderPeriod(pk) {
     let clr = f.paid ? 'var(--accent)' : 'var(--amber)';
     feh += `<div class="fixed-item ${cls}"><span><span style="color:${clr};margin-left:5px">${f.paid ? '✅' : '◻️'}</span>${f.name}</span><span style="font-weight:700;color:${clr}">${fmt(f.amount)}</span></div>`;
   });
-  let fP = fix.paid_total || fix.total || 0;
+  let fP = (fix.paid_total !== undefined ? fix.paid_total : fix.total) || 0;
   let allP = fP >= fpT;
   feh += `<div class="list-row-total"><span>${tr('total')} <span class="bdg ${allP ? 'grn' : 'ylw'}">${allP ? tr('allPaid') : tr('pending')}</span></span><span class="amt">${fmt(fP)} / ${fmt(fpT)}</span></div>`;
   document.getElementById('overviewFixed').innerHTML = feh;
