@@ -594,7 +594,7 @@
       },
       "fixed_expenses": {
         "total": 4592,
-        "paid_total": 0,
+        "paid_total": 433,
         "items": [
           {
             "id": "rent",
@@ -606,7 +606,9 @@
             "id": "internet",
             "name": "🌐 نت أرضي",
             "amount": 433,
-            "paid": false
+            "paid": true,
+            "prepaid_in_period_5": true,
+            "note": "مدفوع مسبقاً من فترة 5 على كارت بنك القاهرة"
           },
           {
             "id": "mobile",
