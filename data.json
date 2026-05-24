@@ -555,10 +555,10 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 14734.91,
+      "current_balance_total": 14482.91,
       "current_balance": {
         "CIB Account": 11008.03,
-        "Cash": 3295,
+        "Cash": 3043,
         "Banque du Caire": 19.14,
         "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
@@ -708,8 +708,8 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 3019,
-        "count": 2,
+        "total": 3271,
+        "count": 12,
         "items": [
           {
             "date": "2026-05-24",
@@ -728,16 +728,112 @@
             "who": "Other",
             "payment_method": "Fawry Account",
             "notes": "مسجلة كدين عليها"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "بطاطس 2 كيلو",
+            "amount": 30,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "بتنجان كيلو إلا ربع",
+            "amount": 15,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "طماطم",
+            "amount": 30,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "2 كيلو فراولة",
+            "amount": 35,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "نشا",
+            "amount": 20,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "كيك شيف",
+            "amount": 10,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "10 بيضات",
+            "amount": 40,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "سندوتشات من المطعم",
+            "amount": 12,
+            "category": "Home",
+            "who": "House",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "بادز",
+            "amount": 50,
+            "category": "Shopping",
+            "who": "Wife",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "2 اندومي",
+            "amount": 10,
+            "category": "Food",
+            "who": "Wife",
+            "payment_method": "Cash"
           }
         ],
-        "by_category": {},
-        "by_who": {}
+        "by_category": {
+          "Transfer": 3000,
+          "Other - Debt عليها": 19,
+          "Home": 192,
+          "Shopping": 50,
+          "Food": 10
+        },
+        "by_who": {
+          "Ahmed": 3000,
+          "Other": 19,
+          "House": 192,
+          "Wife": 60
+        }
       },
-      "daily_trend": [],
+      "daily_trend": [
+        {
+          "date": "2026-05-24",
+          "total": 252
+        }
+      ],
       "home_budget": {
         "total_budget": 6000,
-        "spent_so_far": 0,
-        "remaining": 6000
+        "spent_so_far": 192,
+        "remaining": 5808
       },
       "summary": {
         "net_flow": 0,
