@@ -242,8 +242,8 @@
         ]
       },
       "fixed_expenses": {
-        "total": 4409,
-        "paid_total": 4409,
+        "total": 4592,
+        "paid_total": 4592,
         "items": [
           {
             "id": "rent",
@@ -254,8 +254,9 @@
           {
             "id": "internet",
             "name": "🌐 نت أرضي",
-            "amount": 250,
-            "paid": true
+            "amount": 433,
+            "paid": true,
+            "note": "تم زيادته من 250 لـ 433.20"
           },
           {
             "id": "mobile",
@@ -363,8 +364,8 @@
         "total_i_owe": 27000
       },
       "expenses": {
-        "total": 978.2,
-        "count": 18,
+        "total": 545.0,
+        "count": 17,
         "items": [
           {
             "date": "2026-05-22",
@@ -421,14 +422,6 @@
             "category": "Food",
             "who": "Ahmed",
             "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "شحن نت",
-            "amount": 433.2,
-            "category": "Bills",
-            "who": "Ahmed",
-            "payment_method": "Banque du Caire"
           },
           {
             "date": "2026-05-23",
@@ -516,11 +509,10 @@
           "Shopping": 20,
           "Coffee": 130,
           "Food": 175,
-          "Home": 90,
-          "Bills": 433.2
+          "Home": 90
         },
         "by_who": {
-          "Ahmed": 816.2,
+          "Ahmed": 383,
           "Wife": 72,
           "House": 90
         }
@@ -532,17 +524,17 @@
         },
         {
           "date": "2026-05-23",
-          "total": 814.2
+          "total": 381.0
         }
       ],
       "home_budget": {
         "total_budget": 6000,
-        "spent_so_far": 145,
-        "remaining": 5855
+        "spent_so_far": 578,
+        "remaining": 5422
       },
       "summary": {
-        "net_flow": 15051.04,
-        "savings_rate": 59.4
+        "net_flow": 13646.24,
+        "savings_rate": 59.0
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -635,7 +627,7 @@
     }
   },
   "fixed_expenses_profile": {
-    "total": 4409,
+    "total": 4592,
     "items": [
       {
         "id": "rent",
@@ -645,7 +637,8 @@
       {
         "id": "internet",
         "name": "🌐 نت أرضي",
-        "amount": 250
+        "amount": 433,
+        "note": "تم زيادته من 250 لـ 433.20 اعتباراً من مايو 2026"
       },
       {
         "id": "mobile",
