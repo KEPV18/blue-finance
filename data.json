@@ -10,9 +10,9 @@
     "fawry_funds": {
       "platform": "فوري",
       "last_updated": "2026-05-22",
-      "total_balance": 26070.53,
+      "total_balance": 25072.21,
       "total_deposits": 25510.85,
-      "total_profit": -1439.95,
+      "total_profit": -127.88,
       "total_profit_after_fees": -127.89,
       "funds": {
         "gold": {
@@ -90,7 +90,7 @@
         },
         "fawry_stable": {
           "name": "فوري",
-          "current_balance": 8650.7,
+          "current_balance": 7652.38,
           "total_deposits": 9233.85,
           "profit": -2582.78,
           "profit_after_fees": -1258.45,
@@ -107,7 +107,7 @@
             "notes": "العائد السنوي يعكس الأداء من بداية العام. العائد الشهري لآخر 30 يوم. العائد اليومي حتى يوم عمل مضى."
           },
           "notes": "✅ أرباح يومية — تنزل كل يوم",
-          "total_withdrawals": 28635.15,
+          "total_withdrawals": 29633.47,
           "transactions": [
             {
               "type": "deposit",
@@ -180,6 +180,10 @@
             {
               "type": "withdrawal",
               "amount": 99.39
+            },
+            {
+              "type": "withdrawal",
+              "amount": 998.32
             }
           ]
         }
@@ -200,12 +204,12 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 422.65,
+      "current_balance_total": 1064.97,
       "current_balance": {
         "CIB Account": 316.09,
-        "Cash": 51,
+        "Cash": 295,
         "Banque du Caire": 19.14,
-        "Fawry Account": 35.14,
+        "Fawry Account": 433.46,
         "Vodafone Cash": 0.52,
         "QNB": 0.76
       },
@@ -359,8 +363,8 @@
         "total_i_owe": 27000
       },
       "expenses": {
-        "total": 164,
-        "count": 7,
+        "total": 873.2,
+        "count": 15,
         "items": [
           {
             "date": "2026-05-22",
@@ -417,33 +421,103 @@
             "category": "Food",
             "who": "Ahmed",
             "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "مراتي",
+            "amount": 47,
+            "category": "Family",
+            "who": "Wife",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "شحن نت",
+            "amount": 433.2,
+            "category": "Bills",
+            "who": "Ahmed",
+            "payment_method": "Banque du Caire"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "علبة",
+            "amount": 110,
+            "category": "Coffee",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "كانز",
+            "amount": 20,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "حواواشي",
+            "amount": 35,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "سجق",
+            "amount": 20,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "مواصلات غمرة",
+            "amount": 24,
+            "category": "Transport",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-23",
+            "item": "استخدام مترو",
+            "amount": 20,
+            "category": "Transport",
+            "who": "Ahmed",
+            "payment_method": "Metro Card"
           }
         ],
         "by_category": {
-          "Transport": 34,
+          "Transport": 78,
           "Shopping": 10,
-          "Coffee": 20,
-          "Food": 100
+          "Coffee": 130,
+          "Food": 175,
+          "Family": 47,
+          "Bills": 433.2
         },
         "by_who": {
-          "Ahmed": 144,
-          "Wife": 10
+          "Ahmed": 816.2,
+          "Wife": 57
         }
       },
       "daily_trend": [
         {
           "date": "2026-05-22",
           "total": 164
+        },
+        {
+          "date": "2026-05-23",
+          "total": 709.2
         }
       ],
       "home_budget": {
         "total_budget": 6000,
-        "spent_so_far": 0,
-        "remaining": 6000
+        "spent_so_far": 55,
+        "remaining": 5945
       },
       "summary": {
-        "net_flow": 15865.24,
-        "savings_rate": 62.7
+        "net_flow": 15156.04,
+        "savings_rate": 59.9
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -508,11 +582,11 @@
       "bank": "بنك القاهرة",
       "type": "مشتريات",
       "limit": 23000,
-      "available": 21749,
-      "used": 1251,
+      "available": 21467.38,
+      "used": 1532.62,
       "paid_early_total": 0,
       "total_monthly_installments": 0,
-      "notes": "فيه اشتراك Olama $20/شهر — 1,059 EGP اتعصم 18 مايو",
+      "notes": "فيه اشتراك Olama $20/شهر — 1,059 EGP اتعصم 18 مايو · شحن نت 433.20",
       "last_charge": {
         "name": "Olama AI",
         "amount_usd": 20,
@@ -618,13 +692,13 @@
     "daily_trips": 2,
     "daily_cost": 20,
     "monthly_cost": 440,
-    "current_balance": 70,
+    "current_balance": 50,
     "last_recharge": null,
     "last_recharge_amount": null,
     "low_balance_warning": 30,
     "top_up_amount": 100,
-    "trips_remaining": 7,
-    "days_remaining_at_current_usage": 3
+    "trips_remaining": 5,
+    "days_remaining_at_current_usage": 2
   },
   "transport": {
     "route": "الخصوص ← غمرة ← جمال عبد الناصر ← غمرة ← الخصوص",
@@ -748,7 +822,7 @@
     "morning": "07:00",
     "evening": "22:00"
   },
-  "last_updated": "22/05/2026",
+  "last_updated": "23/05/2026",
   "vezlo_tracking": {
     "total_hours": 0,
     "total_earned": 0,
