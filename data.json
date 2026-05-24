@@ -351,7 +351,7 @@
             "direction": "عليا",
             "creditor_name": "مراتي",
             "amount": 5000,
-            "remaining": 5000
+            "remaining": 0
           },
           {
             "description": "عليا فلوس لخالي",
@@ -361,7 +361,7 @@
             "remaining": 22000
           }
         ],
-        "total_i_owe": 27000
+        "total_i_owe": 22000
       },
       "expenses": {
         "total": 545.0,
@@ -541,56 +541,244 @@
         "earned": 0,
         "entries": []
       }
+    },
+    "period_6": {
+      "label": "الفترة 6 — مايو",
+      "date_range": {
+        "start": "2026-05-27",
+        "end": "2026-06-26"
+      },
+      "salary_info": {
+        "salary_month": "مايو 2026",
+        "salary_amount": 26103.31,
+        "notes": "تم استلامها من تابي يوم 24 مايو (بدري 3 أيام)",
+        "received_date": "2026-05-24"
+      },
+      "opening_balance_total": 0,
+      "current_balance_total": 14759.91,
+      "current_balance": {
+        "CIB Account": 14011.03,
+        "Cash": 295,
+        "Banque du Caire": 19.14,
+        "Fawry Account": 433.46,
+        "Vodafone Cash": 0.52,
+        "QNB": 0.76
+      },
+      "income": {
+        "total_expected": 26103.31,
+        "sources": [
+          {
+            "name": "Tabby (راتب مايو)",
+            "amount": 26103.31,
+            "variable": false,
+            "detail": "تم استلامها يوم 24 مايو"
+          },
+          {
+            "name": "Vezlo (جانبي)",
+            "amount": 0,
+            "variable": true,
+            "detail": "85/ساعة"
+          },
+          {
+            "name": "أم الزوجة",
+            "amount": 700,
+            "variable": false
+          },
+          {
+            "name": "أختي (قسط موبايل)",
+            "amount": 0,
+            "variable": true,
+            "detail": "هتسكت شهر 6 — مش هتدفع"
+          }
+        ]
+      },
+      "fixed_expenses": {
+        "total": 4592,
+        "paid_total": 0,
+        "items": [
+          {
+            "id": "rent",
+            "name": "🏠 إيجار",
+            "amount": 750,
+            "paid": false
+          },
+          {
+            "id": "internet",
+            "name": "🌐 نت أرضي",
+            "amount": 433,
+            "paid": false
+          },
+          {
+            "id": "mobile",
+            "name": "📱 محمول",
+            "amount": 240,
+            "paid": false
+          },
+          {
+            "id": "sewage",
+            "name": "🚰 صرف صحي",
+            "amount": 80,
+            "paid": false
+          },
+          {
+            "id": "landline",
+            "name": "☎️ تليفون أرضي",
+            "amount": 45,
+            "paid": false
+          },
+          {
+            "id": "electricity",
+            "name": "💡 كهربا",
+            "amount": 26,
+            "paid": false
+          },
+          {
+            "id": "gas",
+            "name": "🔥 غاز",
+            "amount": 18,
+            "paid": false
+          },
+          {
+            "id": "wife_expenses",
+            "name": "👩 مراتي",
+            "amount": 1000,
+            "paid": false
+          },
+          {
+            "id": "mom_money",
+            "name": "👩‍👩‍👧 ماما",
+            "amount": 2000,
+            "paid": false
+          }
+        ]
+      },
+      "installments": {
+        "paid": true,
+        "total_monthly": 4875.75,
+        "paid_date": "2026-05-24",
+        "items": [
+          {
+            "name": "لابتوب",
+            "monthly": 3543.08,
+            "remaining_months": 5,
+            "paid_early": false
+          },
+          {
+            "name": "شاشة",
+            "monthly": 542.66,
+            "remaining_months": 13,
+            "paid_early": false
+          },
+          {
+            "name": "هارد خارجي",
+            "monthly": 533.25,
+            "remaining_months": 6,
+            "paid_early": false
+          },
+          {
+            "name": "سبيكر",
+            "monthly": 38.25,
+            "remaining_months": 10,
+            "paid_early": false
+          },
+          {
+            "name": "كاميرا",
+            "monthly": 72.06,
+            "remaining_months": 9,
+            "paid_early": false
+          },
+          {
+            "name": "هاند بليندر",
+            "monthly": 146.46,
+            "remaining_months": 9,
+            "paid_early": false
+          }
+        ]
+      },
+      "debts": {
+        "entries": [
+          {
+            "description": "عليا فلوس لخالي",
+            "direction": "عليا",
+            "creditor_name": "خالي",
+            "amount": 22000,
+            "remaining": 22000
+          }
+        ],
+        "total_i_owe": 22000
+      },
+      "expenses": {
+        "total": 0,
+        "count": 0,
+        "items": [],
+        "by_category": {},
+        "by_who": {}
+      },
+      "daily_trend": [],
+      "home_budget": {
+        "total_budget": 6000,
+        "spent_so_far": 0,
+        "remaining": 6000
+      },
+      "summary": {
+        "net_flow": 0,
+        "savings_rate": 0
+      },
+      "vezlo_tracking": {
+        "hours": 0,
+        "earned": 0,
+        "entries": []
+      }
     }
   },
-  "current_period": "period_5",
-  "next_period_id": "period_6",
+  "current_period": "period_6",
+  "next_period_id": "period_7",
   "cards": {
     "CIB_Visa_Purchases": {
       "bank": "CIB",
       "type": "مشتريات",
       "limit": 45800,
-      "available": 12788.01,
-      "used": 33012,
+      "available": 17663.75,
+      "used": 28136.25,
       "paid_early_total": 4093.12,
       "total_monthly_installments": 4875.76,
-      "notes": "4,093.12 مدفوع مبكر",
+      "notes": "تم دفع قسط 4,875.75 ليوم 24 مايو.",
       "subscriptions": [],
       "installments_details": {
         "لابتوب": {
           "monthly": 3543.08,
-          "remaining_months": 6,
-          "total_remaining": 21258.48,
+          "remaining_months": 5,
+          "total_remaining": 17715.4,
           "paid_early": false
         },
         "شاشة": {
           "monthly": 542.66,
-          "remaining_months": 14,
-          "total_remaining": 7597.24,
+          "remaining_months": 13,
+          "total_remaining": 7054.58,
           "paid_early": false
         },
         "هارد خارجي": {
           "monthly": 533.25,
-          "remaining_months": 7,
-          "total_remaining": 3732.75,
+          "remaining_months": 6,
+          "total_remaining": 3199.5,
           "paid_early": false
         },
         "سبيكر": {
           "monthly": 38.25,
-          "remaining_months": 11,
-          "total_remaining": 420.75,
+          "remaining_months": 10,
+          "total_remaining": 382.5,
           "paid_early": false
         },
         "كاميرا": {
           "monthly": 72.06,
-          "remaining_months": 10,
-          "total_remaining": 720.6,
+          "remaining_months": 9,
+          "total_remaining": 648.54,
           "paid_early": false
         },
         "هاند بليندر": {
           "monthly": 146.46,
-          "remaining_months": 10,
-          "total_remaining": 1464.58,
+          "remaining_months": 9,
+          "total_remaining": 1318.14,
           "paid_early": false
         }
       }
@@ -599,11 +787,11 @@
       "bank": "بنك القاهرة",
       "type": "مشتريات",
       "limit": 23000,
-      "available": 21467.38,
-      "used": 1532.62,
-      "paid_early_total": 0,
+      "available": 23000,
+      "used": 0,
+      "paid_early_total": 1532.62,
       "total_monthly_installments": 0,
-      "notes": "فيه اشتراك Olama $20/شهر — 1,059 EGP اتعصم 18 مايو · شحن نت 433.20",
+      "notes": "✅ مدفوع كامل — الليمت متاح بالكامل (23,000)",
       "last_charge": {
         "name": "Olama AI",
         "amount_usd": 20,
@@ -611,7 +799,7 @@
         "charged_date": "2026-05-18",
         "due_within_days": 30,
         "due_date": "2026-06-17",
-        "paid": false
+        "paid": true
       },
       "subscriptions": [
         {
@@ -756,6 +944,10 @@
       "sister": {
         "name": "أختي",
         "relationship": "أخت"
+      },
+      "shams": {
+        "name": "شمس",
+        "relationship": "صاحب"
       }
     },
     "active_debts": {
@@ -764,8 +956,9 @@
         "debtor": "me",
         "creditor": "wife",
         "amount": 5000,
-        "remaining": 5000,
-        "created": "2026-05-01"
+        "remaining": 0,
+        "created": "2026-05-01",
+        "paid_date": "2026-05-24"
       },
       "uncle_22000": {
         "description": "عليا فلوس لخالي",
@@ -775,6 +968,16 @@
         "remaining": 22000,
         "created": "2026-04-01",
         "notes": "هتدفع كاملة من الجمعية"
+      },
+      "shams_1000": {
+        "description": "عليا فلوس لشمس (صاحبي)",
+        "debtor": "me",
+        "creditor": "shams",
+        "amount": 1000,
+        "remaining": 0,
+        "created": "2026-05-01",
+        "paid_date": "2026-05-24",
+        "notes": "تم السداد من مرتب مايو"
       }
     },
     "transactions": []
@@ -793,10 +996,10 @@
       "id": "debt_wife",
       "name": "سداد مراتي",
       "target": 5000,
-      "saved": 0,
+      "saved": 5000,
       "priority": 2,
       "monthly_saving": 0,
-      "projected_completion": null
+      "projected_completion": "2026-05-24"
     },
     {
       "id": "air_fryer",
@@ -848,10 +1051,9 @@
   },
   "debt_repayment_plan": {
     "monthly_payment": 0,
-    "start_period": "period_5",
+    "start_period": "period_6",
     "auto_calculate": true,
     "target_debts": [
-      "wife_5000",
       "uncle_22000"
     ]
   },
