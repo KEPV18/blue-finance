@@ -555,12 +555,12 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 14759.91,
+      "current_balance_total": 14734.91,
       "current_balance": {
-        "CIB Account": 14011.03,
-        "Cash": 295,
+        "CIB Account": 11008.03,
+        "Cash": 3295,
         "Banque du Caire": 19.14,
-        "Fawry Account": 433.46,
+        "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
         "QNB": 0.76
       },
@@ -708,9 +708,28 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 0,
-        "count": 0,
-        "items": [],
+        "total": 3019,
+        "count": 2,
+        "items": [
+          {
+            "date": "2026-05-24",
+            "item": "تحويل CIB → فوري 3000",
+            "amount": 3000,
+            "category": "Transfer",
+            "who": "Ahmed",
+            "payment_method": "CIB Account",
+            "notes": "تحويل عبر انستا باي — رسوم 3 EGP"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "شحن كارت أم رودينا",
+            "amount": 19,
+            "category": "Other - Debt عليها",
+            "who": "Other",
+            "payment_method": "Fawry Account",
+            "notes": "مسجلة كدين عليها"
+          }
+        ],
         "by_category": {},
         "by_who": {}
       },
@@ -728,7 +747,10 @@
         "hours": 0,
         "earned": 0,
         "entries": []
-      }
+      },
+      "notes": [
+        "تم تحويل 3,000 احتياطي كاش في البيت مع مراتي"
+      ]
     }
   },
   "current_period": "period_6",
@@ -948,6 +970,10 @@
       "shams": {
         "name": "شمس",
         "relationship": "صاحب"
+      },
+      "rodinas_mom": {
+        "name": "أم رودينا",
+        "relationship": "أم الزوجة"
       }
     },
     "active_debts": {
@@ -978,6 +1004,14 @@
         "created": "2026-05-01",
         "paid_date": "2026-05-24",
         "notes": "تم السداد من مرتب مايو"
+      },
+      "rodinas_mom_recharge": {
+        "description": "عليها شحن كارت — أم رودينا",
+        "debtor": "rodinas_mom",
+        "creditor": "me",
+        "amount": 19,
+        "remaining": 19,
+        "created": "2026-05-24"
       }
     },
     "transactions": []
@@ -1062,5 +1096,10 @@
     "home_budget_danger_pct": 100,
     "metro_warning_balance": 30,
     "olama_reminder_days_before": 5
+  },
+  "transfer_fees": {
+    "fawry_cash_withdrawal": "1 EGP لكل 1,000 EGP مسحوبة كاش من فوري",
+    "instapay_transfer": "1 EGP لكل 1,000 EGP محولة عبر انستا باي",
+    "notes": "الرسوم بتتحسب على كل ألف. مثلاً 3,000 = 3 EGP رسوم"
   }
 }
