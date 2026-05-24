@@ -555,10 +555,10 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 14462.91,
+      "current_balance_total": 14439.91,
       "current_balance": {
         "CIB Account": 11008.03,
-        "Cash": 3023,
+        "Cash": 3000,
         "Banque du Caire": 19.14,
         "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
@@ -708,8 +708,8 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 3291,
-        "count": 13,
+        "total": 3271,
+        "count": 12,
         "items": [
           {
             "date": "2026-05-24",
@@ -808,14 +808,6 @@
             "category": "Food",
             "who": "Wife",
             "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "فطار",
-            "amount": 20,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
           }
         ],
         "by_category": {
@@ -823,10 +815,10 @@
           "Other - Debt عليها": 19,
           "Home": 192,
           "Shopping": 50,
-          "Food": 30
+          "Food": 10
         },
         "by_who": {
-          "Ahmed": 3020,
+          "Ahmed": 3000,
           "Other": 19,
           "House": 192,
           "Wife": 60
@@ -835,7 +827,7 @@
       "daily_trend": [
         {
           "date": "2026-05-24",
-          "total": 272
+          "total": 3271
         }
       ],
       "home_budget": {
