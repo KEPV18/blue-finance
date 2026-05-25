@@ -592,10 +592,10 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 12359.91,
+      "current_balance_total": 12321.91,
       "current_balance": {
         "CIB Account": 11008.03,
-        "Cash": 920.0,
+        "Cash": 882.0,
         "Banque du Caire": 19.14,
         "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
@@ -745,8 +745,8 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 2351.0,
-        "count": 15,
+        "total": 2389.0,
+        "count": 16,
         "items": [
           {
             "date": "2026-05-24",
@@ -868,20 +868,28 @@
             "category": "Food",
             "who": "Ahmed",
             "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-25",
+            "item": "لبن",
+            "amount": 38.0,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
           }
         ],
         "by_category": {
           "Other - Debt عليها": 19,
           "Home": 192,
           "Shopping": 50,
-          "Food": 55.0,
+          "Food": 93.0,
           "Family": 2035.0
         },
         "by_who": {
           "Other": 19,
           "House": 192,
           "Wife": 60,
-          "Ahmed": 2080.0
+          "Ahmed": 2118.0
         }
       },
       "daily_trend": [
@@ -891,7 +899,7 @@
         },
         {
           "date": "2026-05-25",
-          "total": 45.0
+          "total": 83.0
         }
       ],
       "home_budget": {
@@ -900,8 +908,8 @@
         "remaining": 5808
       },
       "summary": {
-        "net_flow": 14984.56,
-        "savings_rate": 55.9
+        "net_flow": 14946.56,
+        "savings_rate": 55.8
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -1336,6 +1344,26 @@
       "after": {
         "CIB Account": 11008.03,
         "Cash": 920.0,
+        "Banque du Caire": 19.14,
+        "Fawry Account": 411.46,
+        "Vodafone Cash": 0.52,
+        "QNB": 0.76
+      },
+      "ts": "2026-05-25 07:52:39"
+    },
+    {
+      "type": "expense",
+      "item": {
+        "date": "2026-05-25",
+        "item": "لبن",
+        "amount": 38.0,
+        "category": "Food",
+        "who": "Ahmed",
+        "payment_method": "Cash"
+      },
+      "after": {
+        "CIB Account": 11008.03,
+        "Cash": 882.0,
         "Banque du Caire": 19.14,
         "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
