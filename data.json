@@ -592,10 +592,10 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 14439.91,
+      "current_balance_total": 12439.91,
       "current_balance": {
         "CIB Account": 11008.03,
-        "Cash": 3000,
+        "Cash": 1000.0,
         "Banque du Caire": 19.14,
         "Fawry Account": 411.46,
         "Vodafone Cash": 0.52,
@@ -745,8 +745,8 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 271,
-        "count": 11,
+        "total": 2271.0,
+        "count": 12,
         "items": [
           {
             "date": "2026-05-24",
@@ -836,24 +836,34 @@
             "category": "Food",
             "who": "Wife",
             "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "فلوس ماما",
+            "amount": 2000.0,
+            "category": "Family",
+            "who": "Ahmed",
+            "payment_method": "Cash"
           }
         ],
         "by_category": {
           "Other - Debt عليها": 19,
           "Home": 192,
           "Shopping": 50,
-          "Food": 10
+          "Food": 10,
+          "Family": 2000.0
         },
         "by_who": {
           "Other": 19,
           "House": 192,
-          "Wife": 60
+          "Wife": 60,
+          "Ahmed": 2000.0
         }
       },
       "daily_trend": [
         {
           "date": "2026-05-24",
-          "total": 271.0
+          "total": 2271.0
         }
       ],
       "home_budget": {
@@ -862,8 +872,8 @@
         "remaining": 5808
       },
       "summary": {
-        "net_flow": 0,
-        "savings_rate": 0
+        "net_flow": 15064.56,
+        "savings_rate": 56.2
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -1223,5 +1233,27 @@
     "fawry_cash_withdrawal": "1 EGP لكل 1,000 EGP مسحوبة كاش من فوري",
     "instapay_transfer": "1 EGP لكل 1,000 EGP محولة عبر انستا باي",
     "notes": "الرسوم بتتحسب على كل ألف. مثلاً 3,000 = 3 EGP رسوم"
-  }
+  },
+  "expense_history": [
+    {
+      "type": "expense",
+      "item": {
+        "date": "2026-05-24",
+        "item": "فلوس ماما",
+        "amount": 2000.0,
+        "category": "Family",
+        "who": "Ahmed",
+        "payment_method": "Cash"
+      },
+      "after": {
+        "CIB Account": 11008.03,
+        "Cash": 1000.0,
+        "Banque du Caire": 19.14,
+        "Fawry Account": 411.46,
+        "Vodafone Cash": 0.52,
+        "QNB": 0.76
+      },
+      "ts": "2026-05-25 07:52:19"
+    }
+  ]
 }
