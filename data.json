@@ -204,10 +204,10 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 917.97,
+      "current_balance_total": 834.97,
       "current_balance": {
         "CIB Account": 316.09,
-        "Cash": 248,
+        "Cash": 165,
         "Banque du Caire": 19.14,
         "Fawry Account": 333.46,
         "Vodafone Cash": 0.52,
@@ -364,8 +364,8 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 978.2,
-        "count": 18,
+        "total": 1061.2,
+        "count": 21,
         "items": [
           {
             "date": "2026-05-22",
@@ -510,17 +510,42 @@
             "category": "Bills & Utilities",
             "who": "Ahmed",
             "payment_method": "Banque du Caire Visa"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "زبادي",
+            "amount": 10,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "رومي",
+            "amount": 35,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
+          },
+          {
+            "date": "2026-05-24",
+            "item": "لبن",
+            "amount": 38,
+            "category": "Food",
+            "who": "Ahmed",
+            "payment_method": "Cash"
           }
         ],
         "by_category": {
           "Transport": 130,
           "Shopping": 20,
           "Coffee": 130,
-          "Food": 175,
-          "Home": 90
+          "Food": 258,
+          "Home": 90,
+          "Bills & Utilities": 433.2
         },
         "by_who": {
-          "Ahmed": 383,
+          "Ahmed": 899.2,
           "Wife": 72,
           "House": 90
         }
@@ -533,6 +558,10 @@
         {
           "date": "2026-05-23",
           "total": 381.0
+        },
+        {
+          "date": "2026-05-24",
+          "total": 83
         }
       ],
       "home_budget": {
@@ -541,8 +570,8 @@
         "remaining": 5422
       },
       "summary": {
-        "net_flow": 13646.24,
-        "savings_rate": 59.0
+        "net_flow": 14785.04,
+        "savings_rate": 58.4
       },
       "vezlo_tracking": {
         "hours": 0,
