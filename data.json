@@ -204,14 +204,14 @@
         "received_date": "2026-04-27"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 834.97,
+      "current_balance_total": 0,
       "current_balance": {
-        "CIB Account": 316.09,
-        "Cash": 165,
-        "Banque du Caire": 19.14,
-        "Fawry Account": 333.46,
-        "Vodafone Cash": 0.52,
-        "QNB": 0.76
+        "CIB Account": 0,
+        "Cash": 0,
+        "Banque du Caire": 0,
+        "Fawry Account": 0,
+        "Vodafone Cash": 0,
+        "QNB": 0
       },
       "income": {
         "total_expected": 25314,
@@ -364,214 +364,21 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 1061.2,
-        "count": 21,
-        "items": [
-          {
-            "date": "2026-05-22",
-            "item": "مواصلات غمرة",
-            "amount": 24,
-            "category": "Transport",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "استخدام مترو",
-            "amount": 10,
-            "category": "Transport",
-            "who": "Ahmed",
-            "payment_method": "Metro Card"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "بلونة",
-            "amount": 10,
-            "category": "Shopping",
-            "who": "Wife",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "سجاير",
-            "amount": 20,
-            "category": "Coffee",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "فطار",
-            "amount": 20,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "كانز",
-            "amount": 20,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-22",
-            "item": "كشري علبتين",
-            "amount": 60,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "علبة",
-            "amount": 110,
-            "category": "Coffee",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "كانز",
-            "amount": 20,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "حواواشي",
-            "amount": 35,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "سجق",
-            "amount": 20,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "مواصلات غمرة",
-            "amount": 24,
-            "category": "Transport",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "استخدام مترو",
-            "amount": 20,
-            "category": "Transport",
-            "who": "Ahmed",
-            "payment_method": "Metro Card"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "بن",
-            "amount": 75,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "مناديل",
-            "amount": 15,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "نوامة",
-            "amount": 10,
-            "category": "Shopping",
-            "who": "Wife",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-23",
-            "item": "مواصلات رودينا",
-            "amount": 52,
-            "category": "Transport",
-            "who": "Wife",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-18",
-            "item": "الإنترنت المنزلي (على كارت بنك القاهرة)",
-            "amount": 433.2,
-            "category": "Bills & Utilities",
-            "who": "Ahmed",
-            "payment_method": "Banque du Caire Visa"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "زبادي",
-            "amount": 10,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "رومي",
-            "amount": 35,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "لبن",
-            "amount": 38,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          }
-        ],
-        "by_category": {
-          "Transport": 130,
-          "Shopping": 20,
-          "Coffee": 130,
-          "Food": 258,
-          "Home": 90,
-          "Bills & Utilities": 433.2
-        },
-        "by_who": {
-          "Ahmed": 899.2,
-          "Wife": 72,
-          "House": 90
-        }
+        "total": 0,
+        "count": 0,
+        "items": [],
+        "by_category": {},
+        "by_who": {}
       },
-      "daily_trend": [
-        {
-          "date": "2026-05-22",
-          "total": 164
-        },
-        {
-          "date": "2026-05-23",
-          "total": 381.0
-        },
-        {
-          "date": "2026-05-24",
-          "total": 83
-        }
-      ],
+      "daily_trend": [],
       "home_budget": {
         "total_budget": 6000,
-        "spent_so_far": 578,
-        "remaining": 5422
+        "spent_so_far": 0,
+        "remaining": 6000
       },
       "summary": {
-        "net_flow": 14785.04,
-        "savings_rate": 58.4
+        "net_flow": 0,
+        "savings_rate": 0
       },
       "vezlo_tracking": {
         "hours": 0,
@@ -592,14 +399,14 @@
         "received_date": "2026-05-24"
       },
       "opening_balance_total": 0,
-      "current_balance_total": 12321.91,
+      "current_balance_total": 0,
       "current_balance": {
-        "CIB Account": 11008.03,
-        "Cash": 882.0,
-        "Banque du Caire": 19.14,
-        "Fawry Account": 411.46,
-        "Vodafone Cash": 0.52,
-        "QNB": 0.76
+        "CIB Account": 0,
+        "Cash": 0,
+        "Banque du Caire": 0,
+        "Fawry Account": 0,
+        "Vodafone Cash": 0,
+        "QNB": 0
       },
       "income": {
         "total_expected": 26103.31,
@@ -608,26 +415,31 @@
             "name": "Tabby (راتب مايو)",
             "amount": 26103.31,
             "variable": false,
-            "detail": "تم استلامها يوم 24 مايو"
+            "detail": "تم استلامها يوم 24 مايو",
+            "received": false
           },
           {
             "name": "Vezlo (جانبي)",
             "amount": 0,
             "variable": true,
-            "detail": "85/ساعة"
+            "detail": "85/ساعة",
+            "received": false
           },
           {
             "name": "أم الزوجة",
             "amount": 700,
-            "variable": false
+            "variable": false,
+            "received": false
           },
           {
             "name": "أختي (قسط موبايل)",
             "amount": 0,
             "variable": true,
-            "detail": "هتسكت شهر 6 — مش هتدفع"
+            "detail": "هتسكت شهر 6 — مش هتدفع",
+            "received": false
           }
-        ]
+        ],
+        "total_received": 0
       },
       "fixed_expenses": {
         "total": 4592,
@@ -690,9 +502,8 @@
         ]
       },
       "installments": {
-        "paid": true,
+        "paid": false,
         "total_monthly": 4875.75,
-        "paid_date": "2026-05-24",
         "items": [
           {
             "name": "لابتوب",
@@ -745,180 +556,28 @@
         "total_i_owe": 22000
       },
       "expenses": {
-        "total": 2389.0,
-        "count": 16,
-        "items": [
-          {
-            "date": "2026-05-24",
-            "item": "شحن كارت أم رودينا",
-            "amount": 19,
-            "category": "Other - Debt عليها",
-            "who": "Other",
-            "payment_method": "Fawry Account",
-            "notes": "مسجلة كدين عليها"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "بطاطس 2 كيلو",
-            "amount": 30,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "بتنجان كيلو إلا ربع",
-            "amount": 15,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "طماطم",
-            "amount": 30,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "2 كيلو فراولة",
-            "amount": 35,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "نشا",
-            "amount": 20,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "كيك شيف",
-            "amount": 10,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "10 بيضات",
-            "amount": 40,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "سندوتشات من المطعم",
-            "amount": 12,
-            "category": "Home",
-            "who": "House",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "بادز",
-            "amount": 50,
-            "category": "Shopping",
-            "who": "Wife",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "2 اندومي",
-            "amount": 10,
-            "category": "Food",
-            "who": "Wife",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "فلوس ماما",
-            "amount": 2000.0,
-            "category": "Family",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-24",
-            "item": "فلوس ماما (باقي)",
-            "amount": 35.0,
-            "category": "Family",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-25",
-            "item": "زبادي",
-            "amount": 10.0,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-25",
-            "item": "رومي",
-            "amount": 35.0,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          },
-          {
-            "date": "2026-05-25",
-            "item": "لبن",
-            "amount": 38.0,
-            "category": "Food",
-            "who": "Ahmed",
-            "payment_method": "Cash"
-          }
-        ],
-        "by_category": {
-          "Other - Debt عليها": 19,
-          "Home": 192,
-          "Shopping": 50,
-          "Food": 93.0,
-          "Family": 2035.0
-        },
-        "by_who": {
-          "Other": 19,
-          "House": 192,
-          "Wife": 60,
-          "Ahmed": 2118.0
-        }
+        "total": 0,
+        "count": 0,
+        "items": [],
+        "by_category": {},
+        "by_who": {}
       },
-      "daily_trend": [
-        {
-          "date": "2026-05-24",
-          "total": 2306.0
-        },
-        {
-          "date": "2026-05-25",
-          "total": 83.0
-        }
-      ],
+      "daily_trend": [],
       "home_budget": {
         "total_budget": 6000,
-        "spent_so_far": 192,
-        "remaining": 5808
+        "spent_so_far": 0,
+        "remaining": 6000
       },
       "summary": {
-        "net_flow": 14946.56,
-        "savings_rate": 55.8
+        "net_flow": 0,
+        "savings_rate": 0
       },
       "vezlo_tracking": {
         "hours": 0,
         "earned": 0,
         "entries": []
       },
-      "notes": [
-        "تم تحويل 3,000 احتياطي كاش في البيت مع مراتي"
-      ]
+      "notes": []
     }
   },
   "current_period": "period_6",
