@@ -7,7 +7,7 @@ const TX = {
     loginErr: '✕ Invalid username or password',
     loading: 'Loading...', noPeriods: 'No periods found',
     finance: 'Finance', langBtn: '🇪🇬 العربية',
-    tabs: ['Overview', 'Cards & Debt', 'Goals 🎯', 'Vezlo ⚡', 'Transport', 'Transactions', 'Compare 📊', 'Expense ➕'],
+    tabs: ['Overview', 'Cards & Debt', 'Goals 🎯', 'Side income ⚡', 'Transport', 'Transactions', 'Compare 📊', 'Expense ➕'],
     summary: { opening: 'Opening', income: 'Income', expenses: 'Expenses', balance: 'Balance' },
     netCard: 'Net After Obligations',
     netCalc: 'Salary - Fixed - Installments',
@@ -21,10 +21,10 @@ const TX = {
     paidEarly: 'Early paid',
     metro: { balance: 'Balance', trips: 'Trips', day: 'day', trip: 'trip',
              daily: 'Daily', monthly: 'Monthly', warn: '⚠️ Low balance! Top-up' },
-    vezloCalc: 'Vezlo + Olama Calculator',
+    vezloCalc: 'Income Calculator',
     hours: 'hours', calc: 'Calculate',
     result: 'Tell them:',
-    vezloDetail: 'Your hours × 85 + Olama 1,059 EGP',
+    vezloDetail: 'Your hours × rate + subscription cost',
     goalStatus: 'priority',
     saved: 'Saved', target: 'Target', remaining: 'Left',
     periodSummary: 'Period Summary',
@@ -41,7 +41,7 @@ const TX = {
     qeCategory: 'Category', qeWho: 'Who', qeMethod: 'Payment',
     qeAdd: 'Add Expense', qeAdded: '✅ Added! Refresh to see it.',
     qeNote: 'Saves locally — tell me in chat for permanent record',
-    vezloTrack: 'Vezlo Tracker', vezloHoursTotal: 'Total Hours',
+    vezloTrack: 'Hours Tracker', vezloHoursTotal: 'Total Hours',
     vezloEarned: 'Total Earned', vezloPerPeriod: 'Per Period',
     goalTimeline: 'Goal Timeline', projLabel: '(at current rate)',
     expPdf: '📄 Export PDF', pdfPrep: 'Preparing PDF...',
@@ -52,7 +52,7 @@ const TX = {
     loginErr: '✕ اسم المستخدم أو كلمة المرور غلط',
     loading: 'جاري التحميل...', noPeriods: 'مفيش فترات',
     finance: 'المالية', langBtn: '🇬🇧 English',
-    tabs: ['الرئيسية', '💳 فيزتي', '🎯 أهدافي', '⚡ Vezlo', '🚇 مواصلاتي', '📋 المعاملات', '📊 مقارنة', '➕ مصروف'],
+    tabs: ['الرئيسية', '💳 فيزتي', '🎯 أهدافي', '⚡ دخل إضافي', '🚇 مواصلاتي', '📋 المعاملات', '📊 مقارنة', '➕ مصروف'],
     summary: { opening: 'أول الفترة', income: 'الدخل', expenses: 'المصروفات', balance: 'الرصيد' },
     netCard: 'صافي الدخل بعد الالتزامات',
     netCalc: 'المرتب - الثابت - الأقساط',
@@ -66,10 +66,10 @@ const TX = {
     paidEarly: 'مدفوع مبكر',
     metro: { balance: 'الرصيد', trips: 'رحلات متبقية', day: 'يوم', trip: 'رحلة',
              daily: 'تكلفة اليوم', monthly: 'شهرياً', warn: '⚠️ الرصيد قليل! اشحن' },
-    vezloCalc: 'حاسبة Vezlo + Olama',
+    vezloCalc: 'حاسبة الدخل',
     hours: 'ساعة', calc: 'احسب',
     result: 'قولهم:',
-    vezloDetail: 'ساعاتك × 85 + Olama 1,059',
+    vezloDetail: 'ساعاتك × السعر + تكلفة الاشتراك',
     goalStatus: 'الأولوية',
     saved: 'وفرت', target: 'مطلوب', remaining: 'متبقي',
     periodSummary: 'ملخص الفترة',
@@ -86,7 +86,7 @@ const TX = {
     qeCategory: 'التصنيف', qeWho: 'مين', qeMethod: 'طريقة الدفع',
     qeAdd: 'أضف المصروف', qeAdded: '✅ اتضاف! اعمل تحديث عشان تشوفه.',
     qeNote: 'بيتحفظ محلياً — قول لي في الشات عشان التسجيل الدائم',
-    vezloTrack: 'تتبع Vezlo', vezloHoursTotal: 'إجمالي الساعات',
+    vezloTrack: 'تتبع الساعات', vezloHoursTotal: 'إجمالي الساعات',
     vezloEarned: 'إجمالي المكسب', vezloPerPeriod: 'كل فترة',
     goalTimeline: 'خط زمني للأهداف', projLabel: '(بالمعدل الحالي)',
     expPdf: '📄 تصدير PDF', pdfPrep: 'يتم تحضير PDF...',
@@ -743,9 +743,9 @@ function renderPeriod(pk) {
     let olN = '';
     if (olAm > 0) {
       let cov = Math.ceil(olAm / vz.hourly_rate);
-      olN = `<div class="vezlo-note">📡 <strong>Olama AI</strong> — $20 ≈ ${fmt(olAm)}/${LANG === 'ar' ? 'شهر' : 'mo'}<br>⚡ ${cov}${LANG === 'ar' ? ' ساعة Vezlo تغطي Olama' : 'hrs Vezlo covers Olama'}</div>`;
+      olN = `<div class="vezlo-note">📡 <strong>Olama AI</strong> — $20 ≈ ${fmt(olAm)}/${LANG === 'ar' ? 'شهر' : 'mo'}<br>⚡ ${cov}${LANG === 'ar' ? ' ساعة عمل تغطي الاشتراك' : 'hrs of work covers Olama'}</div>`;
     }
-    vzH += `<div style="font-size:14px;font-weight:700;margin-bottom:6px">⚡ Vezlo</div>
+    vzH += `<div style="font-size:14px;font-weight:700;margin-bottom:6px">⚡ Side income</div>
       <div class="list-row"><span>💰 ${LANG === 'ar' ? 'السعر' : 'Rate'}</span><span class="amt green">${fmt(vz.hourly_rate)}/${LANG === 'ar' ? 'ساعة' : 'hr'}</span></div>
       <div class="list-row"><span>👑 ${LANG === 'ar' ? 'التحكم' : 'Control'}</span><span style="color:var(--amber);font-weight:600">${LANG === 'ar' ? 'أنت اللي بتقرر' : 'You decide'}</span></div>
       ${olN}
@@ -827,11 +827,11 @@ function calcVezlo() {
   const vz = AD?.vezlo || {};
   const ol = AD?.olama_vezlo || {};
   const olAm = ol.amount_egp || 0;
-  const rate = vz.hourly_rate || 85;
+  const rate = vz.hourly_rate || 50;
   const total = h * rate + olAm;
   document.getElementById('vezloResult').textContent = fmt(total);
   let det = document.querySelector('.vc-breakdown');
-  if (det) det.textContent = `${LANG === 'ar' ? 'قولهم' : 'Tell them'}: ${h} ${LANG === 'ar' ? 'ساعة' : 'hrs'} × ${fmt(rate, false)} + ${fmt(olAm, false)} (Olama) = ${total} EGP`;
+  if (det) det.textContent = `${LANG === 'ar' ? 'الحساب' : 'Total'}: ${h} ${LANG === 'ar' ? 'ساعة' : 'hrs'} × ${fmt(rate, false)} + ${fmt(olAm, false)} (Olama) = ${total} EGP`;
 }
 
 // ===== TAB 6 RENDERERS =====
