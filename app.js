@@ -165,7 +165,7 @@ function toggleLang() {
 function login() {
   let u = document.getElementById('loginUser').value.trim().toLowerCase();
   let p = document.getElementById('loginPass').value.trim();
-  if (u === 'ahmed' && p === 'ahmed@1500') {
+  if (u === 'demo' && p === 'demo') {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     loadData();
