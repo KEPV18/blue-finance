@@ -1,156 +1,156 @@
 {
-  "user": {
-    "name": "Ahmed Khaled",
-    "company": "Tabby",
-    "salary_day": 27,
-    "currency": "EGP"
-  },
-  "current_balances": {
-    "CIB Account": 366.09,
-    "Cash": 0,
-    "Banque du Caire": 0,
-    "Fawry Account": 0,
-    "Vodafone Cash": 0
-  },
-  "cards": {},
-  "transport": {},
-  "metro_card": {},
-  "vezlo": {},
-  "income_profile": {
-    "sources": [],
-    "total_expected": 0
-  },
-  "debts_profile": {
-    "entries": [],
-    "total_i_owe": 0,
-    "total_owed_to_me": 0,
-    "net_debt": 0
-  },
-  "investments": {
-    "fawry": {
-      "total_deposits": 24186.15,
-      "current_balance": 23259.51,
-      "gross_pnl": 1072.74,
-      "net_pnl": -937.02,
-      "fawry_pnl": -1817.76,
-      "status": "losing"
-    }
-  },
-  "goals": [],
-  "fixed_expenses_profile": {},
-  "all_data": {
-    "months": {
-      "2026-06": {
-        "label": "يونيو 2026",
-        "month_key": "2026-06",
-        "income": {
-          "sources": [],
-          "total_expected": 0
-        },
-        "income_received": {
-          "total": 0,
-          "items": []
-        },
-        "expenses": {
-          "total": 0,
-          "count": 0,
-          "by_who": {},
-          "by_category": {},
-          "items": []
-        },
-        "fixed_expenses": {
-          "items": [],
-          "total": 0,
-          "paid_total": 0,
-          "unpaid_total": 0,
-          "all_paid": true
-        },
-        "installments": {
-          "items": [
-            {
-              "id": "laptop",
-              "name": "Laptop",
-              "monthly": 3543.08,
-              "remaining_months": 6,
-              "total_remaining": 21258.48
-            },
-            {
-              "id": "screen",
-              "name": "Screen",
-              "monthly": 542.66,
-              "remaining_months": 14,
-              "total_remaining": 7597.24
-            },
-            {
-              "id": "hard_drive",
-              "name": "Hard Drive",
-              "monthly": 533.25,
-              "remaining_months": 7,
-              "total_remaining": 3732.75
-            },
-            {
-              "id": "speaker",
-              "name": "Speaker",
-              "monthly": 38.25,
-              "remaining_months": 11,
-              "total_remaining": 420.75
-            },
-            {
-              "id": "camera",
-              "name": "Camera",
-              "monthly": 72.06,
-              "remaining_months": 10,
-              "total_remaining": 720.6
-            },
-            {
-              "id": "hand_blender",
-              "name": "Hand Blender",
-              "monthly": 146.46,
-              "remaining_months": 10,
-              "total_remaining": 1464.58
-            }
-          ],
-          "total_monthly": 4875.76,
-          "paid": false,
-          "date_paid": null,
-          "paid_early": 4093.12
-        },
-        "debts": {
-          "entries": [],
-          "total_i_owe": 0,
-          "total_owed_to_me": 0,
-          "net_debt": 0
-        },
-        "daily_trend": [],
-        "opening_balance": {
-          "CIB Account": 366.09,
-          "Cash": 0,
-          "Banque du Caire": 0,
-          "Fawry Account": 0,
-          "Vodafone Cash": 0
-        },
-        "opening_balance_total": 366.09,
-        "current_balance": {
-          "CIB Account": 366.09,
-          "Cash": 0,
-          "Banque du Caire": 0,
-          "Fawry Account": 0,
-          "Vodafone Cash": 0
-        },
-        "current_balance_total": 366.09,
-        "summary": {
-          "expected_income": 0,
-          "total_expenses": 0,
-          "fixed_paid": 0,
-          "fixed_unpaid": 0,
-          "net_flow": -4875.76,
-          "remaining": -4875.76
-        }
-      }
+ "user": {
+  "name": "Demo User",
+  "company": "Demo Co",
+  "salary_day": 27,
+  "currency": "EGP"
+ },
+ "current_balances": {
+  "Bank Account": 12500.0,
+  "Cash": 800,
+  "Savings": 5000,
+  "Wallet A": 350,
+  "Wallet B": 150
+ },
+ "cards": {},
+ "transport": {},
+ "metro_card": {},
+ "vezlo": {},
+ "income_profile": {
+  "sources": [],
+  "total_expected": 0
+ },
+ "debts_profile": {
+  "entries": [],
+  "total_i_owe": 0,
+  "total_owed_to_me": 0,
+  "net_debt": 0
+ },
+ "investments": {
+  "fawry": {
+   "total_deposits": 1000.0,
+   "current_balance": 1000.0,
+   "gross_pnl": 1000.0,
+   "net_pnl": 1000.0,
+   "fawry_pnl": 1000.0,
+   "status": "losing"
+  }
+ },
+ "goals": [],
+ "fixed_expenses_profile": {},
+ "all_data": {
+  "months": {
+   "2026-06": {
+    "label": "\u064a\u0648\u0646\u064a\u0648 2026",
+    "month_key": "2026-06",
+    "income": {
+     "sources": [],
+     "total_expected": 0
     },
-    "available_months": [
-      "2026-06"
-    ]
+    "income_received": {
+     "total": 0,
+     "items": []
+    },
+    "expenses": {
+     "total": 0,
+     "count": 0,
+     "by_who": {},
+     "by_category": {},
+     "items": []
+    },
+    "fixed_expenses": {
+     "items": [],
+     "total": 0,
+     "paid_total": 0,
+     "unpaid_total": 0,
+     "all_paid": true
+    },
+    "installments": {
+     "items": [
+      {
+       "id": "demo-1",
+       "name": "Demo installment 1",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      },
+      {
+       "id": "demo-2",
+       "name": "Demo installment 2",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      },
+      {
+       "id": "demo-3",
+       "name": "Demo installment 3",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      },
+      {
+       "id": "demo-4",
+       "name": "Demo installment 4",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      },
+      {
+       "id": "demo-5",
+       "name": "Demo installment 5",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      },
+      {
+       "id": "demo-6",
+       "name": "Demo installment 6",
+       "monthly": 500.0,
+       "remaining_months": 6,
+       "total_remaining": 3000.0
+      }
+     ],
+     "total_monthly": 3000.0,
+     "paid": false,
+     "date_paid": null,
+     "paid_early": 1000.0
+    },
+    "debts": {
+     "entries": [],
+     "total_i_owe": 0,
+     "total_owed_to_me": 0,
+     "net_debt": 0
+    },
+    "daily_trend": [],
+    "opening_balance": {
+     "Bank Account": 12500.0,
+     "Cash": 800,
+     "Savings": 5000,
+     "Wallet A": 350,
+     "Wallet B": 150
+    },
+    "opening_balance_total": 18800.0,
+    "current_balance": {
+     "Bank Account": 12500.0,
+     "Cash": 800,
+     "Savings": 5000,
+     "Wallet A": 350,
+     "Wallet B": 150
+    },
+    "current_balance_total": 18800.0,
+    "summary": {
+     "expected_income": 0,
+     "total_expenses": 0,
+     "fixed_paid": 0,
+     "fixed_unpaid": 0,
+     "net_flow": 1000.0,
+     "remaining": 1000.0
+    }
+   }
   },
-  "last_updated": "05/06/2026 01:00"
+  "available_months": [
+   "2026-06"
+  ]
+ },
+ "last_updated": "demo data"
 }
