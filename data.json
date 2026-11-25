@@ -37,7 +37,9 @@
   }
  },
  "goals": [],
- "fixed_expenses_profile": {},
+ "fixed_expenses_profile": {
+  "total": 4000
+ },
  "all_data": {
   "months": {
    "2026-06": {
@@ -152,5 +154,55 @@
    "2026-06"
   ]
  },
- "last_updated": "demo data"
+ "last_updated": "demo data",
+ "periods": {
+  "p1": {
+   "label": "Demo period",
+   "date_range": {
+    "start": "2026-06-01",
+    "end": "2026-06-30"
+   },
+   "salary_info": {
+    "salary_month": "June",
+    "salary_amount": 20000
+   },
+   "opening_balance_total": 18800,
+   "current_balance": {
+    "Bank Account": 12500,
+    "Cash": 800,
+    "Savings": 5000,
+    "Wallet A": 350,
+    "Wallet B": 150
+   },
+   "current_balance_total": 18800,
+   "income": {
+    "total_expected": 20000,
+    "sources": []
+   },
+   "expenses": {
+    "total": 6200,
+    "count": 0,
+    "items": [],
+    "by_category": {},
+    "by_who": {}
+   },
+   "fixed_expenses": {
+    "items": [],
+    "total": 4000,
+    "paid_total": 4000
+   },
+   "installments": {
+    "items": [],
+    "total_monthly": 3000,
+    "paid": false
+   },
+   "debts": {
+    "entries": [],
+    "total_i_owe": 0
+   },
+   "daily_trend": [],
+   "home_budget": {}
+  }
+ },
+ "current_period": "p1"
 }
